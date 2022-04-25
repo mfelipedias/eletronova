@@ -12,17 +12,17 @@
         body {
             background: #fc0;
         }
-
+        
         div {
             font-family: Arial;
             padding: 5px;
             margin-bottom: 10px;
         }
-
+        
         label {
             display: block;
         }
-
+        
         input {
             box-sizing: border-box;
             padding: 10px;
@@ -32,6 +32,10 @@
             border: 0;
             background: #808080;
         }
+        
+        .bg_1 {
+            background: red;
+        }
     </style>
 
 </head>
@@ -40,10 +44,10 @@
 
     <form>
         <form id="meuform"></form>
-        Mascara <input type='text' name='cpfcnpj' onkeypress='mascaraCpfCnpj(this,cpfCnpj);' onblur='clearTimeout(); validarCPF(this.value);'>
-        <p id="retorno" onclick="validarCPF('567.650.850-76')">(innerHTML)</p>
+        Mascara <input type='text' name='cpfcnpj' id="cpfcnpj" maxlength="18" onkeypress='mascaraCpfCnpj(this,cpfCnpj);' onblur='clearTimeout(); verifica(this.value);'>
+        <p id="retorno">(innerHTML)</p>
     </form>
-    
+
     <script src="js/mascaracpfcnpj.js"></script>
     <script src="js/validacpfcnpj.js"></script>
 </body>
