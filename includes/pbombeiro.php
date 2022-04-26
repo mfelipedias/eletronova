@@ -1,4 +1,4 @@
-<div class="col-md-12" style="min-width: 400px; max-width: 1280px;">
+<div class="col-md-12" style="min-width: 400px; max-width: 1366px;">
     <div class="row" style="padding-right: 5px;padding-left: 5px">
         <!-- CARD PESQUISA -->
         <div class="col-md-4">

@@ -1,24 +1,37 @@
 function verifica(cpf) {
     var retorno = document.getElementById("retorno");
     var cpfcnpj = document.getElementById("cpfcnpj");
+    var btn = document.getElementById("btn-addcliente");
     cpf = cpf.replace(/[^\d]+/g, '');
     if (cpf == '') return false;
 
     if (cpf.length <= 11) {
         x = validarCPF(cpf);
         if (x == false) {
-            retorno.innerHTML = "CPF Errado";
-            cpfcnpj.classList.add("bg_1");
+            retorno.classList.remove("valid-feedback");
+            retorno.classList.add("invalid-feedback");
+            retorno.innerHTML = "Insira um CPF ou CNPJ válido";
+            cpfcnpj.classList.remove("is-valid");
+            cpfcnpj.classList.add("is-invalid");
+            btn.classList.add("disabled");
         } else {
-            retorno.innerHTML = "CPF Válido";
-            cpfcnpj.classList.remove("bg_1");
+            cpfcnpj.classList.remove("is-invalid");
+            cpfcnpj.classList.add("is-valid");
+            btn.classList.remove("disabled");
         }
     } else {
         y = validarCNPJ(cpf);
         if (y == false) {
-            retorno.innerHTML = "CNPJ Errado";
+            retorno.classList.remove("valid-feedback");
+            retorno.classList.add("invalid-feedback");
+            retorno.innerHTML = "Insira um CPF ou CNPJ válido";
+            cpfcnpj.classList.remove("is-valid");
+            cpfcnpj.classList.add("is-invalid");
+            btn.classList.add("disabled");
         } else {
-            retorno.innerHTML = "CNPJ Válido";
+            cpfcnpj.classList.remove("is-invalid");
+            cpfcnpj.classList.add("is-valid");
+            btn.classList.remove("disabled");
         }
     }
 

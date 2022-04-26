@@ -18,7 +18,7 @@
                   <div class="form-group row">
                     <div class="col-sm-5 mt-2">
                       <label for="pcpfcnpj" class="form-label">CPF / CNPJ:</label>
-                      <input type="text" class="form-control" id="cpfcnpj" name='cpfcnpj' onkeypress='mascaraCpfCnpj(this,cpfCnpj)' onblur='clearTimeout()' maxlength="18">
+                      <input type="text" class="form-control " id="pcpfcnpj" name='pcpfcnpj' onkeypress='mascaraCpfCnpj(this,cpfCnpj);' onblur='clearTimeout();' maxlength="18">
                     </div>
 
                     <div class="col-sm-7 mt-2">
@@ -86,7 +86,7 @@
                     </div>
                   </div>
                   <div class="form-group d-flex justify-content-end mt-3">
-                    <button type="submit" class="btn btn-primary">Pesquisar</button>
+                    <button type="" href="#" class="btn btn-primary">Pesquisar</button>
                   </div>
                 </form>
 
@@ -174,7 +174,8 @@
 
             <div class="col-sm-9">
               <label for="cpfcnpj" class="form-label">CPF / CNPJ:</label>
-              <input type="text" class="form-control" id="cpfcnpj" name='cpfcnpj' onkeypress='mascaraCpfCnpj(this,cpfCnpj)' onblur='clearTimeout()' maxlength="18" required>
+              <input type="text" class="form-control " id="cpfcnpj" name='cpfcnpj' onkeypress='mascaraCpfCnpj(this,cpfCnpj);' onblur='clearTimeout(); verifica(this.value);' maxlength="18" required>
+              <div id="retorno" class="form-text "></div>
             </div>
 
             <div class="col-12">
@@ -276,7 +277,7 @@
             </div>
           </div>
           <hr class="my-4">
-          <button class="w-100 btn btn-primary btn-lg" type="submit">Cadastrar</button>
+          <button id="btn-addcliente" class="w-100 btn btn-primary btn-lg " type="submit">Cadastrar</button>
         </form>
       </div>
       <!-- FIM COLUNA CADASTRO -->
