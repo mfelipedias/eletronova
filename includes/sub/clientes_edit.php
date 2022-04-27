@@ -1,4 +1,4 @@
-<div class="card shadow p-3" style="max-width: 1000px">
+<div class="card shadow p-3" style="max-width: 1000px; width: 100%" >
     <div class="row">
         <div class="col">
             <label class="" style="font-weight:bold; font-family: 'Poppins', sans-serif;"><i class="bi bi-info-lg text-primary rounded" style="border-style: solid;border-width: thin;padding:2px 10px;margin-right: 10px; font-size:130%;"></i>Informações Gerais</label>

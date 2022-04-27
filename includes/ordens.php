@@ -3,7 +3,7 @@
     <div class="col-md-12" style="min-width: 400px; max-width: 1366px">
         <div class="row">
             <!-- CARD PESQUISA -->
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="card shadow mb-2" style="width: 100%;">
                     <div class="" style="padding: 3px;">
                         <div class="flex-row p-1">
@@ -17,7 +17,7 @@
                                 <form class="" style="padding: 0px 10px 10px;">
                                     <div class="form-group row">
                                         <div class="col-sm-5 mt-2">
-                                            <label for="firstName" class="form-label">CPF / CNPJ:</label>
+                                            <label for="firstName" class="form-label">OS:</label>
                                             <input type="text" class="form-control" id="pcpfcnpj" placeholder="" value="">
                                         </div>
 
@@ -43,31 +43,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group row mt-2">
-                                        <div class="col-md-8">
-                                            <label for="country" class="form-label">Ramo de Atividade</label>
-                                            <select class="form-select" id="country">
-                                                <option value="">Escolha...</option>
-                                                <option>Alimentício</option>
-                                                <option>Escritório de Contabilidade</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-4 " style="margin-top: 6px;">
-                                            <label for="state" class="form-label">Status:</label><br>
-                                            <div class="form-check mt-1 form-check-inline">
-                                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked>
-                                                <label class="form-check-label" for="inlineRadio1">Todos</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                                <label class="form-check-label" for="inlineRadio2">Ativo</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
-                                                <label class="form-check-label" for="inlineRadio3">Inativo</label>
-                                            </div>
-                                        </div>
-                                    </div>
+                               
                                     <div class="form-group d-flex justify-content-end mt-3">
                                         <button type="submit" class="btn btn-primary">Pesquisar</button>
                                     </div>
@@ -81,7 +57,7 @@
             </div>
             <!-- FIM CARD PESQUISA -->
             <!-- CARD FILTROS -->
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="card shadow mb-2" style="width: 100%;">
                     <div class="" style="padding:3px;">
                         <div class="flex-row p-1">
@@ -92,15 +68,13 @@
                             <span class="" style="font-size: 105%; font-weight:bold;margin-left:7px;">Filtros...</span>
                             <div class="collapse" id="filtros">
                                 <div class="p-2">
-                                    <label>CPF/CNPJ:</label>
+                                    <label><small>CPF/CNPJ:</small></label>
                                     <input class="form-control form-control-sm" type="text" placeholder="Sem filtro..." readonly>
                                     <label>Nome:</label>
                                     <input class="form-control form-control-sm" type="text" placeholder="Sem filtro..." readonly>
                                     <label>Estado:</label>
                                     <input class="form-control form-control-sm" type="text" placeholder="Sem filtro..." readonly>
                                     <label>Cidade:</label>
-                                    <input class="form-control form-control-sm" type="text" placeholder="Sem filtro..." readonly>
-                                    <label>Atividade:</label>
                                     <input class="form-control form-control-sm" type="text" placeholder="Sem filtro..." readonly>
                                     <label>Status:</label>
                                     <input class="form-control form-control-sm" type="text" placeholder="Sem filtro..." readonly>
@@ -112,7 +86,7 @@
             </div>
             <!-- FIM CARD FILTROS -->
             <!-- CARD NOVA ORDEM -->
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="card shadow mb-2" style="width: 100%;">
                     <div class="" style="padding: 3px;">
                         <div class="flex-row p-1">

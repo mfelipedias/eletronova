@@ -25,6 +25,8 @@ else{
 
 $sql = "INSERT INTO clientes (c_doc, c_nome, c_ramo, c_cep, c_end, c_comp, c_cidade, c_uf, c_contato, c_tel, c_mail, c_info, c_status, c_cadastro, c_update) values ('$doc', '$nome', '$ramo', '$cep', '$end', '$comp', '$cidade', '$uf', '$contato', '$tel', '$mail', '$info', '$status', now(), now())";
 $inserir = mysqli_query($conexao, $sql);
-echo $doc."<br>" .$nome. "<br>" .$ramo."<br>" .$cep. "<br>" .$status;
-echo "<h1>Cliente adicionado</h1>";
+//echo $doc."<br>" .$nome. "<br>" .$ramo."<br>" .$cep. "<br>" .$status;
+//echo "<h1>Cliente adicionado</h1>";
+header("Location: /eletronova/?pagina=clientes");
+
 }
