@@ -1,6 +1,6 @@
 <div class="row mx-auto">
   <!-- COLUNA PESQUISA E TABELA -->
-  <div class="col-md-7" style="min-width: 400px; max-width: 1100px;">
+  <div class="col-md-7" style="min-width: 400px; max-width: 1100px; width: 100%">
     <div class="row">
       <!-- CARD PESQUISA -->
       <div class="col-md-8">
@@ -143,14 +143,32 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">12.066.774/0001-02</th>
-              <td>Eletronova Engenharia e Tecnologia Ltda</td>
-              <td>Rua Miguel Calmon, 68 - Cotia - SP</td>
-              <td>Ativo</td>
-              <td><a href="?pagina=clientes_edit" style="font-size: 23px;"><i class="bi bi-eye"></i></a></td>
-            </tr>
+            <?php
+            include './scripts/conexao.php';
+            $sql = "SELECT * FROM `clientes`";
+            $busca = mysqli_query($conexao, $sql);
+            $contador = 0;
+            while ($array = mysqli_fetch_array($busca)) {
+
+              $contador = $contador + 1;
+              $id_cliente = $array['id_cliente'];
+              $c_doc = $array['c_doc'];
+              $c_nome = $array['c_nome'];
+              $c_end = $array['c_end'];
+              $c_status = $array['c_status'];
+            ?>
+              <tr>
+
+                <th><?php echo $c_doc ?></th>
+                <td><?php echo $c_nome ?></td>
+                <td><?php echo $c_end ?></td>
+                <td><?php echo $c_status ?></td>
+                <td><a href="?pagina=clientes_edit&&id=<?php echo $id_cliente?>" style="font-size: 23px;"><i class="bi bi-eye"></i></a></td>
+              <?php } ?>
+              </tr>
+
           </tbody>
+
         </table>
       </div>
     </div>
@@ -158,50 +176,50 @@
 
     <!-- COLUNA CADASTRO -->
   </div>
-  <div class="col-md-5" style="min-width: 400px; max-width: 700px;">
-    <form>
+  <div class="col-md-5" style="min-width: 400px; max-width: 700px; width: 100%">
+    <form action="./scripts/cliente_add.php" method="post">
       <div class="card p-3 shadow" style="width: 95%; margin-left:auto; margin-right:auto">
         <span class="" style="margin-bottom:20px; font-weight:bold;"><i class="bi bi-person-plus text-primary rounded" style="border-style: solid;border-width: thin;padding:2px 10px;margin-right: 5px; font-size:130%;"></i> <a style="font-size: 110%;">Cadastrar cliente...<a></span>
         <form class="needs-validation" novalidate>
           <div class="row g-3">
             <div class="col-md-3">
               <label for="status" class="form-label">Status:</label>
-              <select class="form-select" id="status" required>
-                <option value="Ativo">Ativo</option>
-                <option value="Inativo">Inativo</option>
+              <select class="form-select" id="status" name="status" required>
+                <option value="1">Ativo</option>
+                <option value="0">Inativo</option>
               </select>
             </div>
 
             <div class="col-sm-9">
               <label for="cpfcnpj" class="form-label">CPF / CNPJ:</label>
-              <input type="text" class="form-control " id="cpfcnpj" name='cpfcnpj' onkeypress='mascaraCpfCnpj(this,cpfCnpj);' onblur='clearTimeout(); verifica(this.value);' maxlength="18" required>
+              <input type="text" class="form-control " id="cpfcnpj" name="cpfcnpj" onkeypress='mascaraCpfCnpj(this,cpfCnpj);' onblur='clearTimeout(); verifica(this.value);' maxlength="18" required>
               <div id="retorno" class="form-text "></div>
             </div>
 
             <div class="col-12">
               <label for="nome" class="form-label">Nome / Razão Social:</label>
-              <input type="text" class="form-control" id="nome" placeholder="" value="" required>
+              <input type="text" class="form-control" id="nome" name="nome" placeholder="" value="" maxlength="100" required>
             </div>
 
             <div class="col-12">
               <label for="endereco" class="form-label">Endereço:</label>
-              <input type="text" class="form-control" id="endereco" placeholder="Rua/Av/Rod..." required>
+              <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Rua/Av/Rod..." maxlength="100" required>
             </div>
 
             <div class="col-12">
               <label for="complemento" class="form-label">Complemento:</label>
-              <input type="text" class="form-control" id="complemento" placeholder="Apto, bloco, quadra..." required>
+              <input type="text" class="form-control" id="complemento" name="complemento" placeholder="Apto, bloco, quadra..." maxlength="50" required>
             </div>
 
 
             <div class="col-md-5">
               <label for="cidade" class="form-label">Cidade:</label>
-              <select class="form-select" id="cidade">
+              <select class="form-select" id="cidade" name="cidade">
               </select>
             </div>
             <div class="col-md-4">
               <label for="estado" class="form-label">Estado:</label>
-              <select class="form-select" id="estado" onchange="buscaCidades(this.value)">
+              <select class="form-select" id="estado" name="estado" onchange="buscaCidades(this.value)">
                 <option value="">Selecione...</option>
                 <option value="AC">Acre</option>
                 <option value="AL">Alagoas</option>
@@ -235,12 +253,12 @@
 
             <div class="col-md-3">
               <label for="cep" class="form-label">CEP:</label>
-              <input type="text" class="form-control" id="cep" placeholder="" required>
+              <input type="text" class="form-control" id="cep" name="cep" placeholder="" maxlength="9" required>
             </div>
 
             <div class="col-md-12 mt-3">
               <label for="ramo" class="form-label">Ramo de Atividade:</label>
-              <select class="form-select" id="ramo" required>
+              <select class="form-select" id="ramo" name="ramo" required>
                 <option value="">Escolha...</option>
                 <option>Construção</option>
               </select>
@@ -255,17 +273,17 @@
           <div class="row gy-3">
             <div class="col-md-6">
               <label for="ctelefone" class="form-label">Nome:</label>
-              <input type="text" class="form-control" id="cnome" placeholder="">
+              <input type="text" class="form-control" id="cnome" name="cnome" placeholder="" maxlength="200">
             </div>
 
             <div class="col-md-6">
               <label for="ctelefone" class="form-label">Telefone:</label>
-              <input type="text" class="form-control" id="telefone">
+              <input type="text" class="form-control" id="telefone" name="telefone" maxlength="200">
             </div>
 
             <div class="col-md-12">
               <label for="cemail" class="form-label">E-mail:</label>
-              <input type="text" class="form-control" id="cemail" placeholder="">
+              <input type="text" class="form-control" id="cemail" name="cemail" placeholder="" maxlength="200">
               <small class="text-muted">(Separar multiplos e-mails com ponto e virgula ";")</small>
             </div>
           </div>
@@ -273,7 +291,7 @@
           <div class="row">
             <div class="col-md-12">
               <label for="maisinfo" class="form-label">Mais Informações:</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" id="maisinfo"></textarea>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" id="maisinfo" name="maisinfo" maxlength="400"></textarea>
             </div>
           </div>
           <hr class="my-4">
