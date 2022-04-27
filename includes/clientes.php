@@ -4,7 +4,7 @@
     <div class="row">
       <!-- CARD PESQUISA -->
       <div class="col-md-4">
-        <div class="card shadow mb-2" style="width: 100%;">
+        <div class="card shadow mb-2" style="width: 100%; min-width:250px">
           <div class="" style="padding: 3px;">
             <div class="flex-row p-1">
               <a class="btn btn-outline-primary" data-toggle="collapse" href="#filtros" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -16,40 +16,35 @@
 
                 <form class="mt-2" style="padding: 0px 10px 10px;">
                   <div class="form-group row">
-                    <div class="col-sm-5">
-                      <label for="pcpfcnpj" class="form-label"><small>CPF / CNPJ:</small></label>
-                      <input type="text" class="form-control form-control-sm" id="pcpfcnpj" name='pcpfcnpj' placeholder="CPF/CNPJ" onkeypress='mascaraCpfCnpj(this,cpfCnpj);' onblur='clearTimeout();' maxlength="18">
+                    <div class="col-sm-12">
+                      <input type="text" class="form-control" id="pcpfcnpj" name='pcpfcnpj' placeholder="CPF/CNPJ" onkeypress='mascaraCpfCnpj(this,cpfCnpj);' onblur='clearTimeout();' maxlength="18">
                     </div>
-
-                    <div class="col-sm-7">
-                      <label for="pnome" class="form-label"><small>Nome / Razao Social:</small></label>
-                      <input type="text" class="form-control form-control-sm" id="pnome" placeholder="Nome do Cliente" value="">
+                    </div>
+                    <div class="form-group row mt-1">
+                    <div class="col-sm-12">
+                      <input type="text" class="form-control" id="pnome" placeholder="Nome do Cliente" value="">
                     </div>
                   </div>
-                  <div class="form-group row mb-0">
+                  <div class="form-group row mt-1">
                     <div class="col-md-8 ">
-                      <label for="pcidade" class="form-label"><small>Cidade:</small></label>
-                      <input type="text" class="form-control form-control-sm" id="pcidade" placeholder="Cidade" value="">
+                      <input type="text" class="form-control" id="pcidade" placeholder="Cidade" value="">
                     </div>
 
                     <div class="col-md-4">
-                      <label for="estado" class="form-label"><small>Estado:</small></label>
-                      <input type="text" class="form-control form-control-sm" id="pestado" placeholder="UF" value="">
+                      <input type="text" class="form-control" id="pestado" placeholder="UF" value="">
                     </div>
                   </div>
-                  <div class="form-group row">
+                  <div class="form-group row mt-1">
                     <div class="col-md-8">
-                      <label for="pramo" class="form-label"><small>Ramo de Atividade</small></label>
-                      <select class="form-select form-select-sm" id="pramo">
-                        <option value="">Todos...</option>
+                      <select class="form-select" id="pramo">
+                        <option value="">Ramo...</option>
                         <option>Alimentício</option>
                         <option>Escritório de Contabilidade</option>
                       </select>
                     </div>
                     <div class="col-md-4">
-                      <label for="pstatus" class="form-label"><small>Status</small></label>
-                      <select class="form-select form-select-sm" id="pstatus">
-                        <option value="">Todos...</option>
+                      <select class="form-select" id="pstatus">
+                        <option value="">Status...</option>
                         <option value="1">Ativo</option>
                         <option value="2">Inativo</option>
                       </select>
@@ -69,7 +64,7 @@
       <!-- FIM CARD PESQUISA -->
       <!-- CARD FILTROS -->
       <div class="col-md-4">
-        <div class="card shadow mb-2" style="width: 100%;">
+        <div class="card shadow mb-2" style="width: 100%; min-width:250px">
           <div class="" style="padding:3px;">
             <div class="flex-row p-1">
               <a class="btn btn-outline-primary" data-toggle="collapse" href="#filtros" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -79,18 +74,38 @@
               <span class="" style="font-size: 105%; font-weight:bold;margin-left:7px;">Filtros...</span>
               <div class="collapse" id="filtros">
                 <div class="p-2">
-                  <label><small>CPF/CNPJ:</small></label>
-                  <input class="form-control form-control-sm" type="text" placeholder="Sem filtro..." id="fcpfcnpj" readonly>
-                  <label><small>Nome:</small></label>
-                  <input class="form-control form-control-sm" type="text" placeholder="Sem filtro..." id="fnome" readonly>
-                  <label><small>Estado:</small></label>
-                  <input class="form-control form-control-sm" type="text" placeholder="Sem filtro..." id="festado" readonly>
-                  <label><small>Cidade:</small></label>
-                  <input class="form-control form-control-sm" type="text" placeholder="Sem filtro..." id="fcidade" readonly>
-                  <label><small>Atividade:</small></label>
-                  <input class="form-control form-control-sm" type="text" placeholder="Sem filtro..." id="fatividade" readonly>
-                  <label><small>Status:</small></label>
-                  <input class="form-control form-control-sm" type="text" placeholder="Sem filtro..." id="fstatus" readonly>
+                  <div class="row">
+                    <div class="col-12">
+                      <label><small>CPF/CNPJ:</small></label>
+                      <input class="form-control form-control-sm" type="text" placeholder="Sem filtro..." id="fcpfcnpj" readonly>
+                      </div>
+                      </div>
+                      <div class="row">
+                    <div class="col-12">
+                      <label><small>Nome:</small></label>
+                      <input class="form-control form-control-sm" type="text" placeholder="Sem filtro..." id="fnome" readonly>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-6">
+                      <label><small>Estado:</small></label>
+                      <input class="form-control form-control-sm" type="text" placeholder="Sem filtro..." id="festado" readonly>
+                    </div>
+                    <div class="col-6">
+                      <label><small>Cidade:</small></label>
+                      <input class="form-control form-control-sm" type="text" placeholder="Sem filtro..." id="fcidade" readonly>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-6">
+                      <label><small>Atividade:</small></label>
+                      <input class="form-control form-control-sm" type="text" placeholder="Sem filtro..." id="fatividade" readonly>
+                    </div>
+                    <div class="col-6">
+                      <label><small>Status:</small></label>
+                      <input class="form-control form-control-sm" type="text" placeholder="Sem filtro..." id="fstatus" readonly>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -100,7 +115,7 @@
       <!-- FIM CARD FILTROS -->
       <!-- CARD NOVA ORDEM -->
       <div class="col-md-4">
-        <div class="card shadow mb-2" style="width: 100%;">
+        <div class="card shadow mb-2" style="width: 100%;min-width:250px">
           <div class="" style="padding: 3px;">
             <div class="flex-row p-1">
               <a class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -234,7 +249,7 @@
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                              <button type="submit" href="#" class="btn btn-primary">Cadastrar</button>
+                              <button type="submit" href="#"  id="btn-addcliente" class="btn btn-primary">Cadastrar</button>
                             </div>
                           </form>
                         </div>
@@ -282,7 +297,7 @@
                   <td><?php echo $c_nome ?></td>
                   <td><?php echo $c_end ?></td>
                   <td><?php echo $c_status ?></td>
-                  <td><a href="?pagina=clientes_edit&&id=<?php echo $id_cliente ?>" style="font-size: 23px;"><i class="bi bi-eye"></i></a></td>
+                  <td><a href="?pagina=clientes_edit&&id=<?php echo $id_cliente ?>" style="font-size: 23px;"><i class="bi bi-pencil-square"></i></i></a></td>
                 <?php } ?>
                 </tr>
 
