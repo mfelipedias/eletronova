@@ -1,10 +1,10 @@
 <div class="row mx-auto">
   <!-- COLUNA PESQUISA E TABELA -->
-  <div class="col-md-12" style="min-width: 400px; max-width: 1366px; width: 100%">
+  <div class="col" style="min-width: 400px; max-width: 1366px; width: 100%">
     <div class="row">
       <!-- CARD PESQUISA -->
-      <div class="col-md-4">
-        <div class="card shadow mb-2" style="width: 100%; min-width:250px">
+      <div class="col-xl-4" style="min-width:300px;">
+        <div class="card shadow mb-2" style="width: 100%; min-width:300px">
           <div class="" style="padding: 3px;">
             <div class="flex-row p-1">
               <a class="btn btn-outline-primary" data-toggle="collapse" href="#filtros" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -19,8 +19,8 @@
                     <div class="col-sm-12">
                       <input type="text" class="form-control" id="pcpfcnpj" name='pcpfcnpj' placeholder="CPF/CNPJ" onkeypress='mascaraCpfCnpj(this,cpfCnpj);' onblur='clearTimeout();' maxlength="18">
                     </div>
-                    </div>
-                    <div class="form-group row mt-1">
+                  </div>
+                  <div class="form-group row mt-1">
                     <div class="col-sm-12">
                       <input type="text" class="form-control" id="pnome" placeholder="Nome do Cliente" value="">
                     </div>
@@ -63,8 +63,8 @@
       </div>
       <!-- FIM CARD PESQUISA -->
       <!-- CARD FILTROS -->
-      <div class="col-md-4">
-        <div class="card shadow mb-2" style="width: 100%; min-width:250px">
+      <div class="col-xl-4" style="min-width:300px;">
+        <div class="card shadow mb-2" style="width: 100%; min-width:300px">
           <div class="" style="padding:3px;">
             <div class="flex-row p-1">
               <a class="btn btn-outline-primary" data-toggle="collapse" href="#filtros" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -78,9 +78,9 @@
                     <div class="col-12">
                       <label><small>CPF/CNPJ:</small></label>
                       <input class="form-control form-control-sm" type="text" placeholder="Sem filtro..." id="fcpfcnpj" readonly>
-                      </div>
-                      </div>
-                      <div class="row">
+                    </div>
+                  </div>
+                  <div class="row">
                     <div class="col-12">
                       <label><small>Nome:</small></label>
                       <input class="form-control form-control-sm" type="text" placeholder="Sem filtro..." id="fnome" readonly>
@@ -114,8 +114,8 @@
       </div>
       <!-- FIM CARD FILTROS -->
       <!-- CARD NOVA ORDEM -->
-      <div class="col-md-4">
-        <div class="card shadow mb-2" style="width: 100%;min-width:250px">
+      <div class="col-xl-4" style="min-width:300px;">
+        <div class="card shadow mb-2" style="width: 100%;min-width:300px">
           <div class="" style="padding: 3px;">
             <div class="flex-row p-1">
               <a class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -249,7 +249,7 @@
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                              <button type="submit" href="#"  id="btn-addcliente" class="btn btn-primary">Cadastrar</button>
+                              <button type="submit" href="#" id="btn-addcliente" class="btn btn-primary">Cadastrar</button>
                             </div>
                           </form>
                         </div>
@@ -263,6 +263,8 @@
         </div>
         <!--FIM CARD NOVA ORDEM -->
       </div>
+    </div>
+    <div class="row mx-auto">
       <!-- CARD TABELA -->
       <div class="card shadow mb-3">
         <div class="flex-row p-2">
@@ -296,7 +298,11 @@
                   <th><?php echo $c_doc ?></th>
                   <td><?php echo $c_nome ?></td>
                   <td><?php echo $c_end ?></td>
-                  <td><i class="bi bi-circle-fill" style="color:<?php if($c_status==1){echo 'green';}else{echo 'red';} ?>;"></i></td>
+                  <td><i class="bi bi-circle-fill" style="color:<?php if ($c_status == 1) {
+                                                                  echo 'green';
+                                                                } else {
+                                                                  echo 'red';
+                                                                } ?>;"></i></td>
                   <td><a href="?pagina=clientes_edit&&id=<?php echo $id_cliente ?>" style="font-size: 23px;"><i class="bi bi-pencil-square"></i></i></a></td>
                 <?php } ?>
                 </tr>
@@ -307,7 +313,6 @@
         </div>
       </div>
       <!-- FIM CARD TABELA -->
-
-      <!-- COLUNA CADASTRO -->
     </div>
   </div>
+</div>

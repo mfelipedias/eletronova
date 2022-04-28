@@ -21,6 +21,8 @@ while ($array = mysqli_fetch_array($busca)) {
     $c_update = $array['c_update'];
 }
 ?>
+<div class="row mx-auto">
+<div class="col">
 <div class="card shadow p-3" style="max-width: 1000px; width: 100%">
     <div class="row">
         <div class="col">
@@ -202,4 +204,5 @@ while ($array = mysqli_fetch_array($busca)) {
     </form>
 
 
+</div>
 </div>

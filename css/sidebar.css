@@ -64,34 +64,3 @@ a:hover span {
 .btn-toggle-nav a:focus {
     background-color: #d2f4ea;
 }
-
-@media only screen {
-    .sidebar {
-        width: 220px;
-        padding-top: 10px;
-        padding-bottom: 30px;
-        padding-right: 10px;
-        padding-bottom: 10px;
-        padding-left: 10px;
-    }
-    .td-main-navbar {
-        display: none !important;
-    }
-    .td-main-content {
-        margin-left: 250px;
-        margin-right: 0px;
-    }
-}
-
-@media only screen and (max-width: 600px) {
-    .td-main-content {
-        margin-left: 0px;
-        margin-right: 0px;
-    }
-    .td-main-sidebar {
-        display: none !important;
-    }
-    .td-main-navbar {
-        display: contents !important;
-    }
-}
