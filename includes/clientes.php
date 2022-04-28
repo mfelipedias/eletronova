@@ -1,6 +1,6 @@
 <div class="row mx-auto">
   <!-- COLUNA PESQUISA E TABELA -->
-  <div class="col-md-7" style="min-width: 400px; max-width: 1366px; width: 100%">
+  <div class="col-md-12" style="min-width: 400px; max-width: 1366px; width: 100%">
     <div class="row">
       <!-- CARD PESQUISA -->
       <div class="col-md-4">
@@ -244,7 +244,7 @@
                             <div class="row">
                               <div class="col-md-12">
                                 <label for="maisinfo" class="form-label">Mais Informações:</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" id="maisinfo" name="maisinfo" maxlength="400"></textarea>
+                                <textarea class="form-control" rows="3" id="maisinfo" name="maisinfo" maxlength="400"></textarea>
                               </div>
                             </div>
                             <div class="modal-footer">
@@ -296,7 +296,7 @@
                   <th><?php echo $c_doc ?></th>
                   <td><?php echo $c_nome ?></td>
                   <td><?php echo $c_end ?></td>
-                  <td><?php echo $c_status ?></td>
+                  <td><i class="bi bi-circle-fill" style="color:<?php if($c_status==1){echo 'green';}else{echo 'red';} ?>;"></i></td>
                   <td><a href="?pagina=clientes_edit&&id=<?php echo $id_cliente ?>" style="font-size: 23px;"><i class="bi bi-pencil-square"></i></i></a></td>
                 <?php } ?>
                 </tr>
@@ -310,8 +310,4 @@
 
       <!-- COLUNA CADASTRO -->
     </div>
-    <div class="col-md-5" style="min-width: 400px; max-width: 600px; width: 100%">
-
-    </div>
-    <!-- FIM COLUNA CADASTRO -->
   </div>

@@ -1,4 +1,27 @@
-<div class="card shadow p-3" style="max-width: 1000px; width: 100%" >
+<?php
+include './scripts/conexao.php';
+$id = $_GET['id'];
+$sql = "SELECT * FROM clientes WHERE id_cliente = $id";
+$busca = mysqli_query($conexao, $sql);
+while ($array = mysqli_fetch_array($busca)) {
+    $doc = $array['c_doc'];
+    $nome = $array['c_nome'];
+    $ramo = $array['c_ramo'];
+    $cep = $array['c_cep'];
+    $end = $array['c_end'];
+    $comp = $array['c_comp'];
+    $cidade = $array['c_cidade'];
+    $uf = $array['c_uf'];
+    $contato = $array['c_contato'];
+    $tel = $array['c_tel'];
+    $mail = $array['c_mail'];
+    $info = $array['c_info'];
+    $status = $array['c_status'];
+    $c_cadastro = $array['c_cadastro'];
+    $c_update = $array['c_update'];
+}
+?>
+<div class="card shadow p-3" style="max-width: 1000px; width: 100%">
     <div class="row">
         <div class="col">
             <label class="" style="font-weight:bold; font-family: 'Poppins', sans-serif;"><i class="bi bi-info-lg text-primary rounded" style="border-style: solid;border-width: thin;padding:2px 10px;margin-right: 10px; font-size:130%;"></i>Informações Gerais</label>
@@ -19,7 +42,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
-                            <button type="button" class="btn btn-danger">Sim</button>
+                            <a type="button" class="btn btn-danger" href="./scripts/cliente_del.php?id=<?php echo $id?>">Sim</a>
                         </div>
                     </div>
                 </div>
@@ -27,37 +50,48 @@
         </div>
         <!--FIM EXCLUIR -->
     </div>
-    <form class="mt-3">
+    <form class="mt-3" action="./scripts/cliente_up.php" method="post">
         <div class="row g-3">
-            <div class="col-md-4">
+            <div class="col-md-2">
+                <label for="cc-name" class="form-label">#ID:</label>
+                <input type="text" class="form-control" id="id_cliente" name="id_cliente" placeholder="" value="<?php echo $id; ?>" readonly>
+            </div>
+            <div class="col-md-2">
                 <label for="country" class="form-label">Status:</label>
-                <select class="form-select" id="country">
-                    <option value="1">Ativo</option>
-                    <option value="2">Inativo</option>
+                <select class="form-select" id="status" name="status">
+                    <option value="<?php echo $status ?>"><?php if ($status == 1) : echo "Ativo";
+                                                            else : echo "Inativo";
+                                                            endif; ?></option>
+                    <?php if ($status == 1) : $__status = 0;
+                    else : $__status = 1;
+                    endif; ?>
+                    <option value="<?php echo $__status ?>"><?php if ($status == 1) : echo "Inativo";
+                                                            else : echo "Ativo";
+                                                            endif; ?></option>
                 </select>
             </div>
             <div class="col-md-4">
                 <label for="cc-name" class="form-label">Cadastro:</label>
-                <input type="date" class="form-control" id="cc-name" placeholder="" readonly>
+                <input type="text" class="form-control" id="cadastro" name="cadastro" placeholder="" value="<?php echo date('d/m/Y H:i:s', strtotime($c_cadastro)); ?>" readonly>
             </div>
             <div class="col-md-4">
                 <label for="cc-name" class="form-label">Atualização:</label>
-                <input type="date" class="form-control" id="cc-name" placeholder="" readonly>
+                <input type="text" class="form-control" id="update" name="update" placeholder="" value="<?php echo date('d/m/Y H:i:s', strtotime($c_update)); ?>" readonly>
             </div>
 
             <div class="col-sm-4">
                 <label for="country" class="form-label">CPF/CNPJ:</label>
-                <input type="text" class="form-control" id="nome" placeholder="Nome" value="" readonly>
+                <input type="text" class="form-control" id="cpfcnpj" name="cpfcnpj" placeholder="Nome" value="<?php echo $doc ?>" readonly>
             </div>
             <div class="col-sm-8">
                 <label for="country" class="form-label">Nome:</label>
-                <input type="text" class="form-control" id="nome" placeholder="Nome" value="" readonly>
+                <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" value="<?php echo $nome ?>" readonly>
             </div>
 
             <div class="col-md-12">
                 <label for="country" class="form-label">Ramo de Atividade:</label>
-                <select class="form-select" id="country" required>
-                    <option value="">Escolha...</option>
+                <select class="form-select" id="ramo" name="ramo" required>
+                    <option value="<?php echo $ramo?>"><?php echo $ramo ?></option>
                     <option>Construção</option>
                 </select>
             </div>
@@ -65,55 +99,26 @@
             <label class="" style="font-weight:bold; font-family: 'Poppins', sans-serif;"><i class="bi bi-geo-alt text-primary rounded" style="border-style: solid;border-width: thin;padding:2px 10px;margin-right: 10px; font-size:130%;"></i>Endereço</label>
             <div class="col-md-3">
                 <label for="zip" class="form-label">CEP:</label>
-                <input type="text" class="form-control" id="zip" placeholder="" required>
+                <input type="text" class="form-control" id="cep" name="cep" placeholder="" value="<?php echo $cep ?>" required>
             </div>
             <div class="col-9">
                 <label for="address" class="form-label">Endereço:</label>
-                <input type="text" class="form-control" id="address" placeholder="Rua/Av/Rod...">
+                <input type="text" class="form-control" id="endereco" name="endereco" value="<?php echo $end ?>" placeholder="">
             </div>
 
             <div class="col-4">
                 <label for="address" class="form-label">Complemento:</label>
-                <input type="text" class="form-control" id="address" placeholder="Apto, bloco, quadra...">
+                <input type="text" class="form-control" id="complemento" name="complemento" value="<?php echo $comp ?>" placeholder="Apto, bloco, quadra...">
             </div>
             <div class="col-md-4">
                 <label for="cidade" class="form-label">Cidade:</label>
-                <select class="form-select" id="cidade">
+                <input type="text" class="form-control" id="cidade" name="cidade" value="<?php echo $cidade ?>" placeholder="">
                 </select>
             </div>
 
             <div class="col-md-4">
                 <label for="estado" class="form-label">Estado:</label>
-                <select class="form-select" id="estado" onchange="buscaCidades(this.value)">
-                    <option value="">Selecione...</option>
-                    <option value="AC">Acre</option>
-                    <option value="AL">Alagoas</option>
-                    <option value="AM">Amazonas</option>
-                    <option value="AP">Amapá</option>
-                    <option value="BA">Bahia</option>
-                    <option value="CE">Ceará</option>
-                    <option value="DF">Distrito Federal</option>
-                    <option value="ES">Espírito Santo</option>
-                    <option value="GO">Goiás</option>
-                    <option value="MA">Maranhão</option>
-                    <option value="MG">Minas Gerais</option>
-                    <option value="MS">Mato Grosso do Sul</option>
-                    <option value="MT">Mato Grosso</option>
-                    <option value="PA">Pará</option>
-                    <option value="PB">Paraíba</option>
-                    <option value="PE">Pernambuco</option>
-                    <option value="PI">Piauí</option>
-                    <option value="PR">Paraná</option>
-                    <option value="RJ">Rio de Janeiro</option>
-                    <option value="RN">Rio Grande do Norte</option>
-                    <option value="RO">Rondônia</option>
-                    <option value="RR">Roraima</option>
-                    <option value="RS">Rio Grande do Sul</option>
-                    <option value="SC">Santa Catarina</option>
-                    <option value="SP">São Paulo</option>
-                    <option value="SE">Sergipe</option>
-                    <option value="TO">Tocantins</option>
-                </select>
+                <input type="text" class="form-control" id="estado" name="estado" value="<?php echo $uf ?>" placeholder="">
             </div>
         </div>
 
@@ -124,17 +129,17 @@
         <div class="row gy-3">
             <div class="col-md-6">
                 <label for="cc-name" class="form-label">Nome:</label>
-                <input type="text" class="form-control" id="cc-name" placeholder="">
+                <input type="text" class="form-control" id="contato" name="contato" value="<?php echo $contato ?>" placeholder="">
             </div>
 
             <div class="col-md-6">
                 <label for="cc-number" class="form-label">Telefone:</label>
-                <input type="text" class="form-control" id="cc-number" placeholder="">
+                <input type="text" class="form-control" id="telefone" name="contato" value="<?php echo $tel ?>" placeholder="">
             </div>
 
             <div class="col-md-12">
                 <label for="cc-expiration" class="form-label">E-mail:</label>
-                <input type="text" class="form-control" id="cc-expiration" placeholder="">
+                <input type="text" class="form-control" id="email" name="email" value="<?php echo $mail ?>" placeholder="">
                 <small class="text-muted">(Separar multiplos e-mails com ponto e virgula ";")</small>
             </div>
         </div>
@@ -142,7 +147,7 @@
         <label class="" style="font-weight:bold; font-family: 'Poppins', sans-serif;"><i class="bi bi-file-earmark-plus text-primary rounded" style="border-style: solid;border-width: thin;padding:2px 10px;margin-right: 10px; font-size:130%;"></i>Mais informações</label>
         <div class="row gy-3">
             <div class="col-md-12 my-3">
-                <textarea class="form-control mt-3" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea class="form-control mt-3" rows="3" id="maisinfo" name="maisinfo" maxlength="400"><?php echo $info;?></textarea>
             </div>
         </div>
         <hr class="">
@@ -193,7 +198,7 @@
             </table>
         </div>
         <a type="button" href="?pagina=clientes" class="btn btn-primary">Voltar</a>
-        <a type="button" href="#" class="btn btn-success">Salvar</a>
+        <button type="submit" class="btn btn-success">Salvar</button>
     </form>
 
 
