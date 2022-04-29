@@ -403,6 +403,7 @@
   </script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="js/cidades.js"></script>
+  <script src="js/mascaras.js"></script>
   <script src="js/mascaracpfcnpj.js"></script>
   <script src="js/validacpfcnpj.js"></script>
   <script src="js/scripts.js"></script>

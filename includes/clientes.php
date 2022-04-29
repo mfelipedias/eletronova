@@ -38,8 +38,16 @@
                     <div class="col-md-8">
                       <select class="form-select" id="pramo">
                         <option value="">Ramo...</option>
-                        <option>Alimentício</option>
-                        <option>Escritório de Contabilidade</option>
+                        <?php
+                        include './scripts/conexao.php';
+                        $sqlramos = "SELECT * FROM `ramos`";
+                        $ramos = mysqli_query($conexao, $sqlramos);
+                        while ($array = mysqli_fetch_array($ramos)) {
+                          $id_ramo = $array['id_ramo'];
+                          $ramo = $array['ramo'];
+                        ?>
+                          <option value="<?php echo $id_ramo ?>"><?php echo $ramo ?></option>
+                        <?php } ?>
                       </select>
                     </div>
                     <div class="col-md-4">
@@ -115,7 +123,7 @@
       <!-- FIM CARD FILTROS -->
       <!-- CARD NOVA ORDEM -->
       <div class="col-xl-4" style="min-width:300px;">
-        <div class="card shadow mb-2" style="width: 100%;min-width:300px">
+        <div class="card shadow mb-2" style="width: 100%; min-width:300px">
           <div class="" style="padding: 3px;">
             <div class="flex-row p-1">
               <a class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -206,14 +214,23 @@
 
                               <div class="col-md-3">
                                 <label for="cep" class="form-label">CEP:</label>
-                                <input type="text" class="form-control" id="cep" name="cep" placeholder="" maxlength="9" required>
+                                <input type="text" class="form-control" id="cep" name="cep" onkeypress="mascara(this, '#####-###')" maxlength="9" required>
                               </div>
 
                               <div class="col-md-12 mt-3">
                                 <label for="ramo" class="form-label">Ramo de Atividade:</label>
                                 <select class="form-select" id="ramo" name="ramo" required>
-                                  <option value="">Escolha...</option>
-                                  <option>Construção</option>
+                                <option value="0">Escolha...</option>
+                                  <?php
+                                  include './scripts/conexao.php';
+                                  $sqlramos = "SELECT * FROM `ramos`";
+                                  $ramos = mysqli_query($conexao, $sqlramos);
+                                  while ($array = mysqli_fetch_array($ramos)) {
+                                    $id_ramo = $array['id_ramo'];
+                                    $ramo = $array['ramo'];
+                                  ?>
+                                    <option value="<?php echo $id_ramo ?>"><?php echo $ramo ?></option>
+                                  <?php } ?>
                                 </select>
                               </div>
 
@@ -282,9 +299,25 @@
               <?php
               include './scripts/conexao.php';
               $sql = "SELECT * FROM `clientes`";
+              $total_reg = "15"; // número de registros por página
+              $pag = $_GET['pag'];
+              if (!$pag) {
+                $pc = "1";
+              } else {
+                $pc = $pag;
+              }
+              $inicio = $pc - 1;
+              $inicio = $inicio * $total_reg;
+
+              $limite = mysqli_query($conexao, "$sql LIMIT $inicio, $total_reg");
+              $todos = mysqli_query($conexao, $sql);
+
+              $tr = mysqli_num_rows($todos); // verifica o número total de registros
+              $tp = $tr / $total_reg; // verifica o número total de páginas
+
               $busca = mysqli_query($conexao, $sql);
               $contador = 0;
-              while ($array = mysqli_fetch_array($busca)) {
+              while ($array = mysqli_fetch_array($limite)) {
 
                 $contador = $contador + 1;
                 $id_cliente = $array['id_cliente'];
@@ -306,10 +339,69 @@
                   <td><a href="?pagina=clientes_edit&&id=<?php echo $id_cliente ?>" style="font-size: 23px;"><i class="bi bi-pencil-square"></i></i></a></td>
                 <?php } ?>
                 </tr>
-
             </tbody>
 
           </table>
+
+          <center><?php
+                  $anterior = $pc - 1;
+                  $proximo = $pc + 1;
+                  if ($pc > 1) {
+                    echo "
+                      </style>
+                      <a style='appearance: none;
+                      text-decoration: none;
+                      background-color: #FAFBFC;
+                      border: 1px solid rgba(27, 31, 35, 0.15);
+                      border-radius: 6px;
+                      box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+                      box-sizing: border-box;
+                      color: #24292E;
+                      cursor: pointer;
+                      display: inline-block;
+                      font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+                      font-size: 14px;
+                      font-weight: 500;
+                      line-height: 20px;
+                      list-style: none;
+                      padding: 6px 16px;
+                      position: relative;
+                      transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+                      user-select: none;
+                      -webkit-user-select: none;
+                      touch-action: manipulation;
+                      vertical-align: middle;
+                      white-space: nowrap;
+                      word-wrap: break-word;' href='?pagina=clientes&&pag=$anterior'>Anterior</a>";
+                  }
+                  echo "&nbsp | &nbsp";
+                  if ($pc < $tp) {
+                    echo "<a style='appearance: none;
+                      text-decoration: none;
+                      background-color: #FAFBFC;
+                      border: 1px solid rgba(27, 31, 35, 0.15);
+                      border-radius: 6px;
+                      box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+                      box-sizing: border-box;
+                      color: #24292E;
+                      cursor: pointer;
+                      display: inline-block;
+                      font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+                      font-size: 14px;
+                      font-weight: 500;
+                      line-height: 20px;
+                      list-style: none;
+                      padding: 6px 16px;
+                      position: relative;
+                      transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+                      user-select: none;
+                      -webkit-user-select: none;
+                      touch-action: manipulation;
+                      vertical-align: middle;
+                      white-space: nowrap;
+                      word-wrap: break-word;' href='?pagina=clientes&&pag=$proximo'>Próxima</a>";
+                  }
+                  ?><certer>
         </div>
       </div>
       <!-- FIM CARD TABELA -->
