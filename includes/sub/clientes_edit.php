@@ -9,7 +9,8 @@ while ($array = mysqli_fetch_array($busca)) {
     $idramo = $array['c_ramo'];
     $ramo = $array['ramo'];
     $cep = $array['c_cep'];
-    $end = $array['c_end'];
+    $rua = $array['c_rua'];
+    $bairro = $array['c_bairro'];
     $comp = $array['c_comp'];
     $cidade = $array['c_cidade'];
     $uf = $array['c_uf'];
@@ -113,54 +114,25 @@ while ($array = mysqli_fetch_array($busca)) {
                         <label for="zip" class="form-label">CEP:</label>
                         <input type="text" class="form-control" id="cep" name="cep" placeholder="" onkeypress="mascara(this, '#####-###')" value="<?php echo $cep ?>" maxlength="9" required>
                     </div>
-                    <div class="col-9">
-                        <label for="address" class="form-label">Endereço:</label>
-                        <input type="text" class="form-control" id="endereco" name="endereco" value="<?php echo $end ?>" placeholder="">
+                    <div class="col-6">
+                        <label for="address" class="form-label">Rua:</label>
+                        <input type="text" class="form-control" id="rua" name="rua" value="<?php echo $rua ?>" maxlength="60" placeholder="">
                     </div>
-
+                    <div class="col-md-3">
+                        <label for="cidade" class="form-label">Bairro:</label>
+                        <input type="text" class="form-control" id="bairro" name="bairro" value="<?php echo $bairro?>" maxlength="40" placeholder="">
+                    </div>
                     <div class="col-4">
                         <label for="address" class="form-label">Complemento:</label>
-                        <input type="text" class="form-control" id="complemento" name="complemento" value="<?php echo $comp ?>" placeholder="Apto, bloco, quadra...">
+                        <input type="text" class="form-control" id="complemento" name="complemento" value="<?php echo $comp ?>" maxlength="40" placeholder="Apto, bloco, quadra...">
                     </div>
                     <div class="col-md-4">
                         <label for="cidade" class="form-label">Cidade:</label>
-                        <select class="form-select" id="cidade" name="cidade">
-                        <option value="<?php echo $cidade?>"><?php echo $cidade ?></option>
-                        </select>
+                        <input type="text" class="form-control" id="cidade" name="cidade" value="<?php echo $cidade?>" maxlength="40" placeholder="">
                     </div>
-
                     <div class="col-md-4">
-                        <label for="estado" class="form-label">Estado:</label>
-                        <select class="form-select" id="estado" name="estado" onchange="buscaCidades(this.value)">
-                                  <option value="<?php echo $uf ?>"><?php echo $uf ?></option>
-                                  <option value="AC">Acre</option>
-                                  <option value="AL">Alagoas</option>
-                                  <option value="AM">Amazonas</option>
-                                  <option value="AP">Amapá</option>
-                                  <option value="BA">Bahia</option>
-                                  <option value="CE">Ceará</option>
-                                  <option value="DF">Distrito Federal</option>
-                                  <option value="ES">Espírito Santo</option>
-                                  <option value="GO">Goiás</option>
-                                  <option value="MA">Maranhão</option>
-                                  <option value="MG">Minas Gerais</option>
-                                  <option value="MS">Mato Grosso do Sul</option>
-                                  <option value="MT">Mato Grosso</option>
-                                  <option value="PA">Pará</option>
-                                  <option value="PB">Paraíba</option>
-                                  <option value="PE">Pernambuco</option>
-                                  <option value="PI">Piauí</option>
-                                  <option value="PR">Paraná</option>
-                                  <option value="RJ">Rio de Janeiro</option>
-                                  <option value="RN">Rio Grande do Norte</option>
-                                  <option value="RO">Rondônia</option>
-                                  <option value="RR">Roraima</option>
-                                  <option value="RS">Rio Grande do Sul</option>
-                                  <option value="SC">Santa Catarina</option>
-                                  <option value="SP">São Paulo</option>
-                                  <option value="SE">Sergipe</option>
-                                  <option value="TO">Tocantins</option>
-                                </select>
+                        <label for="estado" class="form-label">Estado:</label>                 
+                        <input type="text" class="form-control" id="uf" name="uf" value="<?php echo $uf?>" maxlength="2" placeholder="">
                     </div>
                 </div>
 

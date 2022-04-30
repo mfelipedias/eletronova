@@ -138,7 +138,7 @@
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                      <form class="needs-validation" action="./scripts/cliente_add.php" method="post" novalidate>
+                      <form class="needs-validation" action="./scripts/cliente_add.php" method="post">
                         <div class="" style="width: 100%; margin-left:auto; margin-right:auto">
                           <div class="row g-3">
                             <div class="col-md-3">
@@ -181,12 +181,12 @@
                             </div>
                             <div class="col-12">
                               <label for="complemento" class="form-label">Complemento:</label>
-                              <input type="text" class="form-control" id="complemento" name="complemento" placeholder="Apto, bloco, quadra..." maxlength="40" required>
+                              <input type="text" class="form-control" id="complemento" name="complemento" placeholder="Apto, bloco, quadra..." maxlength="40">
                             </div>
 
                             <div class="col-md-12 mt-3">
                               <label for="ramo" class="form-label">Ramo de Atividade:</label>
-                              <select class="form-select" id="ramo" name="ramo" required>
+                              <select class="form-select" id="ramo" name="ramo">
                                 <option value="0">Escolha...</option>
                                 <?php
                                 include './scripts/conexao.php';
@@ -265,7 +265,7 @@
           <tbody>
             <?php
             include './scripts/conexao.php';
-            $sql = "SELECT * FROM `clientes`";
+            $sql = "SELECT * FROM `clientes` ORDER BY c_update DESC";
             $total_reg = "15"; // número de registros por página
             $pag = $_GET['pag'];
             if (!$pag) {
@@ -290,14 +290,17 @@
               $id_cliente = $array['id_cliente'];
               $c_doc = $array['c_doc'];
               $c_nome = $array['c_nome'];
-              $c_end = $array['c_end'];
+              $c_rua = $array['c_rua'];
+              $c_cidade = $array['c_cidade'];
+              $c_uf = $array['c_uf'];
+              $c_bairro = $array['c_bairro'];
               $c_status = $array['c_status'];
             ?>
               <tr>
 
                 <th><?php echo $c_doc ?></th>
                 <td><?php echo $c_nome ?></td>
-                <td><?php echo $c_end ?></td>
+                <td><?php echo $c_rua . ' , '. $c_bairro. ' / '. $c_cidade .  ' - '. $c_uf ?></td>
                 <td><i class="bi bi-circle-fill" style="color:<?php if ($c_status == 1) {
                                                                 echo 'green';
                                                               } else {

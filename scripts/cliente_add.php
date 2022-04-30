@@ -5,10 +5,11 @@ $doc = $_POST['cpfcnpj'];
 $nome = $_POST['nome'];
 $ramo = $_POST['ramo'];
 $cep = $_POST['cep'];
-$end = $_POST['endereco'];
-$comp = $_POST['complemento'];
+$rua = $_POST['rua'];
+$bairro = $_POST['bairro'];
 $cidade = $_POST['cidade'];
-$uf = $_POST['estado'];
+$uf = $_POST['uf'];
+$comp = $_POST['complemento'];
 $contato = $_POST['cnome'];
 $tel = $_POST['telefone'];
 $mail = $_POST['cemail'];
@@ -23,7 +24,7 @@ if($total>0){
 }
 else{
 
-$sql = "INSERT INTO clientes (c_doc, c_nome, c_ramo, c_cep, c_end, c_comp, c_cidade, c_uf, c_contato, c_tel, c_mail, c_info, c_status, c_cadastro, c_update) values ('$doc', '$nome', '$ramo', '$cep', '$end', '$comp', '$cidade', '$uf', '$contato', '$tel', '$mail', '$info', '$status', now(), now())";
+$sql = "INSERT INTO clientes (c_doc, c_nome, c_ramo, c_cep, c_rua, c_bairro, c_comp, c_cidade, c_uf, c_contato, c_tel, c_mail, c_info, c_status, c_cadastro, c_update) values ('$doc', '$nome', '$ramo', '$cep', '$rua', '$bairro', '$comp', '$cidade', '$uf', '$contato', '$tel', '$mail', '$info', '$status', now(), now())";
 $inserir = mysqli_query($conexao, $sql);
 //echo $doc."<br>" .$nome. "<br>" .$ramo."<br>" .$cep. "<br>" .$status;
 //echo "<h1>Cliente adicionado</h1>";
