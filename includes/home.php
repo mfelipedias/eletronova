@@ -16,7 +16,7 @@
       </div>
       <div class="col-md-6" style="width: auto; margin-right:auto; margin-left:auto;">
         <div class="card shadow">
-          <!-- clock widget start -->
+          <!-- CARD RELOGIO-->
           <script type="text/javascript">
             var css_file = document.createElement("link");
             css_file.setAttribute("rel", "stylesheet");
@@ -53,6 +53,7 @@
           </script>
           <!-- clock widget end -->
         </div>
+                  <!-- CARD ICONES -->
         <div class="card shadow my-3 py-3" style="width: auto;">
           <div class="nav" style="width:auto; margin-right:auto; margin-left:auto;">
             <li><a class="bi bi-instagram mx-2" href="" style="font-size: 30px;"></a></li>

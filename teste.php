@@ -1,46 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-<table class="table table-hover table-responsive-md table-sm">
-          <thead>
-            <tr>
-              <th scope="col">CPF/CNPJ</th>
-              <th scope="col">Nome</th>
-              <th scope="col">Endereço</th>
-              <th scope="col">Status</th>
-              <th scope="col">Ação</th>
-            </tr>
-          </thead>
-          <?php
-          include 'scripts/conexao.php';
-          $sql = "SELECT * FROM `clientes`";
-          $busca = mysqli_query($conexao, $sql);
-          $contador = 0;
-          while ($array = mysqli_fetch_array($busca)) {
 
-            $contador = $contador + 1;
-            $id_cliente = $array['id_cliente'];
-            $c_doc = $array['c_doc'];
-            $c_nome = $array['c_nome'];
-            $c_end = $array['c_end'];
-            $c_status = $array['c_status'];
-          ?>
-          <tbody>
-            <tr>
-              <th scope="row"><?php echo $c_doc ?></th>
-              <td><?php echo $c_nome ?></td>
-              <td><?php echo $c_end ?></td>
-              <td><?php echo $c_status ?></td>
-              <td><a href="?pagina=clientes_edit" style="font-size: 23px;"><i class="bi bi-eye"></i></a></td>
-            </tr>
-            <?php } ?>
-          </tbody>
-        </table>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="js/buscacep.js"></script>
+</head>
+
+<body>
+  <form action="./scripts/cliente_add.php" method="post">
+    <div class="container" style="max-width:500px; width: 100%; margin-left:auto; margin-right:auto">
+      <form class="needs-validation" novalidate>
+        <div class="row g-3">
+          <div class="col-md-3">
+            <label for="status" class="form-label">Status:</label>
+            <select class="form-select" id="status" name="status" required>
+              <option value="1">Ativo</option>
+              <option value="0">Inativo</option>
+            </select>
+          </div>
+
+          <div class="col-sm-9">
+            <label for="cpfcnpj" class="form-label">CPF / CNPJ:</label>
+            <input type="text" class="form-control " id="cpfcnpj" name="cpfcnpj" onkeypress='mascaraCpfCnpj(this,cpfCnpj);' onblur='clearTimeout(); verifica(this.value);' maxlength="18" required>
+            <div id="retorno" class="form-text "></div>
+          </div>
+
+          <div class="col-12">
+            <label for="nome" class="form-label">Nome / Razão Social:</label>
+            <input type="text" class="form-control" id="nome" name="nome" placeholder="" value="" maxlength="100" required>
+          </div>
+          <div class="col-3">
+            <label for="cep" class="form-label">CEP:</label>
+            <input type="text" class="form-control" id="cep" name="cep" onkeypress="mascara(this, '#####-###')" maxlength="9" required>
+          </div>
+          <div class="col-9">
+            <label for="endereco" class="form-label">Rua:</label>
+            <input type="text" class="form-control" id="rua" name="rua" placeholder="Rua/Av/Rod..." maxlength="60" required>
+          </div>
+
+          <div class="col-12">
+            <label for="bairro" class="form-label">Bairro:</label>
+            <input type="text" class="form-control" id="bairro" name="bairro" placeholder="" maxlength="60" required>
+          </div>
+          <div class="col-6">
+            <label for="complemento" class="form-label">Cidade:</label>
+            <input type="text" class="form-control" id="cidade" name="cidade" placeholder="" maxlength="50" required>
+          </div>
+          <div class="col-6">
+            <label for="complemento" class="form-label">UF:</label>
+            <input type="text" class="form-control" id="uf" name="uf" placeholder="" maxlength="50" required>
+          </div>
+        </div>
+        <hr class="my-4">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button type="submit" href="#" id="btn-addcliente" class="btn btn-primary">Cadastrar</button>
+      </form>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
+
 </html>
