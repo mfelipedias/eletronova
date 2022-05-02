@@ -332,6 +332,18 @@
           case 'clientes':
             include './includes/clientes.php';
             break;
+            case 'clientes-add-erro':
+              include './includes/return/erro.php';
+              include './includes/clientes.php';
+              break;
+            case 'clientes-add-ok':
+              include './includes/return/sucesso.php';
+              include './includes/clientes.php';
+              break;
+            case 'clientes_view':
+              include './includes/sub/clientes_view.php';
+              break;
+          
           case 'clientes_edit':
             include './includes/sub/clientes_edit.php';
             break;

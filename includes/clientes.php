@@ -1,3 +1,8 @@
+<?php 
+$filtro = $_GET['filtro']; 
+
+echo $filtro?>
+
 <div class="row mx-auto">
   <!-- COLUNA PESQUISA E TABELA -->
   <div class="col" style="min-width: 400px; max-width: 1366px; width: 100%">
@@ -14,29 +19,29 @@
 
               <div class="collapse" id="filtros">
 
-                <form class="mt-2" style="padding: 0px 10px 10px;">
+                <form class="mt-2" action="./scripts/cliente_filtro.php" method="post" style="padding: 0px 10px 10px;">
                   <div class="form-group row">
                     <div class="col-sm-12">
-                      <input type="text" class="form-control" id="pcpfcnpj" name='pcpfcnpj' placeholder="CPF/CNPJ" onkeypress='mascaraCpfCnpj(this,cpfCnpj);' onblur='clearTimeout();' maxlength="18">
+                      <input type="text" class="form-control" id="pcpfcnpj" name='pcpfcnpj' placeholder="CPF/CNPJ" value="" onkeypress='mascaraCpfCnpj(this,cpfCnpj);' onblur='clearTimeout();' maxlength="18">
                     </div>
                   </div>
                   <div class="form-group row mt-1">
                     <div class="col-sm-12">
-                      <input type="text" class="form-control" id="pnome" placeholder="Nome do Cliente" maxlength="40" value="">
+                      <input type="text" class="form-control" id="pnome" name="pnome" placeholder="Nome do Cliente" maxlength="40" value="">
                     </div>
                   </div>
                   <div class="form-group row mt-1">
                     <div class="col-md-8 ">
-                      <input type="text" class="form-control" id="pcidade" placeholder="Cidade" maxlength="40" value="">
+                      <input type="text" class="form-control" id="pcidade" name="pcidade" placeholder="Cidade" maxlength="40" value="">
                     </div>
 
                     <div class="col-md-4">
-                      <input type="text" class="form-control" id="pestado" placeholder="UF" maxlength="2" value="">
+                      <input type="text" class="form-control" id="puf" name="puf" placeholder="UF" maxlength="2" value="">
                     </div>
                   </div>
                   <div class="form-group row mt-1">
                     <div class="col-md-8">
-                      <select class="form-select" id="pramo">
+                      <select class="form-select" id="pramo" name="pramo">
                         <option value="">Ramo...</option>
                         <?php
                         include './scripts/conexao.php';
@@ -51,7 +56,7 @@
                       </select>
                     </div>
                     <div class="col-md-4">
-                      <select class="form-select" id="pstatus">
+                      <select class="form-select" id="pstatus" name="pstatus">
                         <option value="">Status...</option>
                         <option value="1">Ativo</option>
                         <option value="2">Inativo</option>
@@ -59,7 +64,7 @@
                     </div>
                   </div>
                   <div class="form-group d-flex justify-content-end mt-3">
-                    <button type="" href="#" class="btn btn-primary">Pesquisar</button>
+                    <button type="submit" href="#" class="btn btn-primary">Pesquisar</button>
                   </div>
                 </form>
 
@@ -186,8 +191,8 @@
 
                             <div class="col-md-12 mt-3">
                               <label for="ramo" class="form-label">Ramo de Atividade:</label>
-                              <select class="form-select" id="ramo" name="ramo">
-                                <option value="0">Escolha...</option>
+                              <select class="form-select" id="ramo" name="ramo" required>
+                                <option value="">Escolha...</option>
                                 <?php
                                 include './scripts/conexao.php';
                                 $sqlramos = "SELECT * FROM `ramos`";
@@ -265,7 +270,11 @@
           <tbody>
             <?php
             include './scripts/conexao.php';
-            $sql = "SELECT * FROM `clientes` ORDER BY c_update DESC";
+            if ($filtro==""){
+              $sql = "SELECT * FROM `clientes` ORDER BY c_nome ASC";
+            }else{
+              $sql = $filtro;
+              }
             $total_reg = "15"; // número de registros por página
             $pag = $_GET['pag'];
             if (!$pag) {
@@ -300,13 +309,13 @@
 
                 <th><?php echo $c_doc ?></th>
                 <td><?php echo $c_nome ?></td>
-                <td><?php echo $c_rua . ' , '. $c_bairro. ' / '. $c_cidade .  ' - '. $c_uf ?></td>
+                <td><?php echo $c_rua . ' , ' . $c_bairro . ' / ' . $c_cidade .  ' - ' . $c_uf ?></td>
                 <td><i class="bi bi-circle-fill" style="color:<?php if ($c_status == 1) {
                                                                 echo 'green';
                                                               } else {
                                                                 echo 'red';
                                                               } ?>;"></i></td>
-                <td><a href="?pagina=clientes_edit&&id=<?php echo $id_cliente ?>" style="font-size: 23px;"><i class="bi bi-pencil-square"></i></i></a></td>
+                <td><a href="?pagina=clientes_view&&id=<?php echo $id_cliente ?>" style="font-size: 23px;"><i class="bi bi-eye"></i></i></i></a></td>
               <?php } ?>
               </tr>
           </tbody>

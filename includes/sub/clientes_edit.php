@@ -161,57 +161,11 @@ while ($array = mysqli_fetch_array($busca)) {
                 <label class="" style="font-weight:bold; font-family: 'Poppins', sans-serif;"><i class="bi bi-file-earmark-plus text-primary rounded" style="border-style: solid;border-width: thin;padding:2px 10px;margin-right: 10px; font-size:130%;"></i>Mais informações</label>
                 <div class="row gy-3">
                     <div class="col-md-12 my-3">
-                        <textarea class="form-control mt-3" rows="3" id="maisinfo" name="maisinfo" maxlength="400"><?php echo $info; ?></textarea>
+                        <textarea class="form-control mt-3" rows="5" id="maisinfo" name="maisinfo" maxlength="400"><?php echo $info; ?></textarea>
                     </div>
                 </div>
                 <hr class="">
-                <div class="row">
-                    <div class="col">
-                        <label class="" style="font-weight:bold; font-family: 'Poppins', sans-serif;"><i class="bi bi-archive text-primary rounded" style="border-style: solid;border-width: thin;padding:2px 10px;margin-right: 10px; font-size:130%;"></i>Anexos</label>
-                    </div>
-                    <div class="col-md-auto">
-                        <button type="button" class="btn btn-outline-success"><i class="bi bi-plus-lg"></i></button>
-                    </div>
-                </div>
-                <div class="row px-3">
-
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Arquivo</th>
-                                <th scope="col ">Ação</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>protocolo.pdf</td>
-                                <td class="">
-                                    <button type="button" class="btn btn-sm btn-outline-primary"><i class="bi bi-cloud-download"></i></button>
-                                    <button type="button" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>protocolo.pdf</td>
-                                <td>
-                                    <button type="button" class="btn btn-sm btn-outline-primary"><i class="bi bi-cloud-download"></i></button>
-                                    <button type="button" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>protocolo.pdf</td>
-                                <td>
-                                    <button type="button" class="btn btn-sm btn-outline-primary"><i class="bi bi-cloud-download"></i></button>
-                                    <button type="button" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <a type="button" href="?pagina=clientes" class="btn btn-primary">Voltar</a>
+                <a type="button" href="?pagina=clientes_view&&id=<?php echo $id ?>" class="btn btn-primary">Voltar</a>
                 <button type="submit" class="btn btn-success">Salvar</button>
             </form>
 
