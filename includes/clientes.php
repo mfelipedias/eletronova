@@ -1,7 +1,9 @@
-<?php 
-$filtro = $_GET['filtro']; 
+<?php
+$filtro = $_GET['filtro'];
+$fpesquisa = $_GET['pesquisa'];
+$ftipopesquisa = $_GET['tipo'];
 
-echo $filtro?>
+echo $filtro ?>
 
 <div class="row mx-auto">
   <!-- COLUNA PESQUISA E TABELA -->
@@ -21,45 +23,24 @@ echo $filtro?>
 
                 <form class="mt-2" action="./scripts/cliente_filtro.php" method="post" style="padding: 0px 10px 10px;">
                   <div class="form-group row">
-                    <div class="col-sm-12">
+                    <!--  <div class="col-sm-12">
                       <input type="text" class="form-control" id="pcpfcnpj" name='pcpfcnpj' placeholder="CPF/CNPJ" value="" onkeypress='mascaraCpfCnpj(this,cpfCnpj);' onblur='clearTimeout();' maxlength="18">
-                    </div>
+                    </div> -->
+                  </div>
+                  <div class="form-floating mb-1">
+                    <input type="text" class="form-control form-control-sm" id="pesquisa" name="pesquisa" placeholder="Pesquisar">
+                    <label for="pesquisa">Pesquisar</label>
                   </div>
                   <div class="form-group row mt-1">
-                    <div class="col-sm-12">
-                      <input type="text" class="form-control" id="pnome" name="pnome" placeholder="Nome do Cliente" maxlength="40" value="">
-                    </div>
-                  </div>
-                  <div class="form-group row mt-1">
-                    <div class="col-md-8 ">
-                      <input type="text" class="form-control" id="pcidade" name="pcidade" placeholder="Cidade" maxlength="40" value="">
-                    </div>
-
-                    <div class="col-md-4">
-                      <input type="text" class="form-control" id="puf" name="puf" placeholder="UF" maxlength="2" value="">
-                    </div>
-                  </div>
-                  <div class="form-group row mt-1">
-                    <div class="col-md-8">
-                      <select class="form-select" id="pramo" name="pramo">
-                        <option value="">Ramo...</option>
-                        <?php
-                        include './scripts/conexao.php';
-                        $sqlramos = "SELECT * FROM `ramos`";
-                        $ramos = mysqli_query($conexao, $sqlramos);
-                        while ($array = mysqli_fetch_array($ramos)) {
-                          $id_ramo = $array['id_ramo'];
-                          $ramo = $array['ramo'];
-                        ?>
-                          <option value="<?php echo $id_ramo ?>"><?php echo $ramo ?></option>
-                        <?php } ?>
-                      </select>
-                    </div>
-                    <div class="col-md-4">
-                      <select class="form-select" id="pstatus" name="pstatus">
-                        <option value="">Status...</option>
-                        <option value="1">Ativo</option>
-                        <option value="2">Inativo</option>
+                    <div class="col-md-12">
+                      <select class="form-select" id="tipopesquisa" name="tipopesquisa">
+                        <option value="">Selecione...</option>
+                        <option value="">CPF/CNPJ</option>
+                        <option value="">Nome</option>
+                        <option value="">Cidade</option>
+                        <option value="">UF</option>
+                        <option value="">Ramo</option>
+                        <option value="">Status</option>
                       </select>
                     </div>
                   </div>
@@ -86,40 +67,25 @@ echo $filtro?>
 
               <span class="" style="font-size: 105%; font-weight:bold;margin-left:7px;">Filtros...</span>
               <div class="collapse" id="filtros">
-                <div class="p-2">
-                  <div class="row">
-                    <div class="col-12">
-                      <label><small>CPF/CNPJ:</small></label>
-                      <input class="form-control form-control-sm" type="text" placeholder="Sem filtro..." id="fcpfcnpj" readonly>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-12">
-                      <label><small>Nome:</small></label>
-                      <input class="form-control form-control-sm" type="text" placeholder="Sem filtro..." id="fnome" readonly>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-6">
-                      <label><small>Estado:</small></label>
-                      <input class="form-control form-control-sm" type="text" placeholder="Sem filtro..." id="festado" readonly>
-                    </div>
-                    <div class="col-6">
-                      <label><small>Cidade:</small></label>
-                      <input class="form-control form-control-sm" type="text" placeholder="Sem filtro..." id="fcidade" readonly>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-6">
-                      <label><small>Atividade:</small></label>
-                      <input class="form-control form-control-sm" type="text" placeholder="Sem filtro..." id="fatividade" readonly>
-                    </div>
-                    <div class="col-6">
-                      <label><small>Status:</small></label>
-                      <input class="form-control form-control-sm" type="text" placeholder="Sem filtro..." id="fstatus" readonly>
-                    </div>
-                  </div>
-                </div>
+                    <form class="mt-2" action="./scripts/cliente_filtro.php" method="post" style="padding: 0px 10px 10px;">
+                      <div class="form-group row">
+                        <!--  <div class="col-sm-12">
+                      <input type="text" class="form-control" id="pcpfcnpj" name='pcpfcnpj' placeholder="CPF/CNPJ" value="" onkeypress='mascaraCpfCnpj(this,cpfCnpj);' onblur='clearTimeout();' maxlength="18">
+                    </div> -->
+                      </div>
+                      <div class="form-floating mb-1">
+                        <input type="text" class="form-control form-control-sm" id="fpesquisa" name="fpesquisa" value="<?php echo $fpesquisa?>" placeholder="Pesquisar" readonly>
+                        <label for="pesquisa">Filtro Aplicado</label>
+                      </div>
+                      <div class="form-group row mt-1">
+                        <div class="col-md-12">
+                          <input class="form-control" id="ftipopesquisa" name="ftipopesquisa" value="<?php echo $ftipopesquisa?>" readonly >
+                        </div>
+                      </div>
+                      <div class="form-group d-flex justify-content-end mt-3">
+                        <button type="submit" href="#" class="btn btn-secondary">Limpar</button>
+                      </div>
+                    </form>
               </div>
             </div>
           </div>
@@ -270,11 +236,11 @@ echo $filtro?>
           <tbody>
             <?php
             include './scripts/conexao.php';
-            if ($filtro==""){
+            if ($filtro == "") {
               $sql = "SELECT * FROM `clientes` ORDER BY c_nome ASC";
-            }else{
+            } else {
               $sql = $filtro;
-              }
+            }
             $total_reg = "15"; // número de registros por página
             $pag = $_GET['pag'];
             if (!$pag) {
