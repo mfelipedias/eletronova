@@ -1,10 +1,9 @@
 <?php
+error_reporting(0);
 $filtro = $_GET['filtro'];
 $fpesquisa = $_GET['pesquisa'];
 $ftipopesquisa = $_GET['tipo'];
-
-echo $filtro ?>
-
+?>
 <div class="row mx-auto">
   <!-- COLUNA PESQUISA E TABELA -->
   <div class="col" style="min-width: 400px; max-width: 1366px; width: 100%">
@@ -14,7 +13,7 @@ echo $filtro ?>
         <div class="card shadow mb-2" style="width: 100%; min-width:300px">
           <div class="" style="padding: 3px;">
             <div class="flex-row p-1">
-              <a class="btn btn-outline-primary" data-toggle="collapse" href="#filtros" role="button" aria-expanded="false" aria-controls="collapseExample">
+              <a class="btn btn-outline-primary" data-toggle="collapse" href="#filtros" role="button" aria-expanded="false" onclick="esconderCampos('pesquisa2','pesquisa1','pesquisa3')" aria-controls="collapseExample">
                 <i class="bi bi-search"></i>
               </a>
               <span class="" style="font-size: 105%; font-weight:bold; margin-left:7px">Buscar...</span>
@@ -22,29 +21,36 @@ echo $filtro ?>
               <div class="collapse" id="filtros">
 
                 <form class="mt-2" action="./scripts/cliente_filtro.php" method="post" style="padding: 0px 10px 10px;">
-                  <div class="form-group row">
-                    <!--  <div class="col-sm-12">
-                      <input type="text" class="form-control" id="pcpfcnpj" name='pcpfcnpj' placeholder="CPF/CNPJ" value="" onkeypress='mascaraCpfCnpj(this,cpfCnpj);' onblur='clearTimeout();' maxlength="18">
-                    </div> -->
-                  </div>
-                  <div class="form-floating mb-1">
-                    <input type="text" class="form-control form-control-sm" id="pesquisa" name="pesquisa" placeholder="Pesquisar">
-                    <label for="pesquisa">Pesquisar</label>
-                  </div>
                   <div class="form-group row mt-1">
                     <div class="col-md-12">
-                      <select class="form-select" id="tipopesquisa" name="tipopesquisa">
+                      <select class="form-select" id="tipopesquisa" name="tipopesquisa" onchange="esconderCampo('pesquisa2','pesquisa1','pesquisa3', this.id)" required>
                         <option value="">Selecione...</option>
-                        <option value="">CPF/CNPJ</option>
-                        <option value="">Nome</option>
-                        <option value="">Cidade</option>
-                        <option value="">UF</option>
-                        <option value="">Ramo</option>
-                        <option value="">Status</option>
+                        <option value="CPF/CNPJ">CPF/CNPJ</option>
+                        <option value="Nome">Nome</option>
+                        <option value="Cidade">Cidade</option>
+                        <option value="UF">UF</option>
+                        <option value="Ramo">Ramo</option>
+                        <option value="Status">Status</option>
                       </select>
                     </div>
                   </div>
-                  <div class="form-group d-flex justify-content-end mt-3">
+                  <div class="form-group row mt-1">
+                    <div class="col-sm-12">
+                      <input type="text" class="form-control" id="pesquisa1" name="pesquisa1" placeholder="Pesquisa..." value="" maxlength="40">
+                    </div>
+                  </div>
+                  <div class="form-group row mt-1">
+                    <div class="col-sm-12">
+                      <input type="text" class="form-control" id="pesquisa2" name="pesquisa2" placeholder="CPF/CNPJ" value="" onkeypress='mascaraCpfCnpj(this,cpfCnpj);' onblur='clearTimeout(); verifica(this.value);' maxlength="18">
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                      <select class="form-select" id="pesquisa3" name="pesquisa3" >
+                        <option value="1">Ativo</option>
+                        <option value="0">Inativo</option>
+                      </select>
+                    </div>
+                  <div class="form-group d-flex justify-content-end mt-2">
                     <button type="submit" href="#" class="btn btn-primary">Pesquisar</button>
                   </div>
                 </form>
@@ -61,31 +67,22 @@ echo $filtro ?>
         <div class="card shadow mb-2" style="width: 100%; min-width:300px">
           <div class="" style="padding:3px;">
             <div class="flex-row p-1">
-              <a class="btn btn-outline-primary" data-toggle="collapse" href="#filtros" role="button" aria-expanded="false" aria-controls="collapseExample">
+              <a class="btn btn-outline-primary" data-toggle="collapse" href="#filtros" role="button" onclick="esconderCampos('pesquisa2','pesquisa1', 'pesquisa3')" aria-expanded="false" aria-controls="collapseExample">
                 <i class="bi bi-filter"></i>
               </a>
 
               <span class="" style="font-size: 105%; font-weight:bold;margin-left:7px;">Filtros...</span>
               <div class="collapse" id="filtros">
-                    <form class="mt-2" action="./scripts/cliente_filtro.php" method="post" style="padding: 0px 10px 10px;">
-                      <div class="form-group row">
-                        <!--  <div class="col-sm-12">
-                      <input type="text" class="form-control" id="pcpfcnpj" name='pcpfcnpj' placeholder="CPF/CNPJ" value="" onkeypress='mascaraCpfCnpj(this,cpfCnpj);' onblur='clearTimeout();' maxlength="18">
-                    </div> -->
-                      </div>
-                      <div class="form-floating mb-1">
-                        <input type="text" class="form-control form-control-sm" id="fpesquisa" name="fpesquisa" value="<?php echo $fpesquisa?>" placeholder="Pesquisar" readonly>
-                        <label for="pesquisa">Filtro Aplicado</label>
-                      </div>
-                      <div class="form-group row mt-1">
-                        <div class="col-md-12">
-                          <input class="form-control" id="ftipopesquisa" name="ftipopesquisa" value="<?php echo $ftipopesquisa?>" readonly >
-                        </div>
-                      </div>
-                      <div class="form-group d-flex justify-content-end mt-3">
-                        <button type="submit" href="#" class="btn btn-secondary">Limpar</button>
-                      </div>
-                    </form>
+                <form class="mt-2" action="./scripts/cliente_filtro.php" method="post" style="padding: 0px 10px 10px;">
+                  <div class="form-group row mt-2">
+                    <div class="col-sm-12">
+                      <input type="text" class="form-control" id="fpesquisa" name="fpesquisa" placeholder="Sem filtro aplicado..." value="<?php if($fpesquisa==""){echo "Sem filtro...";}else{echo $ftipopesquisa . ' ' . $fpesquisa;} ?>" readonly>
+                    </div>
+                  </div>
+                  <div class="form-group d-flex justify-content-end mt-3">
+                    <button type="submit" href="#" class="btn btn-secondary">Limpar</button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
