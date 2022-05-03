@@ -27,13 +27,13 @@
   <!-- INICIO NAVBAR -->
   <div class="row td-main-navbar" style="width: 100%;">
     <!-- BOTAO NAVBAR-->
-    <nav class="navbar shadow navbar-expand-lg navbar-light bg-white">
+    <nav class="navbar shadow navbar-expand-lg navbar-light bg-white" style="z-index: 999;">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <!-- USUARIO NAVBAR-->
-      <div class="dropdown">
+      <div class="dropdown" style="z-index: 999;">
         <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
           <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
           <strong>Usuário</strong>
