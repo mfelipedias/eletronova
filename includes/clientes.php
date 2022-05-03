@@ -229,7 +229,7 @@ $ftipopesquisa = $_GET['tipo'];
             <tr>
               <th scope="col">CPF/CNPJ</th>
               <th scope="col">Nome</th>
-              <th scope="col" class="td-hide">Endereço</th>
+              <th scope="col"><label class="td-hide">Endereço</label></th>
               <th scope="col">Status</th>
               <th scope="col">Ação</th>
             </tr>
@@ -276,7 +276,7 @@ $ftipopesquisa = $_GET['tipo'];
 
                 <th><?php echo $c_doc ?></th>
                 <td><?php echo $c_nome ?></td>
-                <td class="td-hide"><?php echo $c_rua . ' , ' . $c_bairro . ' / ' . $c_cidade .  ' - ' . $c_uf ?></td>
+                <td><p class="td-hide"><?php echo $c_rua . ' , ' . $c_bairro . ' / ' . $c_cidade .  ' - ' . $c_uf ?></p></td>
                 <td><i class="bi bi-circle-fill" style="color:<?php if ($c_status == 1) {
                                                                 echo 'green';
                                                               } else {
