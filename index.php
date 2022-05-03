@@ -8,6 +8,7 @@
   <!-- MEUS ESTILOS -->
   <link href="./css/estilos.css" rel="stylesheet">
   <link href="./css/sidebar.css" rel="stylesheet">
+  <link href="./css/preloader.css" rel="stylesheet">
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -164,7 +165,7 @@
   <div class="flex-row " style="border-top-style: solid; border-top-color: #fe4816;border-width: 10px;">
     <!-- INICIO SIDEBAR -->
     <div class="col-auto td-main-sidebar">
-      <div class="shadow min-vh-100 d-flex flex-column flex-shrink-0 bg-white sidebar">
+      <div class="shadow min-vh-100 d-flex flex-column flex-shrink-0 bg-white sidebar" style = "z-index:999">
         <!-- IMAGEM SIDEBAR -->
         <img src="./img/01.png" class="img-fluid" alt="Imagem responsiva">
         <!-- MENU SIDEBAR -->
@@ -322,6 +323,16 @@
 
     <!-- CONTEÚDO -->
     <div class="col-auto td-main-content my-4">
+      <div id="preloader">
+        <div class="inner">
+          <!-- HTML DA ANIMAÇÃO MUITO LOUCA DO SEU PRELOADER! -->
+          <div class="bolas">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </div>
       <?php
       if (isset($_GET['pagina'])) {
         switch ($_GET['pagina']) {

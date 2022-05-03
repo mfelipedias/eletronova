@@ -45,11 +45,11 @@ $ftipopesquisa = $_GET['tipo'];
                     </div>
                   </div>
                   <div class="col-md-12">
-                      <select class="form-select" id="pesquisa3" name="pesquisa3" >
-                        <option value="1">Ativo</option>
-                        <option value="0">Inativo</option>
-                      </select>
-                    </div>
+                    <select class="form-select" id="pesquisa3" name="pesquisa3">
+                      <option value="1">Ativo</option>
+                      <option value="0">Inativo</option>
+                    </select>
+                  </div>
                   <div class="form-group d-flex justify-content-end mt-2">
                     <button type="submit" href="#" class="btn btn-primary">Pesquisar</button>
                   </div>
@@ -76,7 +76,11 @@ $ftipopesquisa = $_GET['tipo'];
                 <form class="mt-2" action="./scripts/cliente_filtro.php" method="post" style="padding: 0px 10px 10px;">
                   <div class="form-group row mt-2">
                     <div class="col-sm-12">
-                      <input type="text" class="form-control" id="fpesquisa" name="fpesquisa" placeholder="Sem filtro aplicado..." value="<?php if($fpesquisa==""){echo "Sem filtro...";}else{echo $ftipopesquisa . ' ' . $fpesquisa;} ?>" readonly>
+                      <input type="text" class="form-control" id="fpesquisa" name="fpesquisa" placeholder="Sem filtro aplicado..." value="<?php if ($fpesquisa == "") {
+                                                                                                                                            echo "Sem filtro...";
+                                                                                                                                          } else {
+                                                                                                                                            echo $ftipopesquisa . ' ' . $fpesquisa;
+                                                                                                                                          } ?>" readonly>
                     </div>
                   </div>
                   <div class="form-group d-flex justify-content-end mt-3">
@@ -219,7 +223,7 @@ $ftipopesquisa = $_GET['tipo'];
   <div class="row mx-auto">
     <!-- CARD TABELA -->
     <div class="card shadow mb-3">
-      <div class="flex-row p-2">
+      <div class="flex-row p-2 ">
         <table class="table table-hover table-responsive-md table-sm">
           <thead>
             <tr>

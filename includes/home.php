@@ -1,3 +1,4 @@
+
 <div class="row mx-auto">
   <!-- COLUNA PREVISAO DO TEMPO-->
   <div class="col-md-6" style="width: auto;">
@@ -53,7 +54,7 @@
           </script>
           <!-- clock widget end -->
         </div>
-                  <!-- CARD ICONES -->
+        <!-- CARD ICONES -->
         <div class="card shadow my-3 py-3" style="width: auto;">
           <div class="nav" style="width:auto; margin-right:auto; margin-left:auto;">
             <li><a class="bi bi-instagram mx-2" href="" style="font-size: 30px;"></a></li>

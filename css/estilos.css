@@ -57,6 +57,7 @@ th {
     }
     .td-main-navbar {
         display: contents !important;
+        z-index: 999;
     }
     .main-header {
         margin-left: 10px
