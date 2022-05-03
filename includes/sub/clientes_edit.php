@@ -147,7 +147,7 @@ while ($array = mysqli_fetch_array($busca)) {
 
                     <div class="col-md-6">
                         <label for="cc-number" class="form-label">Telefone:</label>
-                        <input type="text" class="form-control" id="telefone" name="contato" value="<?php echo $tel ?>" placeholder="">
+                        <input type="text" class="form-control" id="telefone" name="telefone" value="<?php echo $tel ?>" placeholder="">
                     </div>
 
                     <div class="col-md-12">
