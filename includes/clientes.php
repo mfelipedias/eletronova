@@ -227,6 +227,7 @@ $ftipopesquisa = $_GET['tipo'];
         <table class="table table-hover table-responsive-md table-sm">
           <thead>
             <tr>
+
               <th scope="col">CPF/CNPJ</th>
               <th scope="col">Nome</th>
               <th scope="col"><label class="td-hide">Endereço</label></th>
@@ -274,9 +275,11 @@ $ftipopesquisa = $_GET['tipo'];
             ?>
               <tr>
 
-                <th><?php echo $c_doc ?></th>
-                <td><?php echo $c_nome ?></td>
-                <td><p class="td-hide"><?php echo $c_rua . ' , ' . $c_bairro . ' / ' . $c_cidade .  ' - ' . $c_uf ?></p></td>
+                <td><?php echo $c_doc ?></th>
+                <th><?php echo $c_nome ?></td>
+                <td>
+                  <p class="td-hide"><?php echo $c_rua . ' , ' . $c_bairro . ' / ' . $c_cidade .  ' - ' . $c_uf ?></p>
+                </td>
                 <td><i class="bi bi-circle-fill" style="color:<?php if ($c_status == 1) {
                                                                 echo 'green';
                                                               } else {
