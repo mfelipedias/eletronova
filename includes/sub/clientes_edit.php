@@ -34,19 +34,18 @@ while ($array = mysqli_fetch_array($busca)) {
                 <div class="col-md-auto">
                     <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalExcluir"><i class="bi bi-trash"></i></button>
                     <div class="modal fade" id="modalExcluir" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                        <div class="modal-dialog" role="document" style="width: 380px; transition: all ease .75s;">
+                            <div class="modal-content rounded-6 shadow" style="border-radius: 1rem;">
+                                <div class="modal-header border-bottom-0">
+                                    <h5 class="modal-title">Exclusão</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <div class="modal-body">
-                                    <h4 style="color:red">Tem certeza que deseja excluir?</h4>
-                                    <p>(Se houver processos vinculados á este cliente a exclusão nao será feita, ao invés disso o cadastro será inativado.)</p>
+                                <div class="modal-body py-0">
+                                    <p>Este cadastro está prestes a ser excluido. Essa ação não pode ser desfeita, deseja continuar?</p>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
-                                    <a type="button" class="btn btn-danger" href="./scripts/cliente_del.php?id=<?php echo $id ?>">Sim</a>
+                                <div class="modal-footer flex-column border-top-0">
+                                    <a type="button" class="btn btn-lg btn-danger w-100 mx-0 mb-2" href="./scripts/cliente_del.php?id=<?php echo $id ?>&&nome=<?php echo $nome?>">Sim</a>
+                                    <button type="button" class="btn btn-lg btn-light w-100 mx-0" data-bs-dismiss="modal">Não</button>
                                 </div>
                             </div>
                         </div>
@@ -114,25 +113,25 @@ while ($array = mysqli_fetch_array($busca)) {
                         <label for="zip" class="form-label">CEP:</label>
                         <input type="text" class="form-control" id="cep" name="cep" placeholder="" onkeypress="mascara(this, '#####-###')" value="<?php echo $cep ?>" maxlength="9" required>
                     </div>
-                    <div class="col-6">
+                    <div class="col-md-6">
                         <label for="address" class="form-label">Rua:</label>
                         <input type="text" class="form-control" id="rua" name="rua" value="<?php echo $rua ?>" maxlength="60" placeholder="">
                     </div>
                     <div class="col-md-3">
                         <label for="cidade" class="form-label">Bairro:</label>
-                        <input type="text" class="form-control" id="bairro" name="bairro" value="<?php echo $bairro?>" maxlength="40" placeholder="">
+                        <input type="text" class="form-control" id="bairro" name="bairro" value="<?php echo $bairro ?>" maxlength="40" placeholder="">
                     </div>
-                    <div class="col-4">
+                    <div class="col-md-4">
                         <label for="address" class="form-label">Complemento:</label>
                         <input type="text" class="form-control" id="complemento" name="complemento" value="<?php echo $comp ?>" maxlength="40" placeholder="Apto, bloco, quadra...">
                     </div>
                     <div class="col-md-4">
                         <label for="cidade" class="form-label">Cidade:</label>
-                        <input type="text" class="form-control" id="cidade" name="cidade" value="<?php echo $cidade?>" maxlength="40" placeholder="">
+                        <input type="text" class="form-control" id="cidade" name="cidade" value="<?php echo $cidade ?>" maxlength="40" placeholder="">
                     </div>
                     <div class="col-md-4">
-                        <label for="estado" class="form-label">Estado:</label>                 
-                        <input type="text" class="form-control" id="uf" name="uf" value="<?php echo $uf?>" maxlength="2" placeholder="">
+                        <label for="estado" class="form-label">Estado:</label>
+                        <input type="text" class="form-control" id="uf" name="uf" value="<?php echo $uf ?>" maxlength="2" placeholder="">
                     </div>
                 </div>
 
@@ -166,9 +165,26 @@ while ($array = mysqli_fetch_array($busca)) {
                 </div>
                 <hr class="">
                 <a type="button" href="?pagina=clientes_view&&id=<?php echo $id ?>" class="btn btn-primary">Voltar</a>
-                <button type="submit" class="btn btn-success">Salvar</button>
-            </form>
-
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalSalvar">Salvar</button>
+                <div class="modal fade " tabindex="-1" role="dialog" id="modalSalvar">
+                    <div class="modal-dialog" role="document" style="width: 380px; transition: transition: all ease .75s;">
+                        <div class="modal-content rounded-6 shadow" style="border-radius: 1rem;">
+                            <div class="modal-header border-bottom-0">
+                                <h5 class="modal-title">Alterações</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body py-0">
+                                <p>Este cadatrao está prestes a ser alterado, deseja continuar?</p>
+                            </div>
+                            <div class="modal-footer flex-column border-top-0">
+                                <button type="submit" class="btn btn-lg btn-primary w-100 mx-0 mb-2">Salvar</button>
+                                <button type="button" class="btn btn-lg btn-light w-100 mx-0" data-bs-dismiss="modal">Voltar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
         </div>
+        </form>
     </div>
+</div>

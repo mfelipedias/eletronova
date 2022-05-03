@@ -165,7 +165,7 @@
   <div class="flex-row " style="border-top-style: solid; border-top-color: #fe4816;border-width: 10px;">
     <!-- INICIO SIDEBAR -->
     <div class="col-auto td-main-sidebar">
-      <div class="shadow min-vh-100 d-flex flex-column flex-shrink-0 bg-white sidebar" style = "z-index:999">
+      <div class="shadow min-vh-100 d-flex flex-column flex-shrink-0 bg-white sidebar" style="z-index:999">
         <!-- IMAGEM SIDEBAR -->
         <img src="./img/01.png" class="img-fluid" alt="Imagem responsiva">
         <!-- MENU SIDEBAR -->
@@ -322,10 +322,10 @@
     <!-- FIM SIDEBAR -->
 
     <!-- CONTEÚDO -->
+    
     <div class="col-auto td-main-content my-4">
       <div id="preloader">
         <div class="inner">
-          <!-- HTML DA ANIMAÇÃO MUITO LOUCA DO SEU PRELOADER! -->
           <div class="bolas">
             <div></div>
             <div></div>
@@ -349,6 +349,20 @@
           case 'clientes-add-ok':
             include './includes/return/sucesso.php';
             include './includes/clientes.php';
+            break;
+          case 'clientes-del-ok':
+            include './includes/return/aviso.php';
+            include './includes/clientes.php';
+            break;
+          case 'clientes-up-ok':
+      ?>
+            <div class="" style="max-width: 1020px; width: 100%">
+              <?php
+              include './includes/return/sucesso.php';
+              ?>
+            </div>
+      <?php
+            include './includes/sub/clientes_view.php';
             break;
           case 'clientes_view':
             include './includes/sub/clientes_view.php';

@@ -48,12 +48,12 @@
                 <label for="zip" class="form-label">CEP:</label>
                 <input type="text" class="form-control" id="zip" placeholder="" required>
             </div>
-            <div class="col-9">
+            <div class="col-md-9">
                 <label for="address" class="form-label">Endereço:</label>
                 <input type="text" class="form-control" id="address" placeholder="Rua/Av/Rod...">
             </div>
 
-            <div class="col-4">
+            <div class="col-md-4">
                 <label for="address" class="form-label">Complemento:</label>
                 <input type="text" class="form-control" id="address" placeholder="Apto, bloco, quadra...">
             </div>
@@ -84,6 +84,4 @@
         <a type="button" href="?pagina=ordens_view" class="btn btn-primary">Voltar</a>
         <a type="button" href="#" class="btn btn-success">Salvar</a>
     </form>
-
-
 </div>

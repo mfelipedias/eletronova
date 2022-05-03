@@ -34,7 +34,7 @@ while ($array = mysqli_fetch_array($busca)) {
                 <div class="col-md-auto">
                     <a type="button" href="?pagina=clientes_edit&&id=<?php echo $id ?>" class="btn btn-outline-primary"><i class="bi bi-pencil-square"></i></a>
                 </div>
-                <form class="mt-3" action="./scripts/cliente_up.php" method="post">
+                <form class="mt-3">
                     <div class="row g-3">
                         <div class="col-md-2">
                             <label for="cc-name" class="form-label">#ID:</label>
@@ -74,7 +74,7 @@ while ($array = mysqli_fetch_array($busca)) {
                             <label for="zip" class="form-label">CEP:</label>
                             <input type="text" class="form-control" id="cep" name="cep" placeholder="" onkeypress="mascara(this, '#####-###')" value="<?php echo $cep ?>" maxlength="9" readonly>
                         </div>
-                        <div class="col-6">
+                        <div class="col-md-6">
                             <label for="address" class="form-label">Rua:</label>
                             <input type="text" class="form-control" id="rua" name="rua" value="<?php echo $rua ?>" maxlength="60" placeholder="" readonly>
                         </div>
@@ -82,7 +82,7 @@ while ($array = mysqli_fetch_array($busca)) {
                             <label for="cidade" class="form-label">Bairro:</label>
                             <input type="text" class="form-control" id="bairro" name="bairro" value="<?php echo $bairro ?>" maxlength="40" placeholder="" readonly>
                         </div>
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label for="address" class="form-label">Complemento:</label>
                             <input type="text" class="form-control" id="complemento" name="complemento" value="<?php echo $comp ?>" maxlength="40" placeholder="Apto, bloco, quadra..." readonly>
                         </div>
@@ -172,7 +172,6 @@ while ($array = mysqli_fetch_array($busca)) {
                         </table>
                     </div>
                     <a type="button" href="?pagina=clientes" class="btn btn-primary">Voltar</a>
-                    <button type="submit" class="btn btn-success">Salvar</button>
                 </form>
 
 

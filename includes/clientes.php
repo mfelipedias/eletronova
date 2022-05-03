@@ -6,7 +6,7 @@ $ftipopesquisa = $_GET['tipo'];
 ?>
 <div class="row mx-auto">
   <!-- COLUNA PESQUISA E TABELA -->
-  <div class="col" style="min-width: 400px; max-width: 1366px; width: 100%">
+  <div class="col" style="min-width: 400px; max-width: 1700px; width: 100%">
     <div class="row">
       <!-- CARD PESQUISA -->
       <div class="col-xl-4" style="min-width:300px;">

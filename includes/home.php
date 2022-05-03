@@ -1,22 +1,23 @@
-
 <div class="row mx-auto">
   <!-- COLUNA PREVISAO DO TEMPO-->
-  <div class="col-md-6" style="width: auto;">
+  <div class="col-xl-6" style="width: auto;">
     <div class="row">
-      <div class="col-md-6" style="width: auto;">
-        <div class="shadow mb-2" style="width: 510px;">
+      <div class="col-md-6" style="width: auto; margin-left: auto; margin-right: auto;">
+        <div class="shadow mb-2" style="width: 510px;background:white">
           <div id="cont_0414a5e3eab561c641f9af82646ec181" class="card-tempo-completo">
             <script type="text/javascript" async src="https://www.tempo.com/wid_loader/0414a5e3eab561c641f9af82646ec181"></script>
           </div>
         </div>
-        <div class="shadow mb-2" style="width: 200px; margin-left: auto; margin-right: auto;">
-          <div id="cont_14ee06b760d4d2d0722f3c7c4a510dab" class="card-tempo-menor">
-            <script type="text/javascript" async src="https://www.tempo.com/wid_loader/14ee06b760d4d2d0722f3c7c4a510dab"></script>
-          </div>
+        <div class="shadow mb-2" style="width: 100%; min-width:333px ;background:white;margin-left: auto; margin-right: auto;">
+          <center>
+            <div id="cont_8cd06c40f70fd7ab73db242c0819488f" class="card-tempo-menor">
+              <script type="text/javascript" async src="https://www.tempo.com/wid_loader/8cd06c40f70fd7ab73db242c0819488f"></script>
+            </div>
+          </center>
         </div>
       </div>
-      <div class="col-md-6" style="width: auto; margin-right:auto; margin-left:auto;">
-        <div class="card shadow">
+      <div class="col-md-6 relogio" style="width: auto;margin-right:auto; margin-left:auto;">
+        <div class="card shadow ">
           <!-- CARD RELOGIO-->
           <script type="text/javascript">
             var css_file = document.createElement("link");
@@ -65,6 +66,7 @@
         </div>
       </div>
     </div>
+    <!-- TABELAS-->
     <div class="row" style="width:auto; max-width:800px">
       <div class="col">
         <div class="card shadow mb-3">
@@ -245,9 +247,9 @@
   </div>
 
   <!-- COLUNA MAPA-->
-  <div class="col-md-6" style="width:auto; margin-left:1%; margin-right:auto">
+  <div class="col-xl-6" style="width:auto; margin-left: 1%; margin-right: 1%;">
     <div class="row">
-      <div class="card shadow mb-3 p-2 card-maps" style="width: 100%; min-width: 360px; max-width:600px; height: 400px; margin-left: 0; margin-right: auto;">
+      <div class="card shadow mb-3 p-2 card-maps" style="width: 100%; min-width: 360px; max-width:600px; height: 400px;">
 
         <div id="map" style="width: 100%; height: 350px;"></div>
 
@@ -285,7 +287,8 @@
           }
         </script>
       </div>
-      <div class="row" style="max-width: 620px;">
+      <!-- TABELA OS-->
+      <div class="row" style="width: 100%; max-width: 620px;">
         <div class="card shadow mb-3">
           <div class="row" style="background: #e6f0fe;height: 45px; border-bottom: 1px solid #cad3df;">
             <div class="col" style="padding: 10px;">
@@ -295,7 +298,7 @@
               <i class="d-flex justify-content-end bi bi-arrow-right" style="color:#0c63df;margin-top:14px;margin-right:5px;font-size:20px"></i>
             </div>
           </div>
-          <table class="table table-hover m-1">
+          <table class="table table-hover">
             <thead>
               <tr>
                 <th scope="col">O.S.</th>
