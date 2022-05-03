@@ -1,90 +1,138 @@
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
-span {
-    font-family: 'Poppins', sans-serif;
-}
-
-html {
-    max-width: 100vw;
-}
-
-td {
-    font-size: 90%;
-    word-break: break-all;
-}
-
-th {
-    font-size: 90%;
-}
-
-.relogio {
-    width: auto !important;
-}
-
-.w-tempo {
-    width: auto !important;
-}
-
-@media only screen {
-    .sidebar {
-        width: 220px;
-        padding-top: 10px;
-        padding-bottom: 30px;
-        padding-right: 10px;
-        padding-bottom: 10px;
-        padding-left: 10px;
+    @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+    span {
+        font-family: 'Poppins', sans-serif;
     }
-    .td-main-navbar {
-        display: none !important;
+    
+    html {
+        max-width: 100vw;
     }
-    .td-main-content {
-        margin-left: 220px;
-        margin-right: 0px;
-        margin-bottom: 20px;
+    
+    td {
+        font-size: 90%;
+        word-break: break-all;
     }
-    .main-header {
-        margin-left: 240px
+    
+    th {
+        font-size: 90%;
     }
-    .card-tempo-menor {
-        display: none !important;
+    
+    .relogio {
+        width: auto !important;
     }
-    .card-tempo-completo {
-        display: contents !important;
-    }
-}
-
-@media only screen and (max-width: 740px) {
-    .td-main-content {
-        margin-left: 0px;
-        margin-right: 0px;
-        margin-bottom: 20px;
-    }
-    .td-main-sidebar {
-        display: none !important;
-    }
-    .td-main-navbar {
-        display: contents !important;
-        z-index: 999;
-    }
-    .main-header {
-        margin-left: 10px
-    }
+    
     .w-tempo {
-        width: 100% !important;
+        width: auto !important;
     }
-    .relogio {
-        width: 100% !important;
+    
+    @media only screen {
+        .sidebar {
+            width: 220px;
+            padding-top: 10px;
+            padding-bottom: 30px;
+            padding-right: 10px;
+            padding-bottom: 10px;
+            padding-left: 10px;
+        }
+        .td-main-navbar {
+            display: none !important;
+        }
+        .td-main-content {
+            margin-left: 220px;
+            margin-right: 0px;
+            margin-bottom: 20px;
+        }
+        .main-header {
+            margin-left: 240px
+        }
+        .card-tempo-menor {
+            display: none !important;
+        }
+        .card-tempo-completo {
+            display: contents !important;
+        }
     }
-    .card-tempo-menor {
-        display: contents !important;
+    
+    @media only screen and (max-width: 740px) {
+        .td-main-content {
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-bottom: 20px;
+        }
+        .td-main-sidebar {
+            display: none !important;
+        }
+        .td-main-navbar {
+            display: contents !important;
+            z-index: 999;
+        }
+        .main-header {
+            margin-left: 10px
+        }
+        .w-tempo {
+            width: 100% !important;
+        }
+        .relogio {
+            width: 100% !important;
+        }
+        .card-tempo-menor {
+            display: contents !important;
+        }
+        .card-tempo-completo {
+            display: none !important;
+        }
     }
-    .card-tempo-completo {
-        display: none !important;
+    
+    @media only screen and (max-width: 985px) {
+        .relogio {
+            display: none;
+        }
+        .card-tempo-menor {
+            display: contents !important;
+        }
+        .card-tempo-completo {
+            display: none !important;
+        }
     }
-}
-
-@media only screen and (max-width: 985px) {
-    .relogio {
-        display: none !important;
+    
+    @media only screen and (max-width: 1600px) {
+        .relogio {
+            display: none;
+        }
     }
-}
+    
+    @media only screen and (max-width: 1300px) {
+        .relogio {
+            display: none;
+        }
+        .card-tempo-menor {
+            display: contents !important;
+        }
+        .card-tempo-completo {
+            display: none !important;
+        }
+    }
+    
+    @media only screen and (max-width: 1200px) {
+        .relogio {
+            display: none;
+        }
+        .card-tempo-menor {
+            display: none !important;
+        }
+        .card-tempo-completo {
+            display: contents !important;
+        }
+    }
+    
+    @media only screen and (max-width: 600px) {
+        .relogio {
+            display: none;
+        }
+        .card-tempo-menor {
+            display: contents !important;
+        }
+        .card-tempo-completo {
+            display: none !important;
+        }
+    }

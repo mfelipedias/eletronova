@@ -1,6 +1,6 @@
 <div class="row mx-auto">
     <!-- COLUNA PESQUISA E TABELA -->
-    <div class="col-md-7" style="min-width: 400px; max-width: 1100px;">
+    <div class="col-xl-7" style="width:100%; min-width: 400px; max-width: 900px;">
         <div class="row">
             <!-- CARD PESQUISA -->
             <div class="col-md-8">
@@ -132,7 +132,7 @@
 
         <!-- COLUNA CADASTRO -->
     </div>
-    <div class="col-md-5" style="min-width: 400px; max-width: 700px;">
+    <div class="col-xl-5" style="width:100%; min-width: 400px; max-width: 600px;">
         <form>
             <div class="card p-3 shadow" style="width: 95%; margin-left:auto; margin-right:auto">
                 <span class="" style="margin-bottom:20px; font-weight:bold;"><i class="bi bi-person-plus text-primary rounded" style="border-style: solid;border-width: thin;padding:2px 10px;margin-right: 5px; font-size:130%;"></i> <a style="font-size: 110%;">Cadastrar usuario...<a></span>

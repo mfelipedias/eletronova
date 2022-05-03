@@ -1,14 +1,16 @@
 <div class="row mx-auto">
   <!-- COLUNA PREVISAO DO TEMPO-->
-  <div class="col-xl-6" style="width: auto;">
+  <div class="col-xl" style="width: 100%;max-width:770px; min-width:340px">
     <div class="row">
-      <div class="col-md-6" style="width: auto; margin-left: auto; margin-right: auto;">
-        <div class="shadow mb-2" style="width: 510px;background:white">
+      <div class="col" style="width: auto; ">
+        <div class="shadow mb-2 rounded" style="width: 100%;background:white; margin-left: auto; margin-right: auto;">
+        <center>
           <div id="cont_0414a5e3eab561c641f9af82646ec181" class="card-tempo-completo">
             <script type="text/javascript" async src="https://www.tempo.com/wid_loader/0414a5e3eab561c641f9af82646ec181"></script>
           </div>
+        </center>
         </div>
-        <div class="shadow mb-2" style="width: 100%; min-width:333px ;background:white;margin-left: auto; margin-right: auto;">
+        <div class="shadow mb-2 rounded" style="height:auto; width: 100%; min-width:333px ;background:white; margin-left: auto; margin-right: auto;">
           <center>
             <div id="cont_8cd06c40f70fd7ab73db242c0819488f" class="card-tempo-menor">
               <script type="text/javascript" async src="https://www.tempo.com/wid_loader/8cd06c40f70fd7ab73db242c0819488f"></script>
@@ -16,7 +18,7 @@
           </center>
         </div>
       </div>
-      <div class="col-md-6 relogio" style="width: auto;margin-right:auto; margin-left:auto;">
+      <div class="col relogio" style="width: auto;margin-right:auto; margin-left:auto;">
         <div class="card shadow ">
           <!-- CARD RELOGIO-->
           <script type="text/javascript">
@@ -247,94 +249,95 @@
   </div>
 
   <!-- COLUNA MAPA-->
-  <div class="col-xl-6" style="width:auto; margin-left: 1%; margin-right: 1%;">
+  <div class="col-xl" style="width:100%; max-width:570px; min-width:360px;">
     <div class="row">
-      <div class="card shadow mb-3 p-2 card-maps" style="width: 100%; min-width: 360px; max-width:600px; height: 400px;">
+      <div class="col mx-auto">
+        <div class="card shadow mb-3 p-2 card-maps" style="width: 100%; height: 400px;">
 
-        <div id="map" style="width: 100%; height: 350px;"></div>
+          <div id="map" style="width: 100%; height: 350px;"></div>
 
-        <script type="text/javascript">
-          var locations = [
-            ['Bondi Beach', <?php echo '-33.890590,' ?> 151.274856, 4],
-            ['Coogee Beach', -33.923036, 151.259052, 5],
-            ['Cronulla Beach', -34.028249, 151.157507, 3],
-            ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
-            ['Maroubra Beach', -33.950198, 151.259302, 1]
-          ];
+          <script type="text/javascript">
+            var locations = [
+              ['Bondi Beach', <?php echo '-33.890590,' ?> 151.274856, 4],
+              ['Coogee Beach', -33.923036, 151.259052, 5],
+              ['Cronulla Beach', -34.028249, 151.157507, 3],
+              ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
+              ['Maroubra Beach', -33.950198, 151.259302, 1]
+            ];
 
-          var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 10,
-            center: new google.maps.LatLng(-33.92, 151.25),
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-          });
-
-          var infowindow = new google.maps.InfoWindow();
-
-          var marker, i;
-
-          for (i = 0; i < locations.length; i++) {
-            marker = new google.maps.Marker({
-              position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-              map: map
+            var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 10,
+              center: new google.maps.LatLng(-33.92, 151.25),
+              mapTypeId: google.maps.MapTypeId.ROADMAP
             });
 
-            google.maps.event.addListener(marker, 'click', (function(marker, i) {
-              return function() {
-                infowindow.setContent(locations[i][0]);
-                infowindow.open(map, marker);
-              }
-            })(marker, i));
-          }
-        </script>
-      </div>
-      <!-- TABELA OS-->
-      <div class="row" style="width: 100%; max-width: 620px;">
-        <div class="card shadow mb-3">
-          <div class="row" style="background: #e6f0fe;height: 45px; border-bottom: 1px solid #cad3df;">
-            <div class="col" style="padding: 10px;">
-              <a style="color:#0c63df; margin-left:13px">Ordens abertas</a>
+            var infowindow = new google.maps.InfoWindow();
+
+            var marker, i;
+
+            for (i = 0; i < locations.length; i++) {
+              marker = new google.maps.Marker({
+                position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                map: map
+              });
+
+              google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                return function() {
+                  infowindow.setContent(locations[i][0]);
+                  infowindow.open(map, marker);
+                }
+              })(marker, i));
+            }
+          </script>
+        </div>
+        <!-- TABELA OS-->
+        <div class="row mx-auto">
+          <div class="card shadow mb-3" style="width: 100%;">
+            <div class="row" style="background: #e6f0fe;height: 45px; border-bottom: 1px solid #cad3df;">
+              <div class="col" style="padding: 10px;">
+                <a style="color:#0c63df; margin-left:13px">Ordens abertas</a>
+              </div>
+              <div class="col">
+                <i class="d-flex justify-content-end bi bi-arrow-right" style="color:#0c63df;margin-top:14px;margin-right:5px;font-size:20px"></i>
+              </div>
             </div>
-            <div class="col">
-              <i class="d-flex justify-content-end bi bi-arrow-right" style="color:#0c63df;margin-top:14px;margin-right:5px;font-size:20px"></i>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">O.S.</th>
+                  <th scope="col">Cliente</th>
+                  <th scope="col">Tipo</th>
+                  <th scope="col">Ver</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Templo Zulai</td>
+                  <td>Manutenção</td>
+                  <td><a href="" style="font-size: 23px;"><i class="bi bi-eye"></i></a></td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Padaria Bom Jardim</td>
+                  <td>Obra Inicial</td>
+                  <td><a href="" style="font-size: 23px;"><i class="bi bi-eye"></i></a></td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Manos Doces</td>
+                  <td>Reforma</td>
+                  <td><a href="" style="font-size: 23px;"><i class="bi bi-eye"></i></a></td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="d-flex justify-content-end m-2">
+              <a href="">ver mais...</a>
             </div>
-          </div>
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th scope="col">O.S.</th>
-                <th scope="col">Cliente</th>
-                <th scope="col">Tipo</th>
-                <th scope="col">Ver</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Templo Zulai</td>
-                <td>Manutenção</td>
-                <td><a href="" style="font-size: 23px;"><i class="bi bi-eye"></i></a></td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Padaria Bom Jardim</td>
-                <td>Obra Inicial</td>
-                <td><a href="" style="font-size: 23px;"><i class="bi bi-eye"></i></a></td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Manos Doces</td>
-                <td>Reforma</td>
-                <td><a href="" style="font-size: 23px;"><i class="bi bi-eye"></i></a></td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="d-flex justify-content-end m-2">
-            <a href="">ver mais...</a>
           </div>
         </div>
       </div>
     </div>
 
   </div>
-
 </div>
