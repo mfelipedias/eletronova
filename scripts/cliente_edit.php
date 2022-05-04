@@ -17,7 +17,7 @@ $mail = $_POST['email'];
 $info = $_POST['maisinfo'];
 $status = $_POST['status'];
 
-$sql = "UPDATE clientes SET c_status = '$status', c_ramo = '$ramo', c_cep = '$cep', c_rua = '$rua',c_bairro = '$bairro', c_comp = '$comp', c_cidade = '$cidade', c_uf = '$uf', c_contato = '$contato', c_tel = '$tel', c_mail = '$mail', c_info = '$info', c_update = now() WHERE id_cliente = '$id'";
+$sql = "UPDATE clientes SET c_status = '$status', c_nome = '$nome', c_ramo = '$ramo', c_cep = '$cep', c_rua = '$rua',c_bairro = '$bairro', c_comp = '$comp', c_cidade = '$cidade', c_uf = '$uf', c_contato = '$contato', c_tel = '$tel', c_mail = '$mail', c_info = '$info', c_update = now() WHERE id_cliente = '$id'";
 $atualizar = mysqli_query($conexao, $sql);
 
 $retorno = "Cliente: " . $nome . " alterado com sucesso!";

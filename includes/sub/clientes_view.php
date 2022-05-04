@@ -98,7 +98,7 @@ while ($array = mysqli_fetch_array($busca)) {
 
                     <hr class="my-4">
 
-                    <p class="" style="font-weight:bold; font-family: 'Poppins', sans-serif;"><i class="bi bi-people text-primary rounded" style="border-style: solid;border-width: thin;padding:2px 10px;margin-right: 10px; font-size:130%;"></i>Contatos</p>
+                    <p class="" style="font-weight:bold; font-family: 'Poppins', sans-serif;"><i class="bi bi-telephone text-primary rounded" style="border-style: solid;border-width: thin;padding:2px 10px;margin-right: 10px; font-size:130%;"></i>Contatos</p>
 
                     <div class="row gy-3">
                         <div class="col-md-6">
@@ -118,7 +118,7 @@ while ($array = mysqli_fetch_array($busca)) {
                         </div>
                     </div>
                     <hr class="">
-                    <label class="" style="font-weight:bold; font-family: 'Poppins', sans-serif;"><i class="bi bi-file-earmark-plus text-primary rounded" style="border-style: solid;border-width: thin;padding:2px 10px;margin-right: 10px; font-size:130%;" ></i>Mais informações</label>
+                    <label class="" style="font-weight:bold; font-family: 'Poppins', sans-serif;"><i class="bi bi-file-earmark-plus text-primary rounded" style="border-style: solid;border-width: thin;padding:2px 10px;margin-right: 10px; font-size:130%;"></i>Mais informações</label>
                     <div class="row gy-3">
                         <div class="col-md-12 my-3">
                             <textarea class="form-control mt-3" rows="5" id="maisinfo" name="maisinfo" maxlength="400" readonly><?php echo $info; ?></textarea>
@@ -171,9 +171,12 @@ while ($array = mysqli_fetch_array($busca)) {
                             </tbody>
                         </table>
                     </div>
+                    <hr class="my-4">
                     <a type="button" href="?pagina=clientes" class="btn btn-primary">Voltar</a>
                 </form>
 
 
             </div>
         </div>
+    </div>
+</div>

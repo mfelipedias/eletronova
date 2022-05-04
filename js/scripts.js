@@ -44,15 +44,18 @@ function esconderCampo(id_campo1, id_campo2, id_campo3, id_select) {
     if (x == 'CPF/CNPJ') {
         document.getElementById(id_campo1).style.display = "block";
         document.getElementById(id_campo2).style.display = "none";
+        document.getElementById(id_campo3).style.display = "none";
     } else if (x == 0) {
         document.getElementById(id_campo1).style.display = "none";
         document.getElementById(id_campo2).style.display = "none";
+        document.getElementById(id_campo3).style.display = "none";
     } else if (x == 'Status') {
         document.getElementById(id_campo1).style.display = "none";
         document.getElementById(id_campo2).style.display = "none";
         document.getElementById(id_campo3).style.display = "block";
     } else {
         document.getElementById(id_campo1).style.display = "none";
+        document.getElementById(id_campo3).style.display = "none";
         document.getElementById(id_campo2).style.display = "block";
     }
 

@@ -322,7 +322,7 @@
     <!-- FIM SIDEBAR -->
 
     <!-- CONTEÚDO -->
-    
+
     <div class="col-auto td-main-content my-4">
       <div id="preloader">
         <div class="inner">
@@ -336,9 +336,13 @@
       <?php
       if (isset($_GET['pagina'])) {
         switch ($_GET['pagina']) {
+            //PAGINAS HOME
           case 'inicio':
             include './includes/home.php';
             break;
+            //FIM PAGINAS HOME
+
+            //PAGINAS CLIENTES
           case 'clientes':
             include './includes/clientes.php';
             break;
@@ -361,16 +365,51 @@
               include './includes/return/sucesso.php';
               ?>
             </div>
-      <?php
+          <?php
             include './includes/sub/clientes_view.php';
             break;
           case 'clientes_view':
             include './includes/sub/clientes_view.php';
             break;
-
           case 'clientes_edit':
             include './includes/sub/clientes_edit.php';
             break;
+            //FIM PAGINAS CLIENTES
+
+            //PÁGINAS USUÁRIOS
+          case 'usuarios':
+            include './includes/usuarios.php';
+            break;
+          case 'usuarios_view':
+            include './includes/sub/usuarios_view.php';
+            break;
+          case 'usuarios_edit':
+            include './includes/sub/usuarios_edit.php';
+            break;
+          case 'usuarios-add-erro':
+            include './includes/return/erro.php';
+            include './includes/usuarios.php';
+            break;
+          case 'usuarios-add-ok':
+            include './includes/return/sucesso.php';
+            include './includes/usuarios.php';
+            break;
+          case 'usuarios-del-ok':
+            include './includes/return/aviso.php';
+            include './includes/usuarios.php';
+            break;
+          case 'usuarios-up-ok':
+          ?>
+            <div class="" style="max-width: 1020px; width: 100%">
+              <?php
+              include './includes/return/sucesso.php';
+              ?>
+            </div>
+      <?php
+            include './includes/sub/usuarios_view.php';
+            break;
+            //FIM PÁGINAS USUARIOS
+
           case 'ordens':
             include './includes/ordens.php';
             break;
@@ -394,9 +433,6 @@
             break;
           case 'pcetesb':
             include './includes/pcetesb.php';
-            break;
-          case 'usuarios':
-            include './includes/usuarios.php';
             break;
           case 'ctensao':
             include './includes/ctensao.php';

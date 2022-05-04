@@ -34,8 +34,8 @@ while ($array = mysqli_fetch_array($busca)) {
                 <div class="col-md-auto">
                     <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalExcluir"><i class="bi bi-trash"></i></button>
                     <div class="modal fade" id="modalExcluir" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document" style="width: 380px; transition: all ease .75s;">
-                            <div class="modal-content rounded-6 shadow" style="border-radius: 1rem;">
+                        <div class="modal-dialog" role="document" style="width: 380px; transition: bottom .75s ease-in-out">
+                            <div class="modal-content rounded-6 shadow" style="border-radius: .75rem;">
                                 <div class="modal-header border-bottom-0">
                                     <h5 class="modal-title">Exclusão</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -44,7 +44,7 @@ while ($array = mysqli_fetch_array($busca)) {
                                     <p>Este cadastro está prestes a ser excluido. Essa ação não pode ser desfeita, deseja continuar?</p>
                                 </div>
                                 <div class="modal-footer flex-column border-top-0">
-                                    <a type="button" class="btn btn-lg btn-danger w-100 mx-0 mb-2" href="./scripts/cliente_del.php?id=<?php echo $id ?>&&nome=<?php echo $nome?>">Sim</a>
+                                    <a type="button" class="btn btn-lg btn-danger w-100 mx-0 mb-2" href="./scripts/cliente_del.php?id=<?php echo $id ?>&&nome=<?php echo $nome ?>">Sim</a>
                                     <button type="button" class="btn btn-lg btn-light w-100 mx-0" data-bs-dismiss="modal">Não</button>
                                 </div>
                             </div>
@@ -53,7 +53,7 @@ while ($array = mysqli_fetch_array($busca)) {
                 </div>
                 <!--FIM EXCLUIR -->
             </div>
-            <form class="mt-3" action="./scripts/cliente_up.php" method="post">
+            <form class="mt-3" action="./scripts/cliente_edit.php" method="post">
                 <div class="row g-3">
                     <div class="col-md-2">
                         <label for="cc-name" class="form-label">#ID:</label>
@@ -88,7 +88,7 @@ while ($array = mysqli_fetch_array($busca)) {
                     </div>
                     <div class="col-sm-8">
                         <label for="country" class="form-label">Nome:</label>
-                        <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" value="<?php echo $nome ?>" readonly>
+                        <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" value="<?php echo $nome ?>">
                     </div>
 
                     <div class="col-md-12">
@@ -137,7 +137,7 @@ while ($array = mysqli_fetch_array($busca)) {
 
                 <hr class="my-4">
 
-                <p class="" style="font-weight:bold; font-family: 'Poppins', sans-serif;"><i class="bi bi-people text-primary rounded" style="border-style: solid;border-width: thin;padding:2px 10px;margin-right: 10px; font-size:130%;"></i>Contatos</p>
+                <p class="" style="font-weight:bold; font-family: 'Poppins', sans-serif;"><i class="bi bi-telephone text-primary rounded" style="border-style: solid;border-width: thin;padding:2px 10px;margin-right: 10px; font-size:130%;"></i>Contatos</p>
 
                 <div class="row gy-3">
                     <div class="col-md-6">
@@ -167,8 +167,8 @@ while ($array = mysqli_fetch_array($busca)) {
                 <a type="button" href="?pagina=clientes_view&&id=<?php echo $id ?>" class="btn btn-primary">Voltar</a>
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalSalvar">Salvar</button>
                 <div class="modal fade " tabindex="-1" role="dialog" id="modalSalvar">
-                    <div class="modal-dialog" role="document" style="width: 380px; transition: transition: all ease .75s;">
-                        <div class="modal-content rounded-6 shadow" style="border-radius: 1rem;">
+                    <div class="modal-dialog" role="document" style="width: 380px; transition: bottom .75s ease-in-out">
+                        <div class="modal-content rounded-6 shadow" style="border-radius: .75rem;">
                             <div class="modal-header border-bottom-0">
                                 <h5 class="modal-title">Alterações</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -184,7 +184,8 @@ while ($array = mysqli_fetch_array($busca)) {
                     </div>
                 </div>
 
+
+            </form>
         </div>
-        </form>
     </div>
 </div>

@@ -6,7 +6,7 @@ $ftipopesquisa = $_GET['tipo'];
 ?>
 <div class="row mx-auto">
   <!-- COLUNA PESQUISA E TABELA -->
-  <div class="col" style="min-width: 400px; max-width: 1600px; width: 100%">
+  <div class="col" style="min-width: 375px; max-width: 1600px; width: 100%">
     <div class="row">
       <!-- CARD PESQUISA -->
       <div class="col-xl-4" style="min-width:300px;">
@@ -34,21 +34,25 @@ $ftipopesquisa = $_GET['tipo'];
                       </select>
                     </div>
                   </div>
-                  <div class="form-group row mt-1">
-                    <div class="col-sm-12">
-                      <input type="text" class="form-control" id="pesquisa1" name="pesquisa1" placeholder="Pesquisa..." value="" maxlength="40">
+                  <div class="mt-1">
+                    <div class="form-group row">
+                      <div class="col-sm-12">
+                        <input type="text" class="form-control" id="pesquisa1" name="pesquisa1" placeholder="Pesquisa..." value="" maxlength="40">
+                      </div>
                     </div>
-                  </div>
-                  <div class="form-group row mt-1">
-                    <div class="col-sm-12">
-                      <input type="text" class="form-control" id="pesquisa2" name="pesquisa2" placeholder="CPF/CNPJ" value="" onkeypress='mascaraCpfCnpj(this,cpfCnpj);' onblur='clearTimeout(); verifica(this.value);' maxlength="18">
+                    <div class="form-group row">
+                      <div class="col-sm-12">
+                        <input type="text" class="form-control" id="pesquisa2" name="pesquisa2" placeholder="CPF/CNPJ" value="" onkeypress='mascaraCpfCnpj(this,cpfCnpj);' onblur='clearTimeout(); verifica(this.value);' maxlength="18">
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-md-12">
-                    <select class="form-select" id="pesquisa3" name="pesquisa3">
-                      <option value="1">Ativo</option>
-                      <option value="0">Inativo</option>
-                    </select>
+                    <div class="form-group row">
+                      <div class="col-sm-12">
+                        <select class="form-select" id="pesquisa3" name="pesquisa3">
+                          <option value="1">Ativo</option>
+                          <option value="0">Inativo</option>
+                        </select>
+                      </div>
+                    </div>
                   </div>
                   <div class="form-group d-flex justify-content-end mt-2">
                     <button type="submit" href="#" class="btn btn-primary">Pesquisar</button>
@@ -177,7 +181,7 @@ $ftipopesquisa = $_GET['tipo'];
 
                           <hr class="my-4">
 
-                          <p class="" style="font-weight:bold; font-family: 'Poppins', sans-serif;"><i class="bi bi-people text-primary rounded" style="border-style: solid;border-width: thin;padding:2px 10px;margin-right: 10px; font-size:130%;"></i>Contatos</p>
+                          <p class="" style="font-weight:bold; font-family: 'Poppins', sans-serif;"><i class="bi bi-telephone text-primary rounded" style="border-style: solid;border-width: thin;padding:2px 10px;margin-right: 10px; font-size:130%;"></i>Contato...</p>
 
                           <div class="row gy-3">
                             <div class="col-md-6">
@@ -228,7 +232,7 @@ $ftipopesquisa = $_GET['tipo'];
           <thead>
             <tr>
 
-              <th scope="col">CPF/CNPJ</th>
+              <th scope="col"><label class="td-hide">CPF/CNPJ</label></th>
               <th scope="col">Nome</th>
               <th scope="col"><label class="td-hide">Endereço</label></th>
               <th scope="col">Status</th>
@@ -275,7 +279,7 @@ $ftipopesquisa = $_GET['tipo'];
             ?>
               <tr>
 
-                <td><?php echo $c_doc ?></th>
+                <td><p class="td-hide"><?php echo $c_doc ?></p></th>
                 <th><?php echo $c_nome ?></td>
                 <td>
                   <p class="td-hide"><?php echo $c_rua . ' , ' . $c_bairro . ' / ' . $c_cidade .  ' - ' . $c_uf ?></p>
