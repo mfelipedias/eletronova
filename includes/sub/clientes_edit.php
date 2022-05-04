@@ -165,7 +165,7 @@ while ($array = mysqli_fetch_array($busca)) {
                 </div>
                 <hr class="">
                 <a type="button" href="?pagina=clientes_view&&id=<?php echo $id ?>" class="btn btn-primary">Voltar</a>
-                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalSalvar">Salvar</button>
+                <a type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalSalvar">Salvar</a>
                 <div class="modal fade " tabindex="-1" role="dialog" id="modalSalvar">
                     <div class="modal-dialog" role="document" style="width: 380px; transition: bottom .75s ease-in-out">
                         <div class="modal-content rounded-6 shadow" style="border-radius: .75rem;">

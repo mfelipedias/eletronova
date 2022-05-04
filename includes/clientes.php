@@ -13,7 +13,7 @@ $ftipopesquisa = $_GET['tipo'];
         <div class="card shadow mb-2" style="width: 100%; min-width:300px">
           <div class="" style="padding: 3px;">
             <div class="flex-row p-1">
-              <a class="btn btn-outline-primary" data-toggle="collapse" href="#filtros" role="button" aria-expanded="false" onclick="esconderCampos('pesquisa2','pesquisa1','pesquisa3')" aria-controls="collapseExample">
+              <a class="btn btn-outline-primary" data-toggle="collapse" href="#filtros" role="button" aria-expanded="false" onclick="esconderCampos('pesquisa2','pesquisa1','pesquisa3', 'pesquisa4')" aria-controls="collapseExample">
                 <i class="bi bi-search"></i>
               </a>
               <span class="" style="font-size: 105%; font-weight:bold; margin-left:7px">Buscar...</span>
@@ -23,7 +23,7 @@ $ftipopesquisa = $_GET['tipo'];
                 <form class="mt-2" action="./scripts/cliente_filtro.php" method="post" style="padding: 0px 10px 10px;">
                   <div class="form-group row mt-1">
                     <div class="col-md-12">
-                      <select class="form-select" id="tipopesquisa" name="tipopesquisa" onchange="esconderCampo('pesquisa2','pesquisa1','pesquisa3', this.id)" required>
+                      <select class="form-select" id="tipopesquisa" name="tipopesquisa" onchange="esconderCampo('pesquisa2','pesquisa1','pesquisa3','pesquisa4', this.id)" required>
                         <option value="">Selecione...</option>
                         <option value="CPF/CNPJ">CPF/CNPJ</option>
                         <option value="Nome">Nome</option>
@@ -43,6 +43,22 @@ $ftipopesquisa = $_GET['tipo'];
                     <div class="form-group row">
                       <div class="col-sm-12">
                         <input type="text" class="form-control" id="pesquisa2" name="pesquisa2" placeholder="CPF/CNPJ" value="" onkeypress='mascaraCpfCnpj(this,cpfCnpj);' onblur='clearTimeout(); verifica(this.value);' maxlength="18">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-sm-12">
+                        <select class="form-select" id="pesquisa4" name="pesquisa4">
+                          <?php
+                          include './scripts/conexao.php';
+                          $sqlcargo = "SELECT * FROM `ramos`";
+                          $cargos = mysqli_query($conexao, $sqlcargo);
+                          while ($array = mysqli_fetch_array($cargos)) {
+                            $id_ramo = $array['id_ramo'];
+                            $ramo = $array['ramo'];
+                          ?>
+                            <option value="<?php echo $id_ramo ?>"><?php echo $ramo ?></option>
+                          <?php } ?>
+                        </select>
                       </div>
                     </div>
                     <div class="form-group row">
@@ -279,7 +295,9 @@ $ftipopesquisa = $_GET['tipo'];
             ?>
               <tr>
 
-                <td><p class="td-hide"><?php echo $c_doc ?></p></th>
+                <td>
+                  <p class="td-hide"><?php echo $c_doc ?></p>
+                  </th>
                 <th><?php echo $c_nome ?></td>
                 <td>
                   <p class="td-hide"><?php echo $c_rua . ' , ' . $c_bairro . ' / ' . $c_cidade .  ' - ' . $c_uf ?></p>

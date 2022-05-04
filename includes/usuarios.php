@@ -1,29 +1,34 @@
+<?php
+error_reporting(0);
+$filtro = $_GET['filtro'];
+$fpesquisa = $_GET['pesquisa'];
+$ftipopesquisa = $_GET['tipo'];
+echo $filtro;
+?>
 <div class="row mx-auto">
     <!-- COLUNA PESQUISA E TABELA -->
-    <div class="col-xl-7" style="min-width: 375px; max-width: 1600px; width: 100%">
+    <div class="col" style="min-width: 375px; max-width: 1600px; width: 100%">
         <div class="row">
             <!-- CARD PESQUISA -->
             <div class="col-xl-4" style="min-width:300px;">
                 <div class="card shadow mb-2" style="width: 100%; min-width:300px">
                     <div class="" style="padding: 3px;">
                         <div class="flex-row p-1">
-                            <a class="btn btn-outline-primary" data-toggle="collapse" href="#filtros" role="button" aria-expanded="false" onclick="esconderCampos('pesquisa2','pesquisa1','pesquisa3')" aria-controls="collapseExample">
+                            <a class="btn btn-outline-primary" data-toggle="collapse" href="#filtros" role="button" aria-expanded="false" onclick="esconderCampos('pesquisa2','pesquisa1','pesquisa3', 'pesquisa4')" aria-controls="collapseExample">
                                 <i class="bi bi-search"></i>
                             </a>
                             <span class="" style="font-size: 105%; font-weight:bold; margin-left:7px">Buscar...</span>
 
                             <div class="collapse" id="filtros">
 
-                                <form class="mt-2" action="./scripts/cliente_filtro.php" method="post" style="padding: 0px 10px 10px;">
+                                <form class="mt-2" action="./scripts/usuario_filtro.php" method="post" style="padding: 0px 10px 10px;">
                                     <div class="form-group row mt-1">
                                         <div class="col-md-12">
-                                            <select class="form-select" id="tipopesquisa" name="tipopesquisa" onchange="esconderCampo('pesquisa2','pesquisa1','pesquisa3', this.id)" required>
+                                            <select class="form-select" id="tipopesquisa" name="tipopesquisa" onchange="esconderCampo('pesquisa2','pesquisa1','pesquisa3','pesquisa4', this.id)" required>
                                                 <option value="">Selecione...</option>
-                                                <option value="CPF/CNPJ">CPF/CNPJ</option>
                                                 <option value="Nome">Nome</option>
-                                                <option value="Cidade">Cidade</option>
-                                                <option value="UF">UF</option>
-                                                <option value="Ramo">Ramo</option>
+                                                <option value="CPF/CNPJ">CPF</option>
+                                                <option value="Cargo">Cargo</option>
                                                 <option value="Status">Status</option>
                                             </select>
                                         </div>
@@ -36,7 +41,23 @@
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-sm-12">
-                                                <input type="text" class="form-control" id="pesquisa2" name="pesquisa2" placeholder="CPF/CNPJ" value="" onkeypress='mascaraCpfCnpj(this,cpfCnpj);' onblur='clearTimeout(); verifica(this.value);' maxlength="18">
+                                                <input type="text" class="form-control" id="pesquisa2" name="pesquisa2" placeholder="CPF" value="" onkeypress='mascaraCpfCnpj(this,cpfCnpj);' onblur='clearTimeout(); verifica(this.value);' maxlength="14">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-12">
+                                                <select class="form-select" id="pesquisa4" name="pesquisa4">
+                                                    <?php
+                                                    include './scripts/conexao.php';
+                                                    $sqlcargo = "SELECT * FROM `cargonivel`";
+                                                    $cargos = mysqli_query($conexao, $sqlcargo);
+                                                    while ($array = mysqli_fetch_array($cargos)) {
+                                                        $id_cargo = $array['id_cargo'];
+                                                        $cargo = $array['cargo'];
+                                                    ?>
+                                                        <option value="<?php echo $id_cargo?>"><?php echo $cargo ?></option>
+                                                    <?php } ?>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -65,13 +86,13 @@
                 <div class="card shadow mb-2" style="width: 100%; min-width:300px">
                     <div class="" style="padding:3px;">
                         <div class="flex-row p-1">
-                            <a class="btn btn-outline-primary" data-toggle="collapse" href="#filtros" role="button" onclick="esconderCampos('pesquisa2','pesquisa1', 'pesquisa3')" aria-expanded="false" aria-controls="collapseExample">
+                            <a class="btn btn-outline-primary" data-toggle="collapse" href="#filtros" role="button" onclick="esconderCampos('pesquisa2','pesquisa1', 'pesquisa3', 'pesquisa4')" aria-expanded="false" aria-controls="collapseExample">
                                 <i class="bi bi-filter"></i>
                             </a>
 
                             <span class="" style="font-size: 105%; font-weight:bold;margin-left:7px;">Filtros...</span>
                             <div class="collapse" id="filtros">
-                                <form class="mt-2" action="./scripts/cliente_filtro.php" method="post" style="padding: 0px 10px 10px;">
+                                <form class="mt-2" action="./scripts/usuario_filtro.php" method="post" style="padding: 0px 10px 10px;">
                                     <div class="form-group row mt-2">
                                         <div class="col-sm-12">
                                             <input type="text" class="form-control" id="fpesquisa" name="fpesquisa" placeholder="Sem filtro aplicado..." value="<?php if ($fpesquisa == "") {
@@ -91,7 +112,7 @@
                 </div>
             </div>
             <!-- FIM CARD FILTROS -->
-            <!-- CARD NOVA ORDEM -->
+            <!-- CARD novo usuario -->
             <div class="col-xl-4" style="min-width:300px;">
                 <div class="card shadow mb-2" style="width: 100%; min-width:300px">
                     <div class="" style="padding: 3px;">
@@ -233,7 +254,7 @@
                     </div>
                 </div>
             </div>
-            <!--FIM CARD NOVA ORDEM -->
+            <!--FIM CARD novo usuario -->
         </div>
         <!-- CARD TABELA -->
         <div class="card shadow mb-3">
@@ -242,24 +263,130 @@
                     <thead>
                         <tr>
                             <th scope="col">Nome</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Telefone</th>
+                            <th scope="col"><label class="td-hide">Email</label></th>
+                            <th scope="col"><label class="td-hide">Telefone</label></th>
                             <th scope="col">Cargo</th>
                             <th scope="col">Status</th>
                             <th scope="col">Ação</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">Daniel Alberto</th>
-                            <td>daniel@eletronovaengenharia.com.br</td>
-                            <td>(11)9999-9999</td>
-                            <td>Diretor</td>
-                            <td>Ativo</td>
-                            <td><a href="?pagina=usuarios_view" style="font-size: 23px;"><i class="bi bi-eye"></i></a></td>
-                        </tr>
+                        <?php
+                        include './scripts/conexao.php';
+                        if ($filtro == "") {
+                            $sql = "SELECT * FROM `usuarios` INNER JOIN `cargonivel` ON u_cargo=id_cargo ORDER BY u_nome ASC";
+                        } else {
+                            $sql = $filtro;
+                        }
+                        $total_reg = "15"; // número de registros por página
+                        $pag = $_GET['pag'];
+                        if (!$pag) {
+                            $pc = "1";
+                        } else {
+                            $pc = $pag;
+                        }
+                        $inicio = $pc - 1;
+                        $inicio = $inicio * $total_reg;
+
+                        $limite = mysqli_query($conexao, "$sql LIMIT $inicio, $total_reg");
+                        $todos = mysqli_query($conexao, $sql);
+
+                        $tr = mysqli_num_rows($todos); // verifica o número total de registros
+                        $tp = $tr / $total_reg; // verifica o número total de páginas
+
+                        $busca = mysqli_query($conexao, $sql);
+                        $contador = 0;
+                        while ($array = mysqli_fetch_array($limite)) {
+
+                            $contador = $contador + 1;
+                            $id_usuario = $array['id_usuario'];
+                            $u_nome = $array['u_nome'];
+                            $u_cargo = $array['u_cargo'];
+                            $cargo = $array['cargo'];
+                            $u_user = $array['u_user'];
+                            $u_mail = $array['u_mail'];
+                            $u_tel = $array['u_tel'];
+                            $u_status = $array['u_status'];
+                        ?>
+                            <tr>
+                                <th scope="row"><?php echo $u_nome ?></th>
+                                <td>
+                                    <p class="td-hide"><?php echo $u_mail ?></p>
+                                </td>
+                                <td>
+                                    <p class="td-hide"><?php echo $u_tel ?></p>
+                                </td>
+                                <td><?php echo $cargo ?></td>
+                                <td><i class="bi bi-circle-fill" style="color:<?php if ($u_status == 1) {
+                                                                                    echo 'green';
+                                                                                } else {
+                                                                                    echo 'red';
+                                                                                } ?>;"></i></td>
+                                <td><a href="?pagina=usuarios_view&&id=<?php echo $id_usuario ?>" style="font-size: 23px;"><i class="bi bi-eye"></i></i></i></a></td>
+                            <?php } ?>
+                            </tr>
                     </tbody>
                 </table>
+
+                <center><?php
+                        $anterior = $pc - 1;
+                        $proximo = $pc + 1;
+                        if ($pc > 1) {
+                            echo "
+                      </style>
+                      <a style='appearance: none;
+                      text-decoration: none;
+                      background-color: #FAFBFC;
+                      border: 1px solid rgba(27, 31, 35, 0.15);
+                      border-radius: 6px;
+                      box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+                      box-sizing: border-box;
+                      color: #24292E;
+                      cursor: pointer;
+                      display: inline-block;
+                      font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+                      font-size: 14px;
+                      font-weight: 500;
+                      line-height: 20px;
+                      list-style: none;
+                      padding: 6px 16px;
+                      position: relative;
+                      transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+                      user-select: none;
+                      -webkit-user-select: none;
+                      touch-action: manipulation;
+                      vertical-align: middle;
+                      white-space: nowrap;
+                      word-wrap: break-word;' href='?pagina=clientes&&pag=$anterior'>Anterior</a>";
+                        }
+                        echo "&nbsp | &nbsp";
+                        if ($pc < $tp) {
+                            echo "<a style='appearance: none;
+                      text-decoration: none;
+                      background-color: #FAFBFC;
+                      border: 1px solid rgba(27, 31, 35, 0.15);
+                      border-radius: 6px;
+                      box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+                      box-sizing: border-box;
+                      color: #24292E;
+                      cursor: pointer;
+                      display: inline-block;
+                      font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+                      font-size: 14px;
+                      font-weight: 500;
+                      line-height: 20px;
+                      list-style: none;
+                      padding: 6px 16px;
+                      position: relative;
+                      transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+                      user-select: none;
+                      -webkit-user-select: none;
+                      touch-action: manipulation;
+                      vertical-align: middle;
+                      white-space: nowrap;
+                      word-wrap: break-word;' href='?pagina=clientes&&pag=$proximo'>Próxima</a>";
+                        }
+                        ?><certer>
             </div>
         </div>
         <!-- FIM CARD TABELA -->
