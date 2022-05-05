@@ -1,5 +1,6 @@
 <?php
 include 'conexao.php';
+include 'password.php';
 
 $u_status = $_POST['status'];
 $u_cpf = $_POST['cpf'];
@@ -44,7 +45,7 @@ if ($total > 0) {
     $retorno = "CPF: " . $u_cpf . " já existe cadastrado.";
     header("Location: /eletronova/?pagina=usuarios-add-erro&&retorno=" . $retorno);
 } else {
-    $sql = "INSERT INTO usuarios (u_status, u_cpf, u_rg, u_nome, u_cep, u_rua, u_bairro, u_cidade, u_uf, u_comp, u_cargo, u_tel, u_mail, u_user, u_psw, u_info, u_cadastro, u_update) values ('$u_status', '$u_cpf', '$u_rg', '$u_nome', '$u_cep', '$u_rua', '$u_bairro', '$u_cidade', '$u_uf', '$u_comp', '$u_cargo', '$u_tel', '$u_mail', '$u_user', '$u_psw', '$u_info', now(), now())";
+    $sql = "INSERT INTO usuarios (u_status, u_cpf, u_rg, u_nome, u_cep, u_rua, u_bairro, u_cidade, u_uf, u_comp, u_cargo, u_tel, u_mail, u_user, u_psw, u_info, u_cadastro, u_update) values ('$u_status', '$u_cpf', '$u_rg', '$u_nome', '$u_cep', '$u_rua', '$u_bairro', '$u_cidade', '$u_uf', '$u_comp', '$u_cargo', '$u_tel', '$u_mail', '$u_user', sha1('$u_psw'), '$u_info', now(), now())";
     $inserir = mysqli_query($conexao, $sql);
     $retorno = "Usuário: " . $u_nome . " cadastrado com sucesso!";
     header("Location: /eletronova/?pagina=usuarios-add-ok&&retorno=" . $retorno);

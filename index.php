@@ -23,7 +23,20 @@
 </head>
 
 <body class="bg-light">
-
+  <?php
+  session_start();
+  if ((!isset($_SESSION['user']) == true) and (!isset($_SESSION['senha']) == true)) {
+    unset($_SESSION['id_usuario']);
+    unset($_SESSION['u_nome']);
+    unset($_SESSION['u_cargo']);
+    unset($_SESSION['user']);
+    unset($_SESSION['senha']);
+    header('location: ./login.php');
+  }
+  $logado = $_SESSION['u_nome'];
+  $id_usuario = $_SESSION['id_usuario'];
+  $nivel = $_SESSION['u_cargo'];
+  ?>
   <!-- INICIO NAVBAR -->
   <div class="row td-main-navbar" style="width: 100%;">
     <!-- BOTAO NAVBAR-->
@@ -36,14 +49,14 @@
       <div class="dropdown" style="z-index: 999;">
         <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
           <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-          <strong>Usuário</strong>
+          <strong><?php echo strstr($logado, ' ',true)?></strong>
         </a>
         <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
           <li><a class="dropdown-item" href="#"><i class="bi bi-person-bounding-box" style="margin-right: 5px;"></i>Perfil</a></li>
           <li>
             <hr class="dropdown-divider">
           </li>
-          <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-in-right" style="margin-right: 5px;"></i>Sair</a></li>
+          <li><a class="dropdown-item" href="./scripts/logout_.php"><i class="bi bi-box-arrow-in-right" style="margin-right: 5px;"></i>Sair</a></li>
         </ul>
       </div>
       <!-- IMAGEM NAVBAR -->
@@ -307,14 +320,14 @@
         <div class="dropdown">
           <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-            <strong>Usuário</strong>
+            <strong><?php echo strstr($logado, ' ',true)?></strong>
           </a>
           <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
             <li><a class="dropdown-item" href="#"><i class="bi bi-person-bounding-box" style="margin-right: 5px;"></i>Perfil</a></li>
             <li>
               <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-in-right" style="margin-right: 5px;"></i>Sair</a></li>
+            <li><a class="dropdown-item" href="./scripts/logout_.php"><i class="bi bi-box-arrow-in-right" style="margin-right: 5px;"></i>Sair</a></li>
           </ul>
         </div>
       </div>

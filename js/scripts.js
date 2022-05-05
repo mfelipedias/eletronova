@@ -1,3 +1,19 @@
+function validaSenha() {
+    var password = document.getElementById("senha"),
+        confirm_password = document.getElementById("rsenha");
+
+    function validatePassword() {
+        if (password.value != confirm_password.value) {
+            confirm_password.setCustomValidity("Senhas diferentes!");
+        } else {
+            confirm_password.setCustomValidity('');
+        }
+    }
+
+    password.onchange = validatePassword;
+    confirm_password.onkeyup = validatePassword;
+}
+
 //desabilitar campos de endereço
 function desabilitaEnd() {
     var input = document.querySelector("#cep");
@@ -57,7 +73,7 @@ function esconderCampo(id_campo1, id_campo2, id_campo3, id_campo4, id_select) {
         document.getElementById(id_campo2).style.display = "none";
         document.getElementById(id_campo4).style.display = "none";
         document.getElementById(id_campo3).style.display = "block";
-    } else if (x == 'Cargo' || x=='Ramo') {
+    } else if (x == 'Cargo' || x == 'Ramo') {
         document.getElementById(id_campo1).style.display = "none";
         document.getElementById(id_campo2).style.display = "none";
         document.getElementById(id_campo3).style.display = "none";
