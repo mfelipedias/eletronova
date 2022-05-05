@@ -47,7 +47,7 @@ while ($array = mysqli_fetch_array($busca)) {
                                     <p>Este cadastro está prestes a ser excluido. Essa ação não pode ser desfeita, deseja continuar?</p>
                                 </div>
                                 <div class="modal-footer flex-column border-top-0">
-                                    <a type="button" class="btn btn-lg btn-danger w-100 mx-0 mb-2" href="./scripts/usuario_del.php?id=<?php echo $id ?>&&nome=<?php echo $nome ?>">Sim</a>
+                                    <a type="button" class="btn btn-lg btn-danger w-100 mx-0 mb-2" href="./scripts/usuario_del.php?id=<?php echo $id_usuario?>&&nome=<?php echo $u_nome;?>">Sim</a>
                                     <button type="button" class="btn btn-lg btn-light w-100 mx-0" data-bs-dismiss="modal">Não</button>
                                 </div>
                             </div>

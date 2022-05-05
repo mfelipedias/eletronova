@@ -87,7 +87,7 @@ $ftipopesquisa = $_GET['tipo'];
         <div class="card shadow mb-2" style="width: 100%; min-width:300px">
           <div class="" style="padding:3px;">
             <div class="flex-row p-1">
-              <a class="btn btn-outline-primary" data-toggle="collapse" href="#filtros" role="button" onclick="esconderCampos('pesquisa2','pesquisa1', 'pesquisa3')" aria-expanded="false" aria-controls="collapseExample">
+              <a class="btn btn-outline-primary" data-toggle="collapse" href="#filtros" role="button" onclick="esconderCampos('pesquisa2','pesquisa1', 'pesquisa3', 'pesquisa4')" aria-expanded="false" aria-controls="collapseExample">
                 <i class="bi bi-filter"></i>
               </a>
 
@@ -103,7 +103,7 @@ $ftipopesquisa = $_GET['tipo'];
                                                                                                                                           } ?>" readonly>
                     </div>
                   </div>
-                  <div class="form-group d-flex justify-content-end mt-3">
+                  <div class="form-group d-flex justify-content-end" style="margin-top:11.5px">
                     <button type="submit" href="#" class="btn btn-secondary">Limpar</button>
                   </div>
                 </form>

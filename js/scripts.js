@@ -57,7 +57,7 @@ function esconderCampo(id_campo1, id_campo2, id_campo3, id_campo4, id_select) {
         document.getElementById(id_campo2).style.display = "none";
         document.getElementById(id_campo4).style.display = "none";
         document.getElementById(id_campo3).style.display = "block";
-    } else if (x == 'Cargo') {
+    } else if (x == 'Cargo' || x=='Ramo') {
         document.getElementById(id_campo1).style.display = "none";
         document.getElementById(id_campo2).style.display = "none";
         document.getElementById(id_campo3).style.display = "none";

@@ -3,7 +3,6 @@ error_reporting(0);
 $filtro = $_GET['filtro'];
 $fpesquisa = $_GET['pesquisa'];
 $ftipopesquisa = $_GET['tipo'];
-echo $filtro;
 ?>
 <div class="row mx-auto">
     <!-- COLUNA PESQUISA E TABELA -->
@@ -55,7 +54,7 @@ echo $filtro;
                                                         $id_cargo = $array['id_cargo'];
                                                         $cargo = $array['cargo'];
                                                     ?>
-                                                        <option value="<?php echo $id_cargo?>"><?php echo $cargo ?></option>
+                                                        <option value="<?php echo $id_cargo ?>"><?php echo $cargo ?></option>
                                                     <?php } ?>
                                                 </select>
                                             </div>
@@ -102,7 +101,7 @@ echo $filtro;
                                                                                                                                                                 } ?>" readonly>
                                         </div>
                                     </div>
-                                    <div class="form-group d-flex justify-content-end mt-3">
+                                    <div class="form-group d-flex justify-content-end" style="margin-top: 11.5px;">
                                         <button type="submit" href="#" class="btn btn-secondary">Limpar</button>
                                     </div>
                                 </form>
@@ -142,7 +141,7 @@ echo $filtro;
 
                                                         <div class="col-sm-5">
                                                             <label for="cpfcnpj" class="form-label">CPF:</label>
-                                                            <input type="text" class="form-control " id="cpfcnpj" name="cpf" onkeypress='mascaraCpfCnpj(this,cpfCnpj);' onblur='clearTimeout(); verifica(this.value);' maxlength="14">
+                                                            <input type="text" class="form-control " id="cpfcnpj" name="cpf" onkeypress='mascaraCpfCnpj(this,cpfCnpj);' onblur='clearTimeout(); verifica(this.value);' maxlength="14" required>
                                                             <div id="retorno" class="form-text "></div>
                                                         </div>
                                                         <div class="col-sm-5">
@@ -221,16 +220,16 @@ echo $filtro;
                                                     <div class="row gy-3">
                                                         <div class="col-md-12">
                                                             <label for="usuario" class="form-label">Usuario:</label>
-                                                            <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuário de acesso...">
+                                                            <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuário de acesso..." required>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="senha" class="form-label">Senha:</label>
-                                                            <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha...">
+                                                            <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha..." required>
                                                         </div>
 
                                                         <div class="col-md-6">
                                                             <label for="rsenha" class="form-label">Repita senha:</label>
-                                                            <input type="password" class="form-control" id="rsenha" name="rsenha" placeholder="Repita a senha...">
+                                                            <input type="password" class="form-control" id="rsenha" name="rsenha" placeholder="Repita a senha..." required>
                                                         </div>
                                                     </div>
                                                     <hr class="my-4">

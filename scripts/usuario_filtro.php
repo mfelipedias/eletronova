@@ -22,6 +22,7 @@ if ($fpesquisa != '') {
                 break;
             case $tipopesquisa == 'Cargo':
                 $filtro = "SELECT * FROM `usuarios` INNER JOIN `cargonivel` ON u_cargo=id_cargo WHERE u_cargo = '$cargo' ORDER BY u_nome DESC";
+                $pesquisa = $cargo;
                 break;
             case $tipopesquisa == 'Status':
                 $filtro = "SELECT * FROM `usuarios` INNER JOIN `cargonivel` ON u_cargo=id_cargo WHERE u_status = '$status' ORDER BY u_nome DESC";
