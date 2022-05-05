@@ -52,7 +52,7 @@ $retorno = $_GET['retorno']; ?>
         </div>
 
         <form action="scripts/login_.php" method="post">
-            <img class="mb-4" src="/img/01.png" alt="" width="100%" height="100%">
+            <img class="mb-4" src="./img/01.png" alt="" width="100%" height="100%">
 
             <div class="form-floating">
                 <input type="text" class="form-control" id="u_user" name="u_user" placeholder="Usuário" required>
