@@ -47,7 +47,7 @@ while ($array = mysqli_fetch_array($busca)) {
                                     <p>Este cadastro está prestes a ser excluido. Essa ação não pode ser desfeita, deseja continuar?</p>
                                 </div>
                                 <div class="modal-footer flex-column border-top-0">
-                                    <a type="button" class="btn btn-lg btn-danger w-100 mx-0 mb-2" href="./scripts/usuario_del.php?id=<?php echo $id_usuario?>&&nome=<?php echo $u_nome;?>">Sim</a>
+                                    <a type="button" class="btn btn-lg btn-danger w-100 mx-0 mb-2" href="./scripts/usuario_del.php?id=<?php echo $id_usuario ?>&&nome=<?php echo $u_nome; ?>">Sim</a>
                                     <button type="button" class="btn btn-lg btn-light w-100 mx-0" data-bs-dismiss="modal">Não</button>
                                 </div>
                             </div>
@@ -160,20 +160,18 @@ while ($array = mysqli_fetch_array($busca)) {
                     <p class="" style="font-weight:bold; font-family: 'Poppins', sans-serif;"><i class="bi bi-person-check text-primary rounded" style="border-style: solid;border-width: thin;padding:2px 10px;margin-right: 10px; font-size:130%;"></i>Credenciais de acesso...</p>
 
                     <div class="row gy-3">
-                        <div class="col-md-12">
+                        <div class="col">
                             <label for="usuario" class="form-label">Usuario:</label>
                             <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuário de acesso..." value="<?php echo $u_user ?>">
                         </div>
-                        <div class="col-md-6">
-                            <label for="senha" class="form-label">Senha:</label>
-                            <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha..." maxlength="20" value="<?php echo $u_psw ?>">
-                        </div>
-
-                        <div class="col-md-6">
-                            <label for="rsenha" class="form-label">Repita senha:</label>
-                            <input type="password" class="form-control" id="rsenha" name="rsenha" placeholder="Repita a senha..." maxlength="20" value="<?php echo $u_psw ?>">
+                        <div class="col">
+                            <button type="button" style="margin-top: 30px" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalSenha">
+                                Mudar Senha
+                            </button>
                         </div>
                     </div>
+
+
                     <hr class="my-4">
                     <div class="row">
                         <div class="col-md-12">
@@ -202,6 +200,33 @@ while ($array = mysqli_fetch_array($busca)) {
                         </div>
                     </div>
             </form>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="modalSenha" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Mudança de Senha</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="needs-validation" action="./scripts/senha_edit.php" method="post">
+                        <label for="status" class="form-label">#ID:</label>
+                        <input type="text" class="form-control " id="id_usuario" name="id_usuario" value="<?php echo $id_usuario ?>" readonly>
+
+                        <label for="senha" class="form-label">Senha:</label>
+                        <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha..." maxlength="20" required>
+                        <label for="rsenha" class="form-label">Repita senha:</label>
+                        <input type="password" class="form-control" id="rsenha" name="rsenha" placeholder="Repita a senha..." maxlength="20" oninput='validaSenha(this)' required>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                    <button type="Submit" class="btn btn-primary">OK</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>

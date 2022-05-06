@@ -229,7 +229,7 @@ $ftipopesquisa = $_GET['tipo'];
 
                                                         <div class="col-md-6">
                                                             <label for="rsenha" class="form-label">Repita senha:</label>
-                                                            <input type="password" class="form-control" id="rsenha" name="rsenha" placeholder="Repita a senha..." required>
+                                                            <input type="password" class="form-control" id="rsenha" name="rsenha" placeholder="Repita a senha..." oninput='validaSenha(this)' required>
                                                         </div>
                                                     </div>
                                                     <hr class="my-4">

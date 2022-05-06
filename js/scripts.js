@@ -1,17 +1,9 @@
-function validaSenha() {
-    var password = document.getElementById("senha"),
-        confirm_password = document.getElementById("rsenha");
-
-    function validatePassword() {
-        if (password.value != confirm_password.value) {
-            confirm_password.setCustomValidity("Senhas diferentes!");
-        } else {
-            confirm_password.setCustomValidity('');
-        }
-    }
-
-    password.onchange = validatePassword;
-    confirm_password.onkeyup = validatePassword;
+function validaSenha(input) {
+if(input.value!=document.getElementById('senha').value) {
+input.setCustomValidity('Repita a senha corretamente.');
+}else{
+input.setCustomValidity('');
+}
 }
 
 //desabilitar campos de endereço

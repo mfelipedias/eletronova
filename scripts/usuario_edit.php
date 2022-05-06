@@ -1,5 +1,6 @@
 <?php
 include 'conexao.php';
+include 'password.php';
 
 $id=$_POST['id_usuario'];
 $u_status=$_POST['status'];

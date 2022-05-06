@@ -19,24 +19,6 @@ $u_user = $_POST['usuario'];
 $u_psw = $_POST['senha'];
 $u_info = $_POST['info'];
 
-echo $u_status;
-echo $u_cpf;
-echo $u_rg;
-echo $u_nome;
-echo $u_cep;
-echo $u_rua;
-echo $u_bairro;
-echo $u_cidade;
-echo $u_uf;
-echo $u_comp;
-echo $u_cargo;
-echo $u_tel;
-echo $u_mail;
-echo $u_user;
-echo $u_psw;
-echo $u_info;
-
-
 $sqlbuscar = "SELECT u_cpf FROM usuarios WHERE u_cpf = '$u_cpf'";
 $buscar = mysqli_query($conexao, $sqlbuscar);
 $total = mysqli_num_rows($buscar);
