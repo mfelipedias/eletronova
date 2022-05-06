@@ -28,14 +28,14 @@
   if ((!isset($_SESSION['user']) == true) and (!isset($_SESSION['senha']) == true)) {
     unset($_SESSION['id_usuario']);
     unset($_SESSION['u_nome']);
-    unset($_SESSION['u_cargo']);
+    unset($_SESSION['nivel']);
     unset($_SESSION['user']);
     unset($_SESSION['senha']);
     header('location: ./login.php');
   }
   $logado = $_SESSION['u_nome'];
   $id_usuario = $_SESSION['id_usuario'];
-  $nivel = $_SESSION['u_cargo'];
+  $nivel = $_SESSION['nivel'];
   ?>
   <!-- INICIO NAVBAR -->
   <div class="row td-main-navbar" style="width: 100%;">
@@ -49,7 +49,7 @@
       <div class="dropdown" style="z-index: 999;">
         <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
           <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-          <strong><?php echo strstr($logado, ' ',true)?></strong>
+          <strong><?php echo strstr($logado, ' ', true) ?></strong>
         </a>
         <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
           <li><a class="dropdown-item" href="#"><i class="bi bi-person-bounding-box" style="margin-right: 5px;"></i>Perfil</a></li>
@@ -320,10 +320,10 @@
         <div class="dropdown">
           <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-            <strong><?php echo strstr($logado, ' ',true)?></strong>
+            <strong><?php echo strstr($logado, ' ', true) ?></strong>
           </a>
           <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-            <li><a class="dropdown-item" href="#"><i class="bi bi-person-bounding-box" style="margin-right: 5px;"></i>Perfil</a></li>
+            <li><a class="dropdown-item" href="<a href="?pagina=usuarios_view&&id=<?php echo $id_usuario ?>"><i class="bi bi-person-bounding-box" style="margin-right: 5px;"></i>Perfil</a></li>
             <li>
               <hr class="dropdown-divider">
             </li>
@@ -424,7 +424,7 @@
             //FIM PÁGINAS USUARIOS
 
           case 'ordens':
-            include './includes/ordens.php';
+              include './includes/ordens.php';
             break;
           case 'ordens_edit':
             include './includes/sub/ordens_edit.php';
@@ -476,6 +476,7 @@
 
   </div>
 
+
   <!-- FONTAWESOME ICONS -->
   <script src="https://kit.fontawesome.com/17040bbfa3.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -496,6 +497,7 @@
   <script src="js/mascaracpfcnpj.js"></script>
   <script src="js/validacpfcnpj.js"></script>
   <script src="js/scripts.js"></script>
+
   <!-- Latest compiled and minified CSS -->
   <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>

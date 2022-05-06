@@ -10,5 +10,5 @@ $atualizar = mysqli_query($conexao, $sql);
 $deletar = "DELETE FROM usuarios where id_usuario = $id";
 $fila = mysqli_query($conexao, $deletar);
 $retorno = "Usuário: " . $nome . " deletado/inativado com sucesso.";
-header("Location: /eletronova/?pagina=usuarios-del-ok&&retorno=" . $retorno);
+header("Location: ../?pagina=usuarios-del-ok&&retorno=" . $retorno);
 ?>

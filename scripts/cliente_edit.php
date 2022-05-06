@@ -21,5 +21,5 @@ $sql = "UPDATE clientes SET c_status = '$status', c_nome = '$nome', c_ramo = '$r
 $atualizar = mysqli_query($conexao, $sql);
 
 $retorno = "Cliente: " . $nome . " alterado com sucesso!";
-header("Location: /eletronova/?pagina=clientes-up-ok&&id=" . $id. "&&retorno=" . $retorno);
+header("Location: ../?pagina=clientes-up-ok&&id=" . $id. "&&retorno=" . $retorno);
 ?>

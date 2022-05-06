@@ -45,4 +45,4 @@ if ($fpesquisa != '') {
 }
 
 
-header("Location: /eletronova/?pagina=clientes&&filtro=" . $filtro . "&&pesquisa=" . $pesquisa . "&&tipo=" . $tipopesquisa);
+header("Location: ../?pagina=clientes&&filtro=" . $filtro . "&&pesquisa=" . $pesquisa . "&&tipo=" . $tipopesquisa);

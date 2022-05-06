@@ -10,5 +10,5 @@ $sql = "UPDATE usuarios SET u_psw = sha1('$u_psw'), u_update = now() WHERE id_us
 $atualizar = mysqli_query($conexao, $sql);
 
 $retorno = "Senha alterada com sucesso!";
-header("Location: /eletronova/?pagina=usuarios-up-ok&&id=" . $id. "&&retorno=" . $retorno);
+header("Location: ../?pagina=usuarios-up-ok&&id=" . $id. "&&retorno=" . $retorno);
 ?>

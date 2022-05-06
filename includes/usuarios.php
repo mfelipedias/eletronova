@@ -188,7 +188,7 @@ $ftipopesquisa = $_GET['tipo'];
                                                                 $cargos = mysqli_query($conexao, $sqlcargo);
                                                                 while ($array = mysqli_fetch_array($cargos)) {
                                                                     $id_ramo = $array['id_cargo'];
-                                                                    $ramo = $array['cargo'];
+                                                                    $cargo = $array['cargo'];
                                                                 ?>
                                                                     <option value="<?php echo $id_cargo ?>"><?php echo $cargo ?></option>
                                                                 <?php } ?>

@@ -28,6 +28,6 @@ else{
 $sql = "INSERT INTO clientes (c_doc, c_nome, c_ramo, c_cep, c_rua, c_bairro, c_comp, c_cidade, c_uf, c_contato, c_tel, c_mail, c_info, c_status, c_cadastro, c_update) values ('$doc', '$nome', '$ramo', '$cep', '$rua', '$bairro', '$comp', '$cidade', '$uf', '$contato', '$tel', '$mail', '$info', '$status', now(), now())";
 $inserir = mysqli_query($conexao, $sql);
 $retorno = "Cliente: " . $nome . " cadastrado com sucesso!";
-header("Location: /eletronova/?pagina=clientes-add-ok&&retorno=" . $retorno);
+header("Location: ../?pagina=clientes-add-ok&&retorno=" . $retorno);
 
 }

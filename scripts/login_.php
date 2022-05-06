@@ -7,13 +7,12 @@ $senha = $_POST['u_psw'];
 $erro1 = "<b>Erro:</b> Usuário não encontrado.";
 $erro2 = "<b>Erro:</b> Senha incorreta.";
 
-$sql = "SELECT * FROM usuarios WHERE u_user = '$user'";
+$sql = "SELECT * FROM usuarios INNER JOIN `cargonivel` ON u_cargo=id_cargo WHERE u_user = '$user'";
 
 $buscar = mysqli_query($conexao, $sql);
 $total = mysqli_num_rows($buscar);
 
 if ($total == 0) {
-    // echo "ERRO login";
     header("Location: ../login.php?retorno=" . $erro1);
 }
 while ($array = mysqli_fetch_array($buscar)) {
@@ -21,6 +20,7 @@ while ($array = mysqli_fetch_array($buscar)) {
     $u_nome = $array['u_nome'];
     $u_psw = $array['u_psw'];
     $u_cargo = $array['u_cargo'];
+    $nivel = $array['nivel'];
     $u_status = $array['u_status'];
     $senhacod = sha1($senha);
 
@@ -29,19 +29,19 @@ while ($array = mysqli_fetch_array($buscar)) {
             if ($u_status == 1) {
                 $_SESSION['id_usuario'] = $id_usuario;
                 $_SESSION['u_nome'] = $u_nome;
-                $_SESSION['u_cargo'] = $u_cargo;
+                $_SESSION['nivel'] = $nivel;
                 $_SESSION['user'] = $user;
                 $_SESSION['senha'] = $senha;
-                echo "Login OK";
-                header("Location: ../index.php");
+
+                header("Location: ../index.php?pagina=inicio");
             } else {
                 header("Location: ../login.php?retorno=" . $erro1);
             }
-        } else { //header("Location: ../login.php?retorno=erro");
+        } else { ;
             header("Location: ../login.php?retorno=" . $erro2);
         }
     } else {
-        //header("Location: ../login.php?retorno=erro");
+        
         header("Location: ../login.php?retorno=" . $erro1);
     }
 }

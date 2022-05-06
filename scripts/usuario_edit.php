@@ -23,5 +23,5 @@ $sql = "UPDATE usuarios SET u_cpf = '$u_cpf', u_rg = '$u_rg', u_nome = '$u_nome'
 $atualizar = mysqli_query($conexao, $sql);
 
 $retorno = "Usuário: " . $u_nome . " alterado com sucesso!";
-header("Location: /eletronova/?pagina=usuarios-up-ok&&id=" . $id. "&&retorno=" . $retorno);
+header("Location: ../?pagina=usuarios-up-ok&&id=" . $id. "&&retorno=" . $retorno);
 ?>

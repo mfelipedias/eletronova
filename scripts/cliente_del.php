@@ -8,5 +8,5 @@ $atualizar = mysqli_query($conexao, $sql);
 $deletar = "DELETE FROM clientes where id_cliente = $id";
 $fila = mysqli_query($conexao, $deletar);
 $retorno = "Cliente: " . $nome . " deletado/inativado com sucesso.";
-header("Location: /eletronova/?pagina=clientes-del-ok&&retorno=" . $retorno);
+header("Location: ../?pagina=clientes-del-ok&&retorno=" . $retorno);
 ?>
