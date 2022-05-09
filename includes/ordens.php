@@ -1,6 +1,12 @@
+<?php
+error_reporting(0);
+$filtro = $_GET['filtro'];
+$fpesquisa = $_GET['pesquisa'];
+$ftipopesquisa = $_GET['tipo'];
+?>
 <div class="row mx-auto">
     <!-- COLUNA PESQUISA E TABELA -->
-    <div class="col-md-12" style="min-width: 400px; max-width: 1366px">
+    <div class="col-md-12" style="min-width: 375px; max-width: 1600px">
         <div class="row">
             <!-- CARD PESQUISA -->
             <div class="col-md-4">
@@ -43,7 +49,7 @@
                                             </select>
                                         </div>
                                     </div>
-                               
+
                                     <div class="form-group d-flex justify-content-end mt-3">
                                         <button type="submit" class="btn btn-primary">Pesquisar</button>
                                     </div>
@@ -257,16 +263,119 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">01</th>
-                            <td>Eletronova Engenharia e Tecnologia Ltda</td>
-                            <td>Rua Miguel Calmon, 68</td>
-                            <td>Manutenção</td>
-                            <td><i class="bi bi-circle-fill" style="color:green;"></i></td>
-                            <td><a href="?pagina=ordens_view" style="font-size: 23px;"><i class="bi bi-eye"></i></a></td>
-                        </tr>
+                        <?php
+                        include './scripts/conexao.php';
+                        if ($filtro == "") {
+                            $sql = "SELECT * FROM `ordens` INNER JOIN `clientes` ON os_cliente=id_cliente ORDER BY c_nome ASC";
+                        } else {
+                            $sql = $filtro;
+                        }
+                        $total_reg = "15"; // número de registros por página
+                        $pag = $_GET['pag'];
+                        if (!$pag) {
+                            $pc = "1";
+                        } else {
+                            $pc = $pag;
+                        }
+                        $inicio = $pc - 1;
+                        $inicio = $inicio * $total_reg;
+
+                        $limite = mysqli_query($conexao, "$sql LIMIT $inicio, $total_reg");
+                        $todos = mysqli_query($conexao, $sql);
+
+                        $tr = mysqli_num_rows($todos); // verifica o número total de registros
+                        $tp = $tr / $total_reg; // verifica o número total de páginas
+
+                        $busca = mysqli_query($conexao, $sql);
+                        $contador = 0;
+                        while ($array = mysqli_fetch_array($limite)) {
+
+                            $contador = $contador + 1;
+                            $id_os = $array['id_os'];
+                            $os_cliente = $array['os_cliente'];
+                            $c_nome = $array['c_nome'];
+                            $os_status = $array['os_status'];
+                            $os_tipo = $array['os_tipo'];
+                            $os_cep = $array['os_cep'];
+                            $os_rua = $array['os_rua'];
+                            $os_bairro = $array['os_bairro'];
+                            $os_cidade = $array['os_cidade'];
+                            $os_uf = $array['os_uf'];
+                        ?>
+                            <tr>
+                                <th scope="row"><?php echo $id_os ?></th>
+                                <td><?php echo $c_nome ?></td>
+                                <td><?php echo $os_rua . ", " . $os_bairro . "-" .  $os_cidade . "/" .  $os_uf ?></td>
+                                <td><?php echo $os_tipo ?></td>
+                                <td><i class="bi bi-circle-fill" style="color:<?php if ($os_status == 1) {
+                                                                                    echo 'green';
+                                                                                } else {
+                                                                                    echo 'red';
+                                                                                } ?>;"></i></td>
+                                <td><a href="?pagina=ordens_view&&id=<?php echo $id_os?>" style="font-size: 23px;"><i class="bi bi-eye"></i></a></td>
+                            <?php } ?>
+                            </tr>
                     </tbody>
                 </table>
+                <center><?php
+                        $anterior = $pc - 1;
+                        $proximo = $pc + 1;
+                        if ($pc > 1) {
+                            echo "
+                      </style>
+                      <a style='appearance: none;
+                      text-decoration: none;
+                      background-color: #FAFBFC;
+                      border: 1px solid rgba(27, 31, 35, 0.15);
+                      border-radius: 6px;
+                      box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+                      box-sizing: border-box;
+                      color: #24292E;
+                      cursor: pointer;
+                      display: inline-block;
+                      font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+                      font-size: 14px;
+                      font-weight: 500;
+                      line-height: 20px;
+                      list-style: none;
+                      padding: 6px 16px;
+                      position: relative;
+                      transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+                      user-select: none;
+                      -webkit-user-select: none;
+                      touch-action: manipulation;
+                      vertical-align: middle;
+                      white-space: nowrap;
+                      word-wrap: break-word;' href='?pagina=clientes&&pag=$anterior'>Anterior</a>";
+                        }
+                        echo "&nbsp | &nbsp";
+                        if ($pc < $tp) {
+                            echo "<a style='appearance: none;
+                      text-decoration: none;
+                      background-color: #FAFBFC;
+                      border: 1px solid rgba(27, 31, 35, 0.15);
+                      border-radius: 6px;
+                      box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+                      box-sizing: border-box;
+                      color: #24292E;
+                      cursor: pointer;
+                      display: inline-block;
+                      font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+                      font-size: 14px;
+                      font-weight: 500;
+                      line-height: 20px;
+                      list-style: none;
+                      padding: 6px 16px;
+                      position: relative;
+                      transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+                      user-select: none;
+                      -webkit-user-select: none;
+                      touch-action: manipulation;
+                      vertical-align: middle;
+                      white-space: nowrap;
+                      word-wrap: break-word;' href='?pagina=clientes&&pag=$proximo'>Próxima</a>";
+                        }
+                        ?></center>
             </div>
         </div>
 

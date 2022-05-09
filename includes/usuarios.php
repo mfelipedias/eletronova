@@ -385,7 +385,7 @@ $ftipopesquisa = $_GET['tipo'];
                       white-space: nowrap;
                       word-wrap: break-word;' href='?pagina=clientes&&pag=$proximo'>Próxima</a>";
                         }
-                        ?><certer>
+                        ?></center>
             </div>
         </div>
         <!-- FIM CARD TABELA -->
