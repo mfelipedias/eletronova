@@ -28,6 +28,7 @@
   if ((!isset($_SESSION['user']) == true) and (!isset($_SESSION['senha']) == true)) {
     unset($_SESSION['id_usuario']);
     unset($_SESSION['u_nome']);
+    unset($_SESSION['u_foto']);
     unset($_SESSION['nivel']);
     unset($_SESSION['user']);
     unset($_SESSION['senha']);
@@ -36,6 +37,7 @@
   $logado = $_SESSION['u_nome'];
   $id_usuario = $_SESSION['id_usuario'];
   $nivel = $_SESSION['nivel'];
+  $u_foto = $_SESSION['u_foto'];
   ?>
   <!-- INICIO NAVBAR -->
   <div class="row td-main-navbar" style="width: 100%;">
@@ -48,7 +50,7 @@
       <!-- USUARIO NAVBAR-->
       <div class="dropdown" style="z-index: 999;">
         <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+          <img src="<?php echo $u_foto; ?>" alt="" width="32" height="32" class="rounded-circle me-2">
           <strong><?php echo strstr($logado, ' ', true) ?></strong>
         </a>
         <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
@@ -175,7 +177,7 @@
                                                                     }
                                                                     ?></span>
   </div>
-  <div class="flex-row " style="border-top-style: solid; border-top-color: #fe4816;border-width: 10px;">
+  <div class="flex-row " style="border-top-style: solid; border-top-color: #fe4816;border-width: 10px;" >
     <!-- INICIO SIDEBAR -->
     <div class="col-auto td-main-sidebar">
       <div class="shadow min-vh-100 d-flex flex-column flex-shrink-0 bg-white sidebar" style="z-index:999">
@@ -319,11 +321,11 @@
         <!-- USUÁRIO SIDEBAR -->
         <div class="dropdown">
           <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+            <img src="<?php echo $u_foto; ?>" alt="" width="32" height="32" class="rounded-circle me-2">
             <strong><?php echo strstr($logado, ' ', true) ?></strong>
           </a>
           <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-            <li><a class="dropdown-item" href="<a href="?pagina=usuarios_view&&id=<?php echo $id_usuario ?>"><i class="bi bi-person-bounding-box" style="margin-right: 5px;"></i>Perfil</a></li>
+            <li><a class="dropdown-item" href="?pagina=usuarios_view&&id=<?php echo $id_usuario ?>"><i class="bi bi-person-bounding-box" style="margin-right: 5px;"></i>Perfil</a></li>
             <li>
               <hr class="dropdown-divider">
             </li>

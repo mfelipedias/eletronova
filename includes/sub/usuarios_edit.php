@@ -22,6 +22,7 @@ while ($array = mysqli_fetch_array($busca)) {
     $u_mail = $array['u_mail'];
     $u_user = $array['u_user'];
     $u_info = $array['u_info'];
+    $u_foto = $array['u_foto'];
     $u_cadastro = $array['u_cadastro'];
     $u_update = $array['u_update'];
 }
@@ -73,6 +74,7 @@ while ($array = mysqli_fetch_array($busca)) {
                                 <option value="0">Inativo</option>
                             </select>
                         </div>
+
                         <div class="col-md-4">
                             <label for="cc-name" class="form-label">Cadastro:</label>
                             <input type="text" class="form-control" id="cadastro" name="cadastro" placeholder="" value="<?php echo date('d/m/Y H:i:s', strtotime($u_cadastro)); ?>" readonly>
@@ -81,19 +83,28 @@ while ($array = mysqli_fetch_array($busca)) {
                             <label for="cc-name" class="form-label">Atualização:</label>
                             <input type="text" class="form-control" id="update" name="update" placeholder="" value="<?php echo date('d/m/Y H:i:s', strtotime($u_update)); ?>" readonly>
                         </div>
-                        <div class="col-sm-6">
-                            <label for="cpfcnpj" class="form-label">CPF:</label>
-                            <input type="text" class="form-control " id="cpfcnpj" name="cpf" value="<?php echo $u_cpf ?>" onkeypress='mascaraCpfCnpj(this,cpfCnpj);' onblur='clearTimeout(); verifica(this.value);' maxlength="14" readonly>
-                            <div id="retorno" class="form-text "></div>
-                        </div>
-                        <div class="col-sm-6">
-                            <label for="cpfcnpj" class="form-label">RG:</label>
-                            <input type="text" class="form-control " id="rg" name="rg" maxlength="20" value="<?php echo $u_rg ?>">
-                            <div id="retorno" class="form-text "></div>
-                        </div>
-                        <div class="col-12">
-                            <label for="nome" class="form-label">Nome completo:</label>
-                            <input type="text" class="form-control" id="nome" name="nome" placeholder="" value="<?php echo $u_nome ?>" maxlength="60">
+                        <div class="row g-3">
+                            <div class="col-lg-3">
+                                <img src="<?php echo $u_foto; ?>" alt="" width="100%" class="rounded">
+                            </div>
+                            <div class="col-lg-9">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="cpfcnpj" class="form-label">CPF:</label>
+                                        <input type="text" class="form-control " id="cpfcnpj" name="cpf" maxlength="14" value="<?php echo $u_cpf ?>" readonly>
+                                        <div id="retorno" class="form-text "></div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="cpfcnpj" class="form-label">RG:</label>
+                                        <input type="text" class="form-control " id="rg" name="rg" maxlength="20" value="<?php echo $u_rg ?>" readonly>
+                                        <div id="retorno" class="form-text "></div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <label for="nome" class="form-label">Nome completo:</label>
+                                    <input type="text" class="form-control" id="nome" name="nome" placeholder="" maxlength="60" value="<?php echo $u_nome ?>">
+                                </div>
+                            </div>
                         </div>
                         <div class="col-3">
                             <label for="cep" class="form-label">CEP:</label>

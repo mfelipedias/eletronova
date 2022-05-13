@@ -10,48 +10,68 @@ $ftipopesquisa = $_GET['tipo'];
         <div class="row">
             <!-- CARD PESQUISA -->
             <div class="col-md-4">
-                <div class="card shadow mb-2" style="width: 100%;">
+                <div class="card shadow mb-2" style="width: 100%; min-width:300px">
                     <div class="" style="padding: 3px;">
                         <div class="flex-row p-1">
-                            <a class="btn btn-outline-primary" data-toggle="collapse" href="#filtros" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            <a class="btn btn-outline-primary" data-toggle="collapse" href="#filtros" role="button" aria-expanded="false" onclick="esconderCampos('pesquisa2','pesquisa1','pesquisa3', 'pesquisa4')" aria-controls="collapseExample">
                                 <i class="bi bi-search"></i>
                             </a>
                             <span class="" style="font-size: 105%; font-weight:bold; margin-left:7px">Buscar...</span>
 
                             <div class="collapse" id="filtros">
 
-                                <form class="" style="padding: 0px 10px 10px;">
-                                    <div class="form-group row">
-                                        <div class="col-sm-5 mt-2">
-                                            <label for="firstName" class="form-label">OS:</label>
-                                            <input type="text" class="form-control" id="pcpfcnpj" placeholder="" value="">
-                                        </div>
-
-                                        <div class="col-sm-7 mt-2">
-                                            <label for="lastName" class="form-label">Nome / Razao Social:</label>
-                                            <input type="text" class="form-control" id="pnome" placeholder="" value="">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row mb-0">
-                                        <div class="col-md-7 mt-2">
-                                            <label for="country" class="form-label">Cidade:</label>
-                                            <select class="form-select" id="country">
-                                                <option value="">Escolha...</option>
-                                                <option>Cotia</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="col-md-5 mt-2">
-                                            <label for="state" class="form-label">Estado:</label>
-                                            <select class="form-select" id="state">
-                                                <option value="">Escolha...</option>
-                                                <option>SP</option>
+                                <form class="mt-2" action="./scripts/cliente_filtro.php" method="post" style="padding: 0px 10px 10px;">
+                                    <div class="form-group row mt-1">
+                                        <div class="col-md-12">
+                                            <select class="form-select" id="tipopesquisa" name="tipopesquisa" onchange="esconderCampo('pesquisa2','pesquisa1','pesquisa3','pesquisa4', this.id)" required>
+                                                <option value="">Selecione...</option>
+                                                <option value="CPF/CNPJ">CPF/CNPJ</option>
+                                                <option value="Nome">Nome</option>
+                                                <option value="Cidade">Cidade</option>
+                                                <option value="UF">UF</option>
+                                                <option value="Ramo">Ramo</option>
+                                                <option value="Status">Status</option>
                                             </select>
                                         </div>
                                     </div>
-
-                                    <div class="form-group d-flex justify-content-end mt-3">
-                                        <button type="submit" class="btn btn-primary">Pesquisar</button>
+                                    <div class="mt-1">
+                                        <div class="form-group row">
+                                            <div class="col-sm-12">
+                                                <input type="text" class="form-control" id="pesquisa1" name="pesquisa1" placeholder="Pesquisa..." value="" maxlength="40">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-12">
+                                                <input type="text" class="form-control" id="pesquisa2" name="pesquisa2" placeholder="CPF/CNPJ" value="" onkeypress='mascaraCpfCnpj(this,cpfCnpj);' onblur='clearTimeout(); verifica(this.value);' maxlength="18">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-12">
+                                                <select class="form-select" id="pesquisa4" name="pesquisa4">
+                                                    <?php
+                                                    include './scripts/conexao.php';
+                                                    $sqlcargo = "SELECT * FROM `ramos`";
+                                                    $cargos = mysqli_query($conexao, $sqlcargo);
+                                                    while ($array = mysqli_fetch_array($cargos)) {
+                                                        $id_ramo = $array['id_ramo'];
+                                                        $ramo = $array['ramo'];
+                                                    ?>
+                                                        <option value="<?php echo $id_ramo ?>"><?php echo $ramo ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-12">
+                                                <select class="form-select" id="pesquisa3" name="pesquisa3">
+                                                    <option value="1">Ativo</option>
+                                                    <option value="0">Inativo</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group d-flex justify-content-end mt-2">
+                                        <button type="submit" href="#" class="btn btn-primary">Pesquisar</button>
                                     </div>
                                 </form>
 
@@ -64,27 +84,29 @@ $ftipopesquisa = $_GET['tipo'];
             <!-- FIM CARD PESQUISA -->
             <!-- CARD FILTROS -->
             <div class="col-md-4">
-                <div class="card shadow mb-2" style="width: 100%;">
+                <div class="card shadow mb-2" style="width: 100%; min-width:300px">
                     <div class="" style="padding:3px;">
                         <div class="flex-row p-1">
-                            <a class="btn btn-outline-primary" data-toggle="collapse" href="#filtros" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            <a class="btn btn-outline-primary" data-toggle="collapse" href="#filtros" role="button" onclick="esconderCampos('pesquisa2','pesquisa1', 'pesquisa3', 'pesquisa4')" aria-expanded="false" aria-controls="collapseExample">
                                 <i class="bi bi-filter"></i>
                             </a>
 
                             <span class="" style="font-size: 105%; font-weight:bold;margin-left:7px;">Filtros...</span>
                             <div class="collapse" id="filtros">
-                                <div class="p-2">
-                                    <label><small>CPF/CNPJ:</small></label>
-                                    <input class="form-control form-control-sm" type="text" placeholder="Sem filtro..." readonly>
-                                    <label>Nome:</label>
-                                    <input class="form-control form-control-sm" type="text" placeholder="Sem filtro..." readonly>
-                                    <label>Estado:</label>
-                                    <input class="form-control form-control-sm" type="text" placeholder="Sem filtro..." readonly>
-                                    <label>Cidade:</label>
-                                    <input class="form-control form-control-sm" type="text" placeholder="Sem filtro..." readonly>
-                                    <label>Status:</label>
-                                    <input class="form-control form-control-sm" type="text" placeholder="Sem filtro..." readonly>
-                                </div>
+                                <form class="mt-2" action="./scripts/cliente_filtro.php" method="post" style="padding: 0px 10px 10px;">
+                                    <div class="form-group row mt-2">
+                                        <div class="col-sm-12">
+                                            <input type="text" class="form-control" id="fpesquisa" name="fpesquisa" placeholder="Sem filtro aplicado..." value="<?php if ($fpesquisa == "") {
+                                                                                                                                                                    echo "Sem filtro...";
+                                                                                                                                                                } else {
+                                                                                                                                                                    echo $ftipopesquisa . ' ' . $fpesquisa;
+                                                                                                                                                                } ?>" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group d-flex justify-content-end" style="margin-top:11.5px">
+                                        <button type="submit" href="#" class="btn btn-secondary">Limpar</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -312,7 +334,7 @@ $ftipopesquisa = $_GET['tipo'];
                                                                                 } else {
                                                                                     echo 'red';
                                                                                 } ?>;"></i></td>
-                                <td><a href="?pagina=ordens_view&&id=<?php echo $id_os?>" style="font-size: 23px;"><i class="bi bi-eye"></i></a></td>
+                                <td><a href="?pagina=ordens_view&&id=<?php echo $id_os ?>" style="font-size: 23px;"><i class="bi bi-eye"></i></a></td>
                             <?php } ?>
                             </tr>
                     </tbody>

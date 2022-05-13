@@ -128,8 +128,10 @@ $ftipopesquisa = $_GET['tipo'];
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form class="needs-validation" action="./scripts/usuario_add.php" method="post">
+
+                                            <form class="needs-validation" enctype="multipart/form-data" action="./scripts/usuario_add.php" method="post">
                                                 <div class="" style="width: 100%; margin-left:auto; margin-right:auto">
+                                                    Selecione uma foto: <input name="arquivo" type="file" />
                                                     <div class="row g-3">
                                                         <div class="col-md-2">
                                                             <label for="status" class="form-label">Status:</label>

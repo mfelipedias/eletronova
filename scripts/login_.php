@@ -22,6 +22,7 @@ while ($array = mysqli_fetch_array($buscar)) {
     $u_cargo = $array['u_cargo'];
     $nivel = $array['nivel'];
     $u_status = $array['u_status'];
+    $u_foto = $array['u_foto'];
     $senhacod = sha1($senha);
 
     if ($total > 0) {
@@ -32,6 +33,7 @@ while ($array = mysqli_fetch_array($buscar)) {
                 $_SESSION['nivel'] = $nivel;
                 $_SESSION['user'] = $user;
                 $_SESSION['senha'] = $senha;
+                $_SESSION['u_foto'] = $u_foto;
 
                 header("Location: ../index.php?pagina=inicio");
             } else {
