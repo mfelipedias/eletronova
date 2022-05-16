@@ -23,6 +23,7 @@ while ($array = mysqli_fetch_array($busca)) {
     $c_update = $array['c_update'];
 }
 ?>
+
 <div class="row mx-auto">
     <div class="col">
         <div class="card shadow p-3" style="max-width: 1000px; width: 100%">
@@ -130,12 +131,13 @@ while ($array = mysqli_fetch_array($busca)) {
                             <label class="" style="font-weight:bold; font-family: 'Poppins', sans-serif;"><i class="bi bi-archive text-primary rounded" style="border-style: solid;border-width: thin;padding:2px 10px;margin-right: 10px; font-size:130%;"></i>Anexos</label>
                         </div>
                         <div class="col-md-auto">
-                            <button type="button" class="btn btn-outline-success"><i class="bi bi-plus-lg"></i></button>
+                            <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#modalAnexo"><i class="bi bi-plus-lg"></i></button>
                         </div>
                     </div>
                     <div class="row px-3">
 
                         <table class="table table-hover">
+
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
@@ -144,30 +146,43 @@ while ($array = mysqli_fetch_array($busca)) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>protocolo.pdf</td>
-                                    <td class="">
-                                        <button type="button" class="btn btn-sm btn-outline-primary"><i class="bi bi-cloud-download"></i></button>
-                                        <button type="button" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>protocolo.pdf</td>
-                                    <td>
-                                        <button type="button" class="btn btn-sm btn-outline-primary"><i class="bi bi-cloud-download"></i></button>
-                                        <button type="button" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>protocolo.pdf</td>
-                                    <td>
-                                        <button type="button" class="btn btn-sm btn-outline-primary"><i class="bi bi-cloud-download"></i></button>
-                                        <button type="button" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
-                                    </td>
-                                </tr>
+                                <?php
+                                include './scripts/conexao.php';
+                                $sqlanexos = "SELECT * FROM anexocliente INNER JOIN clientes ON a_cliente=id_cliente WHERE a_cliente = $id";
+                                $anexos = mysqli_query($conexao, $sqlanexos);
+                                while ($array = mysqli_fetch_array($anexos)) {
+                                    $id_anexo = $array['id_anexo'];
+                                    $a_nome = $array['a_nome'];
+                                    $a_arquivo = $array['a_arquivo'];
+                                ?>
+                                    <tr>
+                                        <th scope="row"><?php echo $id_anexo ?></th>
+                                        <td><?php echo $a_nome ?></td>
+                                        <td class="">
+                                            <a type="button" href="<?php echo $a_arquivo ?>" target="_blank" class="btn btn-sm btn-outline-primary"><i class="bi bi-cloud-download"></i></a>
+                                            <a type="button" class="btn btn-sm btn-outline-danger" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#excluirAnexo<?php echo $id_anexo ?>"><i class="bi bi-trash"></i></a>
+
+                                        </td>
+                                    </tr>
+                                    <!-- Modal Excluir Anexo -->
+                                    <div class="modal fade" id="excluirAnexo<?php echo $id_anexo ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document" style="width: 380px; transition: bottom .75s ease-in-out">
+                                            <div class="modal-content rounded-6 shadow" style="border-radius: .75rem;">
+                                                <div class="modal-header border-bottom-0">
+                                                    <h5 class="modal-title">Exclusão</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body py-0">
+                                                    <p>Este arquivo está prestes a ser excluido. Essa ação não pode ser desfeita, deseja continuar?</p>
+                                                </div>
+                                                <div class="modal-footer flex-column border-top-0">
+                                                    <a type="button" class="btn btn-lg btn-danger w-100 mx-0 mb-2" href="./scripts/cliente_del_arquivo.php?id_cliente=<?php echo $id ?>&&id_anexo=<?php echo $id_anexo ?>&&arquivo=<?php echo $a_arquivo ?>">Sim</a>
+                                                    <button type="button" class="btn btn-lg btn-light w-100 mx-0" data-bs-dismiss="modal">Não</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>
@@ -177,6 +192,29 @@ while ($array = mysqli_fetch_array($busca)) {
 
 
             </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Anexo -->
+<div class="modal fade" id="modalAnexo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="width: 380px; transition: bottom .75s ease-in-out">
+        <div class="modal-content rounded-6 shadow" style="border-radius: .75rem;">
+            <div class="modal-header border-bottom-0">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body py-0">
+                <form class="needs-validation" enctype="multipart/form-data" action="./scripts/cliente_add_arquivo.php" method="post">
+                    <input type="text" class="form-control " id="id" name="id" value="<?php echo $id ?>" readonly>
+                    <label>Nome do Arquivo: </label>
+                    <input type="text" class="form-control " id="a_nome" name="a_nome" value="" required>
+                    Selecione o arquivo: <input name="arquivo" type="file" />
+            </div>
+            <div class="modal-footer flex-column border-top-0">
+                <button type="submit" href="#" class="btn btn-lg btn-success w-100 mx-0 mb-2">Salvar</button>
+                </form>
+            </div>
+            <button type="button" class="btn btn-lg btn-light w-100 mx-0" data-bs-dismiss="modal">Voltar</button>
         </div>
     </div>
 </div>

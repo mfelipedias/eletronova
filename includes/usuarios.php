@@ -258,6 +258,7 @@ $ftipopesquisa = $_GET['tipo'];
             <!--FIM CARD novo usuario -->
         </div>
         <!-- CARD TABELA -->
+        <div class="row mx-auto">
         <div class="card shadow mb-3">
             <div class="flex-row p-2">
                 <table class="table table-hover table-responsive-md table-sm">
@@ -358,7 +359,7 @@ $ftipopesquisa = $_GET['tipo'];
                       touch-action: manipulation;
                       vertical-align: middle;
                       white-space: nowrap;
-                      word-wrap: break-word;' href='?pagina=clientes&&pag=$anterior'>Anterior</a>";
+                      word-wrap: break-word;' href='?pagina=usuarios&&pag=$anterior'>Anterior</a>";
                         }
                         echo "&nbsp | &nbsp";
                         if ($pc < $tp) {
@@ -385,12 +386,12 @@ $ftipopesquisa = $_GET['tipo'];
                       touch-action: manipulation;
                       vertical-align: middle;
                       white-space: nowrap;
-                      word-wrap: break-word;' href='?pagina=clientes&&pag=$proximo'>Próxima</a>";
+                      word-wrap: break-word;' href='?pagina=usuarios&&pag=$proximo'>Próxima</a>";
                         }
                         ?></center>
             </div>
         </div>
         <!-- FIM CARD TABELA -->
-
+        </div>
     </div>
 </div>

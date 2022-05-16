@@ -177,7 +177,7 @@
                                                                     }
                                                                     ?></span>
   </div>
-  <div class="flex-row " style="border-top-style: solid; border-top-color: #fe4816;border-width: 10px;" >
+  <div class="flex-row " style="border-top-style: solid; border-top-color: #fe4816;border-width: 10px;">
     <!-- INICIO SIDEBAR -->
     <div class="col-auto td-main-sidebar">
       <div class="shadow min-vh-100 d-flex flex-column flex-shrink-0 bg-white sidebar" style="z-index:999">
@@ -383,6 +383,16 @@
           <?php
             include './includes/sub/clientes_view.php';
             break;
+          case 'clientes-up-erro':
+          ?>
+            <div class="" style="max-width: 1020px; width: 100%">
+              <?php
+              include './includes/return/erro.php';
+              ?>
+            </div>
+          <?php
+            include './includes/sub/clientes_view.php';
+            break;
           case 'clientes_view':
             include './includes/sub/clientes_view.php';
             break;
@@ -405,6 +415,10 @@
             include './includes/return/erro.php';
             include './includes/usuarios.php';
             break;
+          case 'usuarios-add-aviso':
+            include './includes/return/aviso.php';
+            include './includes/usuarios.php';
+            break;
           case 'usuarios-add-ok':
             include './includes/return/sucesso.php';
             include './includes/usuarios.php';
@@ -420,13 +434,23 @@
               include './includes/return/sucesso.php';
               ?>
             </div>
+          <?php
+            include './includes/sub/usuarios_view.php';
+            break;
+          case 'usuarios-up-erro':
+          ?>
+            <div class="" style="max-width: 1020px; width: 100%">
+              <?php
+              include './includes/return/erro.php';
+              ?>
+            </div>
       <?php
             include './includes/sub/usuarios_view.php';
             break;
             //FIM PÁGINAS USUARIOS
 
           case 'ordens':
-              include './includes/ordens.php';
+            include './includes/ordens.php';
             break;
           case 'ordens_edit':
             include './includes/sub/ordens_edit.php';
