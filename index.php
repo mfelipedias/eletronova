@@ -54,7 +54,7 @@
           <strong><?php echo strstr($logado, ' ', true) ?></strong>
         </a>
         <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-          <li><a class="dropdown-item" href="#"><i class="bi bi-person-bounding-box" style="margin-right: 5px;"></i>Perfil</a></li>
+          <li><a class="dropdown-item" href="?pagina=usuarios_view&&id=<?php echo $id_usuario ?>"><i class="bi bi-person-bounding-box" style="margin-right: 5px;"></i>Perfil</a></li>
           <li>
             <hr class="dropdown-divider">
           </li>

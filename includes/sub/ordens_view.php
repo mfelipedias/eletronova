@@ -47,7 +47,7 @@ while ($array = mysqli_fetch_array($busca)) {
                         <input type="text" class="form-control" id="dabertura" value="<?php echo $os_cadastro ?>" readonly>
                     </div>
                     <div class="col-md-4">
-                        <label for="cc-name" class="form-label">Encerramento:</label>
+                        <label for="cc-name" class="form-label">Atualização:</label>
                         <input type="text" class="form-control" id="dencerramento" value="<?php echo $os_update ?>" readonly>
                     </div>
                     <div class="col-sm-4">

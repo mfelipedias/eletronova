@@ -6,10 +6,10 @@ $ftipopesquisa = $_GET['tipo'];
 ?>
 <div class="row mx-auto">
     <!-- COLUNA PESQUISA E TABELA -->
-    <div class="col-md-12" style="min-width: 375px; max-width: 1600px">
+    <div class="col" style="min-width: 375px; max-width: 1600px">
         <div class="row">
             <!-- CARD PESQUISA -->
-            <div class="col-md-4">
+            <div class="col-xl-4">
                 <div class="card shadow mb-2" style="width: 100%; min-width:300px">
                     <div class="" style="padding: 3px;">
                         <div class="flex-row p-1">
@@ -83,7 +83,7 @@ $ftipopesquisa = $_GET['tipo'];
             </div>
             <!-- FIM CARD PESQUISA -->
             <!-- CARD FILTROS -->
-            <div class="col-md-4">
+            <div class="col-xl-4">
                 <div class="card shadow mb-2" style="width: 100%; min-width:300px">
                     <div class="" style="padding:3px;">
                         <div class="flex-row p-1">
@@ -114,7 +114,7 @@ $ftipopesquisa = $_GET['tipo'];
             </div>
             <!-- FIM CARD FILTROS -->
             <!-- CARD NOVA ORDEM -->
-            <div class="col-md-4">
+            <div class="col-xl-4">
                 <div class="card shadow mb-2" style="width: 100%;">
                     <div class="" style="padding: 3px;">
                         <div class="flex-row p-1">
@@ -141,29 +141,14 @@ $ftipopesquisa = $_GET['tipo'];
                                                         <label for="country" class="form-label">Status:</label>
                                                         <select class="form-select" id="country">
                                                             <option value="1">Ativa</option>
-                                                            <option value="2">Concluída</option>
+                                                            <option value="2">Inativa</option>
                                                         </select>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <label for="cc-name" class="form-label">Abertura:</label>
-                                                        <input type="date" class="form-control" id="cc-name" placeholder="" readonly>
+                                                        <input type="text" class="form-control" id="cc-name" value="<?php echo date("Y-m-d H:i:s"); ?>" readonly>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <label for="cc-name" class="form-label">Encerramento:</label>
-                                                        <input type="date" class="form-control" id="cc-name" placeholder="">
-                                                    </div>
-                                                    <div class="col-sm-12">
-                                                        <div class="input-group">
-                                                            <div class="input-group-text bg-white"><i class="bi bi-search"></i></div>
-                                                            <select class="form-select" aria-label="Default select example">
-                                                                <option selected>Cliente...</option>
-                                                                <option value="1">12.066.774/0001-02 ELETRONOVA ENGENHARIA E TECNOLOGIA LTDA</option>
-                                                                <option value="2">32.790.717/0001-70 TEMPLO ZULAI</option>
-                                                                <option value="3">07.675.438/0001-19 AUTO POSTO PEDRAS LTDA</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12">
                                                         <label for="country" class="form-label">Tipo:</label>
                                                         <select class="form-select" id="country" required>
                                                             <option value="">Escolha...</option>
@@ -172,6 +157,26 @@ $ftipopesquisa = $_GET['tipo'];
                                                             <option>Visita técnica</option>
                                                         </select>
                                                     </div>
+                                                    <div class="col-sm-12">
+                                                        <div class="input-group">
+                                                            <div class="input-group-text bg-white"><i class="bi bi-search"></i></div>
+                                                            <select class="form-select" id="cliente" name="cliente" required>
+                                                                <option value="">Escolha...</option>
+                                                                <?php
+                                                                include './scripts/conexao.php';
+                                                                $sqlclientes = "SELECT * FROM `clientes`";
+                                                                $clientes = mysqli_query($conexao, $sqlclientes);
+                                                                while ($array = mysqli_fetch_array($clientes)) {
+                                                                    $idcliente = $array['id_cliente'];
+                                                                    $cdoc = $array['c_doc'];
+                                                                    $cnome = $array['c_nome'];
+                                                                ?>
+                                                                    <option value="<?php echo $idcliente ?>"><?php echo $cnome ." ". $cdoc;  ?></option>
+                                                                <?php } ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
                                                     <hr class="mb-3">
                                                     <div class="row">
                                                         <div class="col">
