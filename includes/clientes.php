@@ -164,7 +164,7 @@ $ftipopesquisa = $_GET['tipo'];
                               <input type="text" class="form-control" id="bairro" name="bairro" placeholder="" maxlength="40" required>
                             </div>
                             <div class="col-5">
-                              <label for="complemento" class="form-label">Cidade:</label>
+                              <label for="cidade" class="form-label">Cidade:</label>
                               <input type="text" class="form-control" id="cidade" name="cidade" placeholder="" maxlength="40" required>
                             </div>
                             <div class="col-2">

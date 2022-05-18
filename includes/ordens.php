@@ -164,19 +164,18 @@ $ftipopesquisa = $_GET['tipo'];
                                                                 <option value="">Escolha...</option>
                                                                 <?php
                                                                 include './scripts/conexao.php';
-                                                                $sqlclientes = "SELECT * FROM `clientes`";
+                                                                $sqlclientes = "SELECT * FROM `clientes` ORDER BY c_nome ASC";
                                                                 $clientes = mysqli_query($conexao, $sqlclientes);
                                                                 while ($array = mysqli_fetch_array($clientes)) {
                                                                     $idcliente = $array['id_cliente'];
                                                                     $cdoc = $array['c_doc'];
                                                                     $cnome = $array['c_nome'];
                                                                 ?>
-                                                                    <option value="<?php echo $idcliente ?>"><?php echo $cnome ." ". $cdoc;  ?></option>
+                                                                    <option value="<?php echo $idcliente ?>"><?php echo $cnome . " " . $cdoc;  ?></option>
                                                                 <?php } ?>
                                                             </select>
                                                         </div>
                                                     </div>
-
                                                     <hr class="mb-3">
                                                     <div class="row">
                                                         <div class="col">
@@ -196,58 +195,33 @@ $ftipopesquisa = $_GET['tipo'];
                                                                 </label>
                                                             </div>
                                                         </div>
+                                                        <input type="hidden" class="form-control" id="endereco" name="endereco" value="1" readonly>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <label for="zip" class="form-label">CEP:</label>
-                                                        <input type="text" class="form-control" id="cep" placeholder="" required>
+                                                        <label for="cep" class="form-label">CEP:</label>
+                                                        <input type="text" class="form-control" id="cep" name="cep" onkeypress="mascara(this, '#####-###')" maxlength="9" required>
                                                     </div>
-                                                    <div class="col-9">
-                                                        <label for="address" class="form-label">Endereço:</label>
-                                                        <input type="text" class="form-control" id="endereco" placeholder="Rua/Av/Rod...">
+                                                    <div class="col-md-5">
+                                                        <label for="endereco" class="form-label">Rua:</label>
+                                                        <input type="text" class="form-control" id="rua" name="rua" placeholder="Rua/Av/Rod..." maxlength="60" required>
                                                     </div>
 
-                                                    <div class="col-4">
+                                                    <div class="col-md-4">
                                                         <label for="address" class="form-label">Complemento:</label>
-                                                        <input type="text" class="form-control" id="complemento" placeholder="Apto, bloco, quadra...">
+                                                        <input type="text" class="form-control" id="complemento" name="complemento" placeholder="Apto, bloco, quadra...">
                                                     </div>
-                                                    <div class="col-md-4">
+                                                    <div class="col-md-5">
+                                                        <label for="bairro" class="form-label">Bairro:</label>
+                                                        <input type="text" class="form-control" id="bairro" name="bairro" placeholder="" maxlength="40" required>
+                                                    </div>
+                                                    <div class="col-md-5">
                                                         <label for="cidade" class="form-label">Cidade:</label>
-                                                        <select class="form-select" id="cidade">
-                                                        </select>
+                                                        <input type="text" class="form-control" id="cidade" name="cidade" placeholder="" maxlength="40" required>
                                                     </div>
 
-                                                    <div class="col-md-4">
-                                                        <label for="estado" class="form-label">Estado:</label>
-                                                        <select class="form-select" id="estado" onchange="buscaCidades(this.value)">
-                                                            <option value="">Selecione o Estado</option>
-                                                            <option value="AC">Acre</option>
-                                                            <option value="AL">Alagoas</option>
-                                                            <option value="AM">Amazonas</option>
-                                                            <option value="AP">Amapá</option>
-                                                            <option value="BA">Bahia</option>
-                                                            <option value="CE">Ceará</option>
-                                                            <option value="DF">Distrito Federal</option>
-                                                            <option value="ES">Espírito Santo</option>
-                                                            <option value="GO">Goiás</option>
-                                                            <option value="MA">Maranhão</option>
-                                                            <option value="MG">Minas Gerais</option>
-                                                            <option value="MS">Mato Grosso do Sul</option>
-                                                            <option value="MT">Mato Grosso</option>
-                                                            <option value="PA">Pará</option>
-                                                            <option value="PB">Paraíba</option>
-                                                            <option value="PE">Pernambuco</option>
-                                                            <option value="PI">Piauí</option>
-                                                            <option value="PR">Paraná</option>
-                                                            <option value="RJ">Rio de Janeiro</option>
-                                                            <option value="RN">Rio Grande do Norte</option>
-                                                            <option value="RO">Rondônia</option>
-                                                            <option value="RR">Roraima</option>
-                                                            <option value="RS">Rio Grande do Sul</option>
-                                                            <option value="SC">Santa Catarina</option>
-                                                            <option value="SP">São Paulo</option>
-                                                            <option value="SE">Sergipe</option>
-                                                            <option value="TO">Tocantins</option>
-                                                        </select>
+                                                    <div class="col-md-2">
+                                                        <label for="complemento" class="form-label">UF:</label>
+                                                        <input type="text" class="form-control" id="uf" name="uf" placeholder="" maxlength="2" required>
                                                     </div>
                                                 </div>
 

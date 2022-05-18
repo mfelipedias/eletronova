@@ -8,34 +8,45 @@ function validaSenha(input) {
 
 //desabilitar campos de endereço
 function desabilitaEnd() {
+    var input = document.querySelector("#endereco");
+    input.value = '2';
+    input.disabled = true;
     var input = document.querySelector("#cep");
     input.value = '';
     input.disabled = true;
-    var input = document.querySelector("#endereco");
+    var input = document.querySelector("#rua");
     input.value = '';
     input.disabled = true;
-    var input = document.querySelector("#estado");
+    var input = document.querySelector("#complemento");
+    input.value = '';
+    input.disabled = true;
+    var input = document.querySelector("#bairro");
     input.value = '';
     input.disabled = true;
     var input = document.querySelector("#cidade");
     input.value = '';
     input.disabled = true;
-    var input = document.querySelector("#complemento");
+    var input = document.querySelector("#uf");
     input.value = '';
     input.disabled = true;
 
 }
 //habilita campos de endereço
 function habilitaEnd() {
+    var input = document.querySelector("#endereco");
+    input.value = '1';
+    input.disabled = true;
     var input = document.querySelector("#cep");
     input.disabled = false;
-    var input = document.querySelector("#endereco");
+    var input = document.querySelector("#rua");
     input.disabled = false;
-    var input = document.querySelector("#estado");
+    var input = document.querySelector("#complemento");
+    input.disabled = false;
+    var input = document.querySelector("#bairro");
     input.disabled = false;
     var input = document.querySelector("#cidade");
     input.disabled = false;
-    var input = document.querySelector("#complemento");
+    var input = document.querySelector("#uf");
     input.disabled = false;
 }
 
