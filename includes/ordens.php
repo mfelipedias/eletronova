@@ -135,11 +135,11 @@ $ftipopesquisa = $_GET['tipo'];
                                                     <label class="" style="font-weight:bold; font-family: 'Poppins', sans-serif;"><i class="bi bi-geo-alt text-primary rounded" style="border-style: solid;border-width: thin;padding:2px 10px;margin-right: 10px; font-size:130%;"></i>Ordem de Serviço</label>
                                                 </div>
                                             </div>
-                                            <form class="mt-3">
+                                            <form class="mt-3"  action="./scripts/ordem_add.php" method="post">
                                                 <div class="row g-3">
                                                     <div class="col-md-4">
                                                         <label for="country" class="form-label">Status:</label>
-                                                        <select class="form-select" id="country">
+                                                        <select class="form-select" id="status" name="status">
                                                             <option value="1">Ativa</option>
                                                             <option value="2">Inativa</option>
                                                         </select>
@@ -150,7 +150,7 @@ $ftipopesquisa = $_GET['tipo'];
                                                     </div>
                                                     <div class="col-md-4">
                                                         <label for="country" class="form-label">Tipo:</label>
-                                                        <select class="form-select" id="country" required>
+                                                        <select class="form-select" id="tipo" name="tipo" required>
                                                             <option value="">Escolha...</option>
                                                             <option>Obra</option>
                                                             <option>Manutenção</option>
@@ -229,7 +229,7 @@ $ftipopesquisa = $_GET['tipo'];
                                                 <label class="" style="font-weight:bold; font-family: 'Poppins', sans-serif;"><i class="bi bi-file-earmark-plus text-primary rounded" style="border-style: solid;border-width: thin;padding:2px 10px;margin-right: 10px; font-size:130%;"></i>Mais informações</label>
                                                 <div class="row gy-3">
                                                     <div class="col-md-12 my-3">
-                                                        <textarea class="form-control mt-3" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                                        <textarea class="form-control mt-3" id="maisinfo" name="maisinfo" rows="3"></textarea>
                                                     </div>
                                                 </div>
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>

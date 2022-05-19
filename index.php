@@ -458,6 +458,10 @@
           case 'ordens_view':
             include './includes/sub/ordens_view.php';
             break;
+          case 'ordens-add-ok':
+            include './includes/return/sucesso.php';
+            include './includes/ordens.php';
+            break;
           case 'pbombeiro':
             include './includes/pbombeiro.php';
             break;
