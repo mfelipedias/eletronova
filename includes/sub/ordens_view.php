@@ -1,7 +1,7 @@
 <?php
 include './scripts/conexao.php';
 $id = $_GET['id'];
-$sql = "SELECT * FROM `ordens` INNER JOIN `clientes` ON os_cliente=id_cliente ORDER BY c_nome ASC";
+$sql = "SELECT * FROM `ordens` INNER JOIN `clientes` ON os_cliente=id_cliente WHERE id_os = $id";
 $busca = mysqli_query($conexao, $sql);
 while ($array = mysqli_fetch_array($busca)) {
     $id_os = $array['id_os'];

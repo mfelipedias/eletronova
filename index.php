@@ -18,6 +18,7 @@
   <!-- Pesquisa CEP -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="js/buscacep.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <!-- API KEY GOOGLE MAPS -->
   <script src="http://maps.google.com/maps/api/js?key=AIzaSyAEfuEc51rYqxv3Z8tNmWOanZqE5Lq4unc" type="text/javascript"></script>
 </head>
@@ -444,7 +445,7 @@
               include './includes/return/erro.php';
               ?>
             </div>
-      <?php
+          <?php
             include './includes/sub/usuarios_view.php';
             break;
             //FIM PÁGINAS USUARIOS
@@ -458,8 +459,22 @@
           case 'ordens_view':
             include './includes/sub/ordens_view.php';
             break;
+          case 'ordens-up-ok':
+          ?>
+            <div class="" style="max-width: 1020px; width: 100%">
+              <?php
+              include './includes/return/sucesso.php';
+              ?>
+            </div>
+      <?php
+            include './includes/sub/ordens_view.php';
+            break;
           case 'ordens-add-ok':
             include './includes/return/sucesso.php';
+            include './includes/ordens.php';
+            break;
+          case 'ordens-del-ok':
+            include './includes/return/aviso.php';
             include './includes/ordens.php';
             break;
           case 'pbombeiro':

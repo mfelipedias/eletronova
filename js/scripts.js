@@ -1,3 +1,22 @@
+//FUNCAO USADO PARA NOVA ORDEM, COPIA O ID DO CLIENTE PARA OUTRO FORM
+$('#cliente').change(function() {
+    $('#cliente2').val($(this).val());
+});
+
+function clientePopup() {
+    var top = (screen.height) / 3;
+    var left = (screen.width) / 2;
+    var id = document.getElementById('cliente2').value;
+    varWindow = window.open(
+
+        './includes/sub/clientes_pop-up.php?id=' + id,
+
+        'pagina',
+        "width=350, height=200, top=" + top + ",left=" + left + ", scrollbars=no ");
+
+}
+
+//FUNCAO VALIDA SE AS SENHAS CONFEREM
 function validaSenha(input) {
     if (input.value != document.getElementById('senha').value) {
         input.setCustomValidity('Repita a senha corretamente.');
@@ -10,7 +29,6 @@ function validaSenha(input) {
 function desabilitaEnd() {
     var input = document.querySelector("#endereco");
     input.value = '2';
-    input.disabled = true;
     var input = document.querySelector("#cep");
     input.value = '';
     input.disabled = true;
@@ -35,7 +53,6 @@ function desabilitaEnd() {
 function habilitaEnd() {
     var input = document.querySelector("#endereco");
     input.value = '1';
-    input.disabled = true;
     var input = document.querySelector("#cep");
     input.disabled = false;
     var input = document.querySelector("#rua");

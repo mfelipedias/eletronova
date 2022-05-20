@@ -135,7 +135,7 @@ $ftipopesquisa = $_GET['tipo'];
                                                     <label class="" style="font-weight:bold; font-family: 'Poppins', sans-serif;"><i class="bi bi-geo-alt text-primary rounded" style="border-style: solid;border-width: thin;padding:2px 10px;margin-right: 10px; font-size:130%;"></i>Ordem de Serviço</label>
                                                 </div>
                                             </div>
-                                            <form class="mt-3"  action="./scripts/ordem_add.php" method="post">
+                                            <form class="mt-3" action="./scripts/ordem_add.php" method="post">
                                                 <div class="row g-3">
                                                     <div class="col-md-4">
                                                         <label for="country" class="form-label">Status:</label>
@@ -146,20 +146,20 @@ $ftipopesquisa = $_GET['tipo'];
                                                     </div>
                                                     <div class="col-md-4">
                                                         <label for="cc-name" class="form-label">Abertura:</label>
-                                                        <input type="text" class="form-control" id="cc-name" value="<?php echo date("Y-m-d H:i:s"); ?>" readonly>
+                                                        <input type="text" class="form-control" value="<?php echo date("Y-m-d H:i:s"); ?>" readonly>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <label for="country" class="form-label">Tipo:</label>
                                                         <select class="form-select" id="tipo" name="tipo" required>
                                                             <option value="">Escolha...</option>
-                                                            <option>Obra</option>
-                                                            <option>Manutenção</option>
-                                                            <option>Visita técnica</option>
+                                                            <option value="Obra">Obra</option>
+                                                            <option value="Manutenção">Manutenção</option>
+                                                            <option value="Visita técnica" >Visita técnica</option>
                                                         </select>
                                                     </div>
                                                     <div class="col-sm-12">
                                                         <div class="input-group">
-                                                            <div class="input-group-text bg-white"><i class="bi bi-search"></i></div>
+                                                            <div class="input-group-text bg-white"><a href="javascript:clientePopup()"><i class="bi bi-search"></i></a></div>
                                                             <select class="form-select" id="cliente" name="cliente" required>
                                                                 <option value="">Escolha...</option>
                                                                 <?php
@@ -170,11 +170,20 @@ $ftipopesquisa = $_GET['tipo'];
                                                                     $idcliente = $array['id_cliente'];
                                                                     $cdoc = $array['c_doc'];
                                                                     $cnome = $array['c_nome'];
+                                                                    $ccep = $array['c_cep'];
+                                                                    $crua = $array['c_rua'];
+                                                                    $cbairro = $array['c_bairro'];
+                                                                    $ccidade = $array['c_cidade'];
+                                                                    $ccidade = $array['c_uf'];
                                                                 ?>
                                                                     <option value="<?php echo $idcliente ?>"><?php echo $cnome . " " . $cdoc;  ?></option>
                                                                 <?php } ?>
                                                             </select>
                                                         </div>
+                                                    </div>
+
+                                                    <div class="col-sm-12">
+                                                        <input type="hidden" class="form-control" id="cliente2" value="" readonly>
                                                     </div>
                                                     <hr class="mb-3">
                                                     <div class="row">
@@ -199,29 +208,29 @@ $ftipopesquisa = $_GET['tipo'];
                                                     </div>
                                                     <div class="col-md-3">
                                                         <label for="cep" class="form-label">CEP:</label>
-                                                        <input type="text" class="form-control" id="cep" name="cep" onkeypress="mascara(this, '#####-###')" maxlength="9" required>
+                                                        <input type="text" class="form-control" id="cep" name="cep" onkeypress="mascara(this, '#####-###')" maxlength="9" value="" required>
                                                     </div>
                                                     <div class="col-md-5">
                                                         <label for="endereco" class="form-label">Rua:</label>
-                                                        <input type="text" class="form-control" id="rua" name="rua" placeholder="Rua/Av/Rod..." maxlength="60" required>
+                                                        <input type="text" class="form-control" id="rua" name="rua" value="" placeholder="Rua/Av/Rod..." maxlength="60" required>
                                                     </div>
 
                                                     <div class="col-md-4">
                                                         <label for="address" class="form-label">Complemento:</label>
-                                                        <input type="text" class="form-control" id="complemento" name="complemento" placeholder="Apto, bloco, quadra...">
+                                                        <input type="text" class="form-control" id="complemento" value="" name="complemento" placeholder="Apto, bloco, quadra...">
                                                     </div>
                                                     <div class="col-md-5">
                                                         <label for="bairro" class="form-label">Bairro:</label>
-                                                        <input type="text" class="form-control" id="bairro" name="bairro" placeholder="" maxlength="40" required>
+                                                        <input type="text" class="form-control" id="bairro" value="" name="bairro" placeholder="" maxlength="40" required>
                                                     </div>
                                                     <div class="col-md-5">
                                                         <label for="cidade" class="form-label">Cidade:</label>
-                                                        <input type="text" class="form-control" id="cidade" name="cidade" placeholder="" maxlength="40" required>
+                                                        <input type="text" class="form-control" id="cidade"   name="cidade" value="" placeholder="" maxlength="40" required>
                                                     </div>
 
                                                     <div class="col-md-2">
                                                         <label for="complemento" class="form-label">UF:</label>
-                                                        <input type="text" class="form-control" id="uf" name="uf" placeholder="" maxlength="2" required>
+                                                        <input type="text" class="form-control" id="uf" name="uf" value="" placeholder="" maxlength="2" required>
                                                     </div>
                                                 </div>
 
@@ -229,7 +238,7 @@ $ftipopesquisa = $_GET['tipo'];
                                                 <label class="" style="font-weight:bold; font-family: 'Poppins', sans-serif;"><i class="bi bi-file-earmark-plus text-primary rounded" style="border-style: solid;border-width: thin;padding:2px 10px;margin-right: 10px; font-size:130%;"></i>Mais informações</label>
                                                 <div class="row gy-3">
                                                     <div class="col-md-12 my-3">
-                                                        <textarea class="form-control mt-3" id="maisinfo" name="maisinfo" rows="3"></textarea>
+                                                        <textarea class="form-control mt-3" id="maisinfo" name="maisinfo" rows="3" ></textarea>
                                                     </div>
                                                 </div>
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -267,7 +276,7 @@ $ftipopesquisa = $_GET['tipo'];
                         <?php
                         include './scripts/conexao.php';
                         if ($filtro == "") {
-                            $sql = "SELECT * FROM `ordens` INNER JOIN `clientes` ON os_cliente=id_cliente ORDER BY c_nome ASC";
+                            $sql = "SELECT * FROM `ordens` INNER JOIN `clientes` ON os_cliente=id_cliente ORDER BY id_os DESC";
                         } else {
                             $sql = $filtro;
                         }
