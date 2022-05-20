@@ -26,11 +26,55 @@ while ($array = mysqli_fetch_array($buscar)) {
 }
 
 if ($endereco == '1') {
-    $sql = "INSERT INTO ordens (os_status, os_cliente , os_tipo, os_cep, os_rua, os_bairro, os_cidade, os_uf, os_comp, os_latitude, os_longitude, os_info, os_cadastro, os_update) values ('$status', '$cliente', '$tipo', '$cep', '$rua', '$bairro', '$cidade', '$uf', '$complemento', '', '', '$info', now(), now())";
+
+    $lg_rua = str_replace(' ',  '+', $rua);
+    $lg_numero =  preg_replace("/[^0-9]/", "", $rua);;
+    $lg_cidade = str_replace(' ', '+', $cidade);
+    $lg_pais = 'BR';
+
+    $url = 'http://maps.google.com.br/maps/api/geocode/json?address=';
+    $url .= "$lg_numero+$lg_rua,+$lg_cidade,+$lg_pais&sensor=false";
+
+    $c = curl_init();
+    curl_setopt($c, CURLOPT_URL, $url);
+    curl_setopt($c, CURLOPT_RETURNTRANSFER, 1);
+    $conteudo = curl_exec($c);
+    curl_close($c);
+
+    $json = json_decode($conteudo, false);
+
+    print_r($conteudo);
+
+    $latitude = $json->results[0]->geometry->location->lat;
+    $longitude = $json->results[0]->geometry->location->lng;
+
+    $sql = "INSERT INTO ordens (os_status, os_cliente , os_tipo, os_cep, os_rua, os_bairro, os_cidade, os_uf, os_comp, os_latitude, os_longitude, os_info, os_cadastro, os_update) values ('$status', '$cliente', '$tipo', '$cep', '$rua', '$bairro', '$cidade', '$uf', '$complemento', '$latitude', '$longitude', '$info', now(), now())";
     $inserir = mysqli_query($conexao, $sql);
     $retorno = "Ordem cadastrada com sucesso!";
     header("Location: /eletronova/?pagina=ordens-add-ok&&retorno=" . $retorno);
+
 } else if ($endereco == '2') {
+    $lg_rua = str_replace(' ',  '+', $c_rua);
+    $lg_numero =  preg_replace("/[^0-9]/", "", $c_rua);;
+    $lg_cidade = str_replace(' ', '+', $c_cidade);
+    $lg_pais = 'BR';
+
+    $url = 'http://maps.google.com.br/maps/api/geocode/json?address=';
+    $url .= "$lg_numero+$lg_rua,+$lg_cidade,+$lg_pais&sensor=false";
+
+    $c = curl_init();
+    curl_setopt($c, CURLOPT_URL, $url);
+    curl_setopt($c, CURLOPT_RETURNTRANSFER, 1);
+    $conteudo = curl_exec($c);
+    curl_close($c);
+
+    $json = json_decode($conteudo, false);
+
+    print_r($conteudo);
+
+    $latitude = $json->results[0]->geometry->location->lat;
+    $longitude = $json->results[0]->geometry->location->lng;
+
     $sql = "INSERT INTO ordens (os_status, os_cliente , os_tipo, os_cep, os_rua, os_bairro, os_cidade, os_uf, os_comp, os_latitude, os_longitude, os_info, os_cadastro, os_update) values ('$status', '$cliente', '$tipo', '$c_cep', '$c_rua', '$c_bairro', '$c_cidade', '$c_uf', '$complemento', '', '', '$info', now(), now())";
     $inserir = mysqli_query($conexao, $sql);
     $retorno = "Ordem cadastrada com sucesso!";
