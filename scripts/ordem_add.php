@@ -25,57 +25,83 @@ while ($array = mysqli_fetch_array($buscar)) {
     $c_comp = $array['c_comp'];
 }
 
+
+class Maps
+{
+
+    //chave publica de acesso
+    private static $googleKey = 'AIzaSyAEfuEc51rYqxv3Z8tNmWOanZqE5Lq4unc';
+
+    static function loadUrl($url)
+    {
+        $cURL = curl_init($url);
+        curl_setopt($cURL, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($cURL, CURLOPT_FOLLOWLOCATION, true);
+        $result = curl_exec($cURL);
+        curl_close($cURL);
+
+        if ($result) {
+            return $result;
+        } else {
+            return false;
+        }
+    }
+
+    static function getLocal($address)
+    {
+        $url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' . urlencode($address) . '&key=' . self::$googleKey;
+        $result = self::loadUrl($url);
+
+        $json = json_decode($result);
+        $lat = json_decode($result);
+        $lng = json_decode($result);
+        if ($json->{'status'} == 'OK') {
+
+            return $json->{'results'}[0]->{'geometry'}->{'location'};
+            return $lat->{'results'}[0]->{'geometry'}->{'location'}->{'lat'};
+            return $lng->{'results'}[0]->{'geometry'}->{'location'}->{'lng'};
+        } else {
+            return false;
+        }
+    }
+    static function getLat($address)
+    {
+        $url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' . urlencode($address) . '&key=' . self::$googleKey;
+        $result = self::loadUrl($url);
+        $lat = json_decode($result);
+        if ($lat->{'status'} == 'OK') {
+            return $lat->{'results'}[0]->{'geometry'}->{'location'}->{'lat'};
+        } else {
+            return false;
+        }
+    }
+    static function getLng($address)
+    {
+        $url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' . urlencode($address) . '&key=' . self::$googleKey;
+        $result = self::loadUrl($url);
+        $lng = json_decode($result);
+        if ($lng->{'status'} == 'OK') {
+            return $lng->{'results'}[0]->{'geometry'}->{'location'}->{'lng'};
+        } else {
+            return false;
+        }
+    }
+}
+
 if ($endereco == '1') {
-
-    $lg_rua = str_replace(' ',  '+', $rua);
-    $lg_numero =  preg_replace("/[^0-9]/", "", $rua);;
-    $lg_cidade = str_replace(' ', '+', $cidade);
-    $lg_pais = 'BR';
-
-    $url = 'http://maps.google.com.br/maps/api/geocode/json?address=';
-    $url .= "$lg_numero+$lg_rua,+$lg_cidade,+$lg_pais&sensor=false";
-
-    $c = curl_init();
-    curl_setopt($c, CURLOPT_URL, $url);
-    curl_setopt($c, CURLOPT_RETURNTRANSFER, 1);
-    $conteudo = curl_exec($c);
-    curl_close($c);
-
-    $json = json_decode($conteudo, false);
-
-    print_r($conteudo);
-
-    $latitude = $json->results[0]->geometry->location->lat;
-    $longitude = $json->results[0]->geometry->location->lng;
+    $latitude = Maps::getLat("$rua . $bairro . $uf");
+    $longitude = Maps::getLng("$rua . $bairro . $uf");
 
     $sql = "INSERT INTO ordens (os_status, os_cliente , os_tipo, os_cep, os_rua, os_bairro, os_cidade, os_uf, os_comp, os_latitude, os_longitude, os_info, os_cadastro, os_update) values ('$status', '$cliente', '$tipo', '$cep', '$rua', '$bairro', '$cidade', '$uf', '$complemento', '$latitude', '$longitude', '$info', now(), now())";
     $inserir = mysqli_query($conexao, $sql);
     $retorno = "Ordem cadastrada com sucesso!";
     header("Location: /eletronova/?pagina=ordens-add-ok&&retorno=" . $retorno);
-
 } else if ($endereco == '2') {
-    $lg_rua = str_replace(' ',  '+', $c_rua);
-    $lg_numero =  preg_replace("/[^0-9]/", "", $c_rua);;
-    $lg_cidade = str_replace(' ', '+', $c_cidade);
-    $lg_pais = 'BR';
 
-    $url = 'http://maps.google.com.br/maps/api/geocode/json?address=';
-    $url .= "$lg_numero+$lg_rua,+$lg_cidade,+$lg_pais&sensor=false";
+    $latitude = Maps::getLat("$c_rua . $c_bairro . $c_cidade . $c_uf");
+    $longitude = Maps::getLng("$c_rua . $c_bairro . $c_cidade . $c_uf");
 
-    $c = curl_init();
-    curl_setopt($c, CURLOPT_URL, $url);
-    curl_setopt($c, CURLOPT_RETURNTRANSFER, 1);
-    $conteudo = curl_exec($c);
-    curl_close($c);
-
-    $json = json_decode($conteudo, false);
-
-    print_r($conteudo);
-
-    $latitude = $json->results[0]->geometry->location->lat;
-    $longitude = $json->results[0]->geometry->location->lng;
-
-    $sql = "INSERT INTO ordens (os_status, os_cliente , os_tipo, os_cep, os_rua, os_bairro, os_cidade, os_uf, os_comp, os_latitude, os_longitude, os_info, os_cadastro, os_update) values ('$status', '$cliente', '$tipo', '$c_cep', '$c_rua', '$c_bairro', '$c_cidade', '$c_uf', '$complemento', '', '', '$info', now(), now())";
+    $sql = "INSERT INTO ordens (os_status, os_cliente , os_tipo, os_cep, os_rua, os_bairro, os_cidade, os_uf, os_comp, os_latitude, os_longitude, os_info, os_cadastro, os_update) values ('$status', '$cliente', '$tipo', '$c_cep', '$c_rua', '$c_bairro', '$c_cidade', '$c_uf', '$complemento', '$latitude', '$longitude', '$info', now(), now())";
     $inserir = mysqli_query($conexao, $sql);
     $retorno = "Ordem cadastrada com sucesso!";
     header("Location: ../?pagina=ordens-add-ok&&retorno=" . $retorno);

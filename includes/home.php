@@ -4,11 +4,11 @@
     <div class="row">
       <div class="col" style="width: auto; ">
         <div class="shadow mb-2 rounded" style="width: 100%;background:white; margin-left: auto; margin-right: auto;">
-        <center>
-          <div id="cont_0414a5e3eab561c641f9af82646ec181" class="card-tempo-completo">
-            <script type="text/javascript" async src="https://www.tempo.com/wid_loader/0414a5e3eab561c641f9af82646ec181"></script>
-          </div>
-        </center>
+          <center>
+            <div id="cont_0414a5e3eab561c641f9af82646ec181" class="card-tempo-completo">
+              <script type="text/javascript" async src="https://www.tempo.com/wid_loader/0414a5e3eab561c641f9af82646ec181"></script>
+            </div>
+          </center>
         </div>
         <div class="shadow mb-2 rounded" style="height:auto; width: 100%; min-width:333px ;background:white; margin-left: auto; margin-right: auto;">
           <center>
@@ -93,33 +93,33 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <th scope="row">Wurth do Brasil</th>
-                        <td>AVCB</td>
-                        <td>23/11/2022</td>
+                        <th scope="row">...</th>
+                        <td>...</td>
+                        <td>...</td>
                         <td><a href="" style="font-size: 23px;"><i class="bi bi-eye"></i></a></td>
                       </tr>
                       <tr>
-                        <th scope="row">Associação Filhos de Buda</th>
-                        <td>CLCB</td>
-                        <td>30/12/2022</td>
+                        <th scope="row">...</th>
+                        <td>...</td>
+                        <td>...</td>
                         <td><a href="" style="font-size: 23px;"><i class="bi bi-eye"></i></a></td>
                       </tr>
                       <tr>
-                        <th scope="row">Escritório de Contabilidade X</th>
-                        <td>CLCB</td>
-                        <td>30/12/2022</td>
+                        <th scope="row">...</th>
+                        <td>...</td>
+                        <td>...</td>
                         <td><a href="" style="font-size: 23px;"><i class="bi bi-eye"></i></a></td>
                       </tr>
                       <tr>
-                        <th scope="row">Escritório de Contabilidade Y</th>
-                        <td>CLCB</td>
-                        <td>30/12/2022</td>
+                        <th scope="row">...</th>
+                        <td>...</td>
+                        <td>...</td>
                         <td><a href="" style="font-size: 23px;"><i class="bi bi-eye"></i></a></td>
                       </tr>
                       <tr>
-                        <th scope="row">Escritório de Engenharia</th>
-                        <td>PTS</td>
-                        <td>30/12/2022</td>
+                        <th scope="row">...</th>
+                        <td>...</td>
+                        <td>...</td>
                         <td><a href="" style="font-size: 23px;"><i class="bi bi-eye"></i></a></td>
                       </tr>
                     </tbody>
@@ -149,39 +149,39 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <th scope="row">Wurth do Brasil</th>
-                        <td>LTA</td>
-                        <td>23/11/2022</td>
+                        <th scope="row">...</th>
+                        <td>...</td>
+                        <td>...</td>
                         <td><a href="" style="font-size: 23px;"><i class="bi bi-eye"></i></a></td>
                       </tr>
                       <tr>
-                        <th scope="row">Associação Filhos de Buda</th>
-                        <td>LTA</td>
-                        <td>30/12/2022</td>
+                        <th scope="row">...</th>
+                        <td>...</td>
+                        <td>...</td>
                         <td><a href="" style="font-size: 23px;"><i class="bi bi-eye"></i></a></td>
                       </tr>
                       <tr>
-                        <th scope="row">Escritório de Contabilidade X</th>
-                        <td>LTA</td>
-                        <td>30/12/2022</td>
+                        <th scope="row">...</th>
+                        <td>...</td>
+                        <td>...</td>
                         <td><a href="" style="font-size: 23px;"><i class="bi bi-eye"></i></a></td>
                       </tr>
                       <tr>
-                        <th scope="row">Escritório de Contabilidade Y</th>
-                        <td>LTA</td>
-                        <td>30/12/2022</td>
+                        <th scope="row">...</th>
+                        <td>...</td>
+                        <td>...</td>
                         <td><a href="" style="font-size: 23px;"><i class="bi bi-eye"></i></a></td>
                       </tr>
                       <tr>
-                        <th scope="row">Escritório de Engenharia</th>
-                        <td>LTA</td>
-                        <td>30/12/2022</td>
+                        <th scope="row">...</th>
+                        <td>...</td>
+                        <td>...</td>
                         <td><a href="" style="font-size: 23px;"><i class="bi bi-eye"></i></a></td>
                       </tr>
                     </tbody>
                   </table>
                   <div class="d-flex justify-content-end">
-                    <a href="">mais processos...</a>
+                    <a href="#">mais processos...</a>
                   </div>
                 </div>
               </div>
@@ -205,33 +205,33 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <th scope="row">Wurth do Brasil</th>
-                        <td>CETESB</td>
-                        <td>23/11/2022</td>
+                        <th scope="row">...</th>
+                        <td>...</td>
+                        <td>...</td>
                         <td><a href="" style="font-size: 23px;"><i class="bi bi-eye"></i></a></td>
                       </tr>
                       <tr>
-                        <th scope="row">Associação Filhos de Buda</th>
-                        <td>CETESB</td>
-                        <td>30/12/2022</td>
+                        <th scope="row">...</th>
+                        <td>...</td>
+                        <td>...</td>
                         <td><a href="" style="font-size: 23px;"><i class="bi bi-eye"></i></a></td>
                       </tr>
                       <tr>
-                        <th scope="row">Escritório de Contabilidade X</th>
-                        <td>CETESB</td>
-                        <td>30/12/2022</td>
+                        <th scope="row">...</th>
+                        <td>...</td>
+                        <td>...</td>
                         <td><a href="" style="font-size: 23px;"><i class="bi bi-eye"></i></a></td>
                       </tr>
                       <tr>
-                        <th scope="row">Escritório de Contabilidade Y</th>
-                        <td>CETESB</td>
-                        <td>30/12/2022</td>
+                        <th scope="row">...</th>
+                        <td>...</td>
+                        <td>...</td>
                         <td><a href="" style="font-size: 23px;"><i class="bi bi-eye"></i></a></td>
                       </tr>
                       <tr>
-                        <th scope="row">Escritório de Engenharia</th>
-                        <td>CETESB</td>
-                        <td>30/12/2022</td>
+                        <th scope="row">...</th>
+                        <td>...</td>
+                        <td>...</td>
                         <td><a href="" style="font-size: 23px;"><i class="bi bi-eye"></i></a></td>
                       </tr>
                     </tbody>
@@ -258,16 +258,35 @@
 
           <script type="text/javascript">
             var locations = [
-              ['Bondi Beach', <?php echo '-33.890590,' ?> 151.274856, 4],
-              ['Coogee Beach', -33.923036, 151.259052, 5],
-              ['Cronulla Beach', -34.028249, 151.157507, 3],
-              ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
-              ['Maroubra Beach', -33.950198, 151.259302, 1]
+              ['ELETRONOVA', -23.6033394, -46.8581271, 1],
+              <?php
+              include './scripts/conexao.php';
+              $sql = "SELECT * FROM `ordens` INNER JOIN `clientes` ON os_cliente=id_cliente WHERE os_status=1";
+              $busca = mysqli_query($conexao, $sql);
+              $contador = 0;
+              while ($array = mysqli_fetch_array($busca)) {
+                $contador = $contador + 1;
+                $id_os = $array['id_os'];
+                $os_cliente = $array['os_cliente'];
+                $c_nome = $array['c_nome'];
+                $os_status = $array['os_status'];
+                $os_tipo = $array['os_tipo'];
+                $os_cep = $array['os_cep'];
+                $os_rua = $array['os_rua'];
+                $os_bairro = $array['os_bairro'];
+                $os_cidade = $array['os_cidade'];
+                $os_uf = $array['os_uf'];
+                $os_latitude = $array['os_latitude'];
+                $os_longitude = $array['os_longitude'];
+              ?>
+
+                ['<?php echo "OS " . $id_os . " " . $c_nome ?>', <?php echo $os_latitude ?>, <?php echo $os_longitude ?>, <?php echo $contador ?>],
+              <?php } ?>
             ];
 
             var map = new google.maps.Map(document.getElementById('map'), {
-              zoom: 10,
-              center: new google.maps.LatLng(-33.92, 151.25),
+              zoom: 13,
+              center: new google.maps.LatLng(-23.6033394, -46.8581271),
               mapTypeId: google.maps.MapTypeId.ROADMAP
             });
 
@@ -311,28 +330,48 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Templo Zulai</td>
-                  <td>Manutenção</td>
-                  <td><a href="" style="font-size: 23px;"><i class="bi bi-eye"></i></a></td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Padaria Bom Jardim</td>
-                  <td>Obra Inicial</td>
-                  <td><a href="" style="font-size: 23px;"><i class="bi bi-eye"></i></a></td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Manos Doces</td>
-                  <td>Reforma</td>
-                  <td><a href="" style="font-size: 23px;"><i class="bi bi-eye"></i></a></td>
-                </tr>
+                <?php
+                include './scripts/conexao.php';
+                $sql = "SELECT * FROM `ordens` INNER JOIN `clientes` ON os_cliente=id_cliente WHERE os_status=1 ORDER BY id_os DESC";
+
+                $total_reg = "5"; // número de registros por página
+                $pc = "1";
+                $inicio = $pc - 1;
+                $inicio = $inicio * $total_reg;
+
+                $limite = mysqli_query($conexao, "$sql LIMIT $inicio, $total_reg");
+                $todos = mysqli_query($conexao, $sql);
+
+                $tr = mysqli_num_rows($todos); // verifica o número total de registros
+                $tp = $tr / $total_reg; // verifica o número total de páginas
+
+                $busca = mysqli_query($conexao, $sql);
+                $contador = 0;
+                while ($array = mysqli_fetch_array($limite)) {
+
+                  $contador = $contador + 1;
+                  $id_os = $array['id_os'];
+                  $os_cliente = $array['os_cliente'];
+                  $c_nome = $array['c_nome'];
+                  $os_status = $array['os_status'];
+                  $os_tipo = $array['os_tipo'];
+                  $os_cep = $array['os_cep'];
+                  $os_rua = $array['os_rua'];
+                  $os_bairro = $array['os_bairro'];
+                  $os_cidade = $array['os_cidade'];
+                  $os_uf = $array['os_uf'];
+                ?>
+                  <tr>
+                    <th scope="row"> <?php echo $id_os ?></th>
+                    <td> <?php echo $c_nome ?></td>
+                    <td> <?php echo $os_tipo ?></td>
+                    <td><a href="?pagina=ordens_view&&id=<?php echo $id_os ?>" style="font-size: 23px;"><i class="bi bi-eye"></i></a></td>
+                  </tr>
+                <?php } ?>
               </tbody>
             </table>
             <div class="d-flex justify-content-end m-2">
-              <a href="">ver mais...</a>
+              <a href="?pagina=ordens">ver mais...</a>
             </div>
           </div>
         </div>

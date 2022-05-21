@@ -31,7 +31,7 @@ while ($array = mysqli_fetch_array($busca)) {
                     <label class="" style="font-weight:bold; font-family: 'Poppins', sans-serif;"><i class="bi bi-geo-alt text-primary rounded" style="border-style: solid;border-width: thin;padding:2px 10px;margin-right: 10px; font-size:130%;"></i>Ordem de Serviço: #0<?php echo $id_os ?></label>
                 </div>
                 <div class="col-md-auto">
-                    <a type="button" href="?pagina=ordens_edit&&id=<?php echo $id_os?>" class="btn btn-outline-warning"><i class="bi bi-pen"></i></a>
+                    <a type="button" href="?pagina=ordens_edit&&id=<?php echo $id_os ?>" class="btn btn-outline-warning"><i class="bi bi-pen"></i></a>
                 </div>
             </div>
             <form class="mt-3">
@@ -137,7 +137,7 @@ while ($array = mysqli_fetch_array($busca)) {
                         <label class="" style="font-weight:bold; font-family: 'Poppins', sans-serif;"><i class="bi bi-geo-alt text-primary rounded" style="border-style: solid;border-width: thin;padding:2px 10px;margin-right: 10px; font-size:130%;"></i>Ponto</label>
                     </div>
                     <div class="col-md-auto">
-                        <button type="button" class="btn btn-outline-success"><i class="bi bi-plus-lg"></i></button>
+                        <button type="button" class="btn btn-outline-success" onclick="getLocation()" data-bs-toggle="modal" data-bs-target="#modalPonto"><i class="bi bi-plus-lg"></i></button>
                     </div>
                 </div>
                 <div class="row px-3">
@@ -155,7 +155,7 @@ while ($array = mysqli_fetch_array($busca)) {
                                 <th scope="row">01/01/2022</th>
                                 <td>Rafael</td>
                                 <td class="">
-                                    <button type="button" class="btn btn-sm btn-outline-success"><i class="bi bi-door-open"></i></button>
+                                    <button type="button" class="btn btn-sm btn-outline-success" onclick="getLocation()" data-bs-toggle="modal" data-bs-target="#modalSaida"><i class="bi bi-door-open"></i></button>
                                     <button type="button" class="btn btn-sm btn-outline-primary"><i class="bi bi-eye"></i></button>
                                 </td>
                             </tr>
@@ -167,3 +167,95 @@ while ($array = mysqli_fetch_array($busca)) {
         </div>
     </div>
 </div>
+
+<!-- Modal PONTO -->
+<div class="modal fade" id="modalPonto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Marcar Ponto</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <label for="funcionarios" class="form-label">Funcionários:</label>
+                    <textarea class="form-control" id="funcionarios" name="funcionarios" rows="3" required></textarea>
+                    <input class="form-control" id="validacao" value="" readonly>
+                    <input type="hidden" class="form-control" id="lat" value="" required readonly>
+                    <input type="hidden" class="form-control" id="lng" value="" required readonly>
+                    <p id="demo"></p>
+            </div>
+            <div class="modal-footer">
+
+                <button type="submit" class="btn btn-primary">Salvar</button>
+                </form>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal PONTO SAÍDA-->
+<div class="modal fade" id="modalSaida" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel" style="color:red">Marcar Saída</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <form>
+                        <label for="funcionarios" class="form-label">Funcionários:</label>
+                        <textarea class="form-control" id="funcionarios" name="funcionarios" rows="3" required></textarea>
+                        <input class="form-control" id="validacao1" value="" readonly>
+                        <input type="hidden" class="form-control" id="lat1" value="" required readonly>
+                        <input type="hidden" class="form-control" id="lng1" value="" required readonly>
+                        <p id="demo1"></p>
+            </div>
+            <div class="modal-footer">
+
+                <button type="submit" class="btn btn-primary">Salvar</button>
+                </form>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var x1 = document.getElementById("demo1");
+    var lat1 = document.querySelector("#lat1");
+    var lng1 = document.querySelector("#lng1");
+    var validacao1 = document.querySelector("#validacao1");
+
+    var x = document.getElementById("demo");
+    var lat = document.querySelector("#lat");
+    var lng = document.querySelector("#lng");
+    var validacao = document.querySelector("#validacao");
+
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            validacao.value = "O seu navegador não suporta Geolocalização.";
+            validacao1.value = "O seu navegador não suporta Geolocalização.";
+        }
+    }
+
+    function showPosition(position) {
+        x.innerHTML = "Latitude: " + position.coords.latitude +
+            "<br>Longitude: " + position.coords.longitude;
+        lat.value = position.coords.latitude;
+        lng.value = position.coords.longitude;
+        validacao.value = "Localização Capturada!";
+        
+        x1.innerHTML = "Latitude: " + position.coords.latitude +
+            "<br>Longitude: " + position.coords.longitude;
+        lat1.value = position.coords.latitude;
+        lng1.value = position.coords.longitude;
+        validacao1.value = "Localização Capturada!";
+    }
+</script>
