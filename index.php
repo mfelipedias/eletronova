@@ -466,7 +466,7 @@
               include './includes/return/sucesso.php';
               ?>
             </div>
-      <?php
+          <?php
             include './includes/sub/ordens_view.php';
             break;
           case 'ordens-add-ok':
@@ -476,6 +476,16 @@
           case 'ordens-del-ok':
             include './includes/return/aviso.php';
             include './includes/ordens.php';
+            break;
+          case 'ponto-add-ok':
+          ?>
+            <div class="" style="max-width: 1020px; width: 100%">
+              <?php
+              include './includes/return/sucesso.php';
+              ?>
+            </div>
+      <?php
+            include './includes/sub/ordens_view.php';
             break;
           case 'pbombeiro':
             include './includes/pbombeiro.php';
