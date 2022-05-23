@@ -20,7 +20,7 @@
   <script src="js/buscacep.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <!-- API KEY GOOGLE MAPS -->
-  <script src="http://maps.google.com/maps/api/js?key=AIzaSyAEfuEc51rYqxv3Z8tNmWOanZqE5Lq4unc" type="text/javascript"></script>
+  <script src="https://maps.google.com/maps/api/js?key=AIzaSyAEfuEc51rYqxv3Z8tNmWOanZqE5Lq4unc" type="text/javascript"></script>
 </head>
 
 <body class="bg-light">
