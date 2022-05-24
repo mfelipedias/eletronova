@@ -106,7 +106,7 @@ while ($array = mysqli_fetch_array($busca)) {
                         <label class="" style="font-weight:bold; font-family: 'Poppins', sans-serif;"><i class="bi bi-geo-alt text-primary rounded" style="border-style: solid;border-width: thin;padding:2px 10px;margin-right: 10px; font-size:130%;"></i>Lista de Material</label>
                     </div>
                     <div class="col-md-auto">
-                        <button type="button" class="btn btn-outline-success"><i class="bi bi-plus-lg"></i></button>
+                        <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#modalLista"><i class="bi bi-plus-lg"></i></button>
                     </div>
                 </div>
                 <div class="row px-3">
@@ -154,7 +154,7 @@ while ($array = mysqli_fetch_array($busca)) {
                         </thead>
                         <tbody><?php
                                 include './scripts/conexao.php';
-                                $sql = "SELECT * FROM `pontos` INNER JOIN `usuarios` ON p_usuario=id_usuario WHERE p_ordem=$id_os ORDER BY p_chegada DESC";
+                                $sql = "SELECT * FROM `pontos` INNER JOIN `usuarios` ON p_usuario=id_usuario INNER JOIN `ordens` on id_os=p_ordem WHERE p_ordem=$id_os ORDER BY p_chegada DESC";
                                 $pontos = mysqli_query($conexao, $sql);
                                 $contador = 0;
                                 while ($array = mysqli_fetch_array($pontos)) {
@@ -164,6 +164,8 @@ while ($array = mysqli_fetch_array($busca)) {
                                     $_usuario = $array['p_usuario'];
                                     $_latitude = $array['p_latitude'];
                                     $_longitude = $array['p_longitude'];
+                                    $s_latitude = $array['p_latitude_s'];
+                                    $s_longitude = $array['p_longitude_s'];
                                     $_funcionarios = $array['p_funcionarios'];
                                     $_chegada = $array['p_chegada'];
                                     $_saida = $array['p_saida'];
@@ -198,6 +200,43 @@ while ($array = mysqli_fetch_array($busca)) {
                                                                             echo date('d/m/Y H:i:s', strtotime($_saida));
                                                                         }; ?><br>
                                                 <strong>Funcioários: </strong><?php echo $_funcionarios ?><br>
+                                                <div class="row">
+                                                    <div class="col mx-auto">
+                                                        <div id="map" style="width: 100%; height: 350px;"></div>
+
+                                                        <script type="text/javascript">
+                                                            var locations = [
+                                                                ['Local da Obra', <?php echo $os_latitude ?>, <?php echo $os_longitude ?>, 1],
+                                                                ['Ponto: Entrada', <?php echo $_latitude ?>, <?php echo $_longitude ?>, 1],
+                                                                ['Ponto: Saída', <?php echo $s_latitude ?>, <?php echo $s_longitude ?>, 1],
+                                                            ];
+
+                                                            var map = new google.maps.Map(document.getElementById('map'), {
+                                                                zoom: 13,
+                                                                center: new google.maps.LatLng(<?php echo $os_latitude ?>, <?php echo $os_longitude ?>),
+                                                                mapTypeId: google.maps.MapTypeId.ROADMAP
+                                                            });
+
+                                                            var infowindow = new google.maps.InfoWindow();
+
+                                                            var marker, i;
+
+                                                            for (i = 0; i < locations.length; i++) {
+                                                                marker = new google.maps.Marker({
+                                                                    position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                                                                    map: map
+                                                                });
+
+                                                                google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                                                                    return function() {
+                                                                        infowindow.setContent(locations[i][0]);
+                                                                        infowindow.open(map, marker);
+                                                                    }
+                                                                })(marker, i));
+                                                            }
+                                                        </script>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -211,6 +250,35 @@ while ($array = mysqli_fetch_array($busca)) {
                 </div>
                 <a type="button" href="?pagina=ordens" class="btn btn-primary">Voltar</a>
             </form>
+        </div>
+    </div>
+</div>
+<!-- Modal Nova Lista -->
+<div class="modal fade" id="modalLista" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel" style="color:green;">Preencher Lista</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="./scripts/lista_add.php" method="post">
+                    <label for="funcionarios" class="form-label mt-2">OS:</label>
+                    <input type="text" class="form-control" id="p_ordem" name="p_ordem" value="<?php echo $id_os ?>" readonly>
+                    <label for="funcionarios" class="form-label mt-2">ID Usuario:</label>
+                    <input type="text" class="form-control" id="id_usuario" name="id_usuario" value="<?php echo $id_usuario ?>" readonly>
+                    <label for="funcionarios" class="form-label mt-2">Nome:</label>
+                    <input type="text" class="form-control" id="u_nome" name="u_nome" value="<?php echo $logado ?>" readonly>
+                    <label for="funcionarios" class="form-label mt-2">Lista de material:</label>
+                    <textarea class="form-control" id="lista" name="lista" rows="12" required></textarea>
+                    <p id="demo"></p>
+            </div>
+            <div class="modal-footer">
+
+                <button type="submit" class="btn btn-primary">Salvar</button>
+                </form>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            </div>
         </div>
     </div>
 </div>
@@ -242,7 +310,7 @@ while ($array = mysqli_fetch_array($busca)) {
 
                 <button type="submit" class="btn btn-primary">Salvar</button>
                 </form>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
             </div>
         </div>
     </div>
@@ -282,8 +350,6 @@ while ($array = mysqli_fetch_array($busca)) {
                             <option value="<?php echo $_ponto ?>"><?php echo date('d/m/Y H:i:s', strtotime($_chegada)); ?></option>
                         <?php } ?>
                     </select>
-                    <label for="funcionarios" class="form-label mt-2">Funcionarios:</label>
-                    <textarea class="form-control" id="funcionarios" name="funcionarios" rows="3" required><?php echo $_funcionarios ?></textarea>
                     <input class="form-control" id="validacao1" value="" readonly>
                     <input type="hidden" class="form-control" id="lat1" name="lat1" value="" required readonly>
                     <input type="hidden" class="form-control" id="lng1" name="lng1" value="" required readonly>
