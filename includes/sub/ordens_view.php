@@ -271,7 +271,6 @@ while ($array = mysqli_fetch_array($busca)) {
                     <input type="text" class="form-control" id="u_nome" name="u_nome" value="<?php echo $logado ?>" readonly>
                     <label for="funcionarios" class="form-label mt-2">Lista de material:</label>
                     <textarea class="form-control" id="lista" name="lista" rows="12" required></textarea>
-                    <p id="demo"></p>
             </div>
             <div class="modal-footer">
 
