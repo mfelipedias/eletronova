@@ -148,7 +148,9 @@ while ($array = mysqli_fetch_array($busca)) {
                             <tr>
                                 <th scope="col">Chegada</th>
                                 <th scope="col">Saída</th>
-                                <th scope="col"><p class="td-hide">Responsável</p></th>
+                                <th scope="col">
+                                    <p class="td-hide">Responsável</p>
+                                </th>
                                 <th scope="col ">Ação</th>
                             </tr>
                         </thead>
@@ -178,7 +180,9 @@ while ($array = mysqli_fetch_array($busca)) {
                                                     } else {
                                                         echo date('d/m/Y H:i', strtotime($_saida));
                                                     }; ?></td>
-                                    <td><p class="td-hide"><?php echo $_reponsavel ?></p></td>
+                                    <td>
+                                        <p class="td-hide"><?php echo $_reponsavel ?></p>
+                                    </td>
                                     <td class="">
                                         <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#verModal<?php echo $_ponto ?>"><i class="bi bi-eye"></i></button>
                                     </td>
@@ -194,25 +198,31 @@ while ($array = mysqli_fetch_array($busca)) {
                                                 <strong>OS: </strong><?php echo $_ordem ?><br>
                                                 <strong>Responsável: </strong><?php echo $_reponsavel ?><br>
                                                 <strong>Entrada: </strong><?php echo date('d/m/Y H:i:s', strtotime($_chegada)); ?><br>
+                                                <?php echo "Latitude: " . $_latitude;
+                                                echo " Longitude: " . $_longitude; ?><br>
                                                 <strong>Saída: </strong><?php if ($_saida == '') {
                                                                             echo 'Ponto em aberto';
                                                                         } else {
                                                                             echo date('d/m/Y H:i:s', strtotime($_saida));
                                                                         }; ?><br>
+                                                <?php echo "Latitude: " . $s_latitude;
+                                                echo " Longitude: " . $s_longitude; ?><br>
                                                 <strong>Funcioários: </strong><?php echo $_funcionarios ?><br>
+
+                                                <strong style="margin-top: 20px;">Localização no Mapa: </strong><br>
                                                 <div class="row">
                                                     <div class="col mx-auto">
-                                                        <div id="map" style="width: 100%; height: 350px;"></div>
+                                                        <div id="map<?php echo $_ponto?>" style="width: 100%; height: 350px;"></div>
 
                                                         <script type="text/javascript">
                                                             var locations = [
-                                                                ['Local da Obra', <?php echo $os_latitude ?>, <?php echo $os_longitude ?>, 1],
-                                                                ['Ponto: Entrada', <?php echo $_latitude ?>, <?php echo $_longitude ?>, 2],
-                                                                ['Ponto: Saída', <?php echo $s_latitude ?>, <?php echo $s_longitude ?>, 3],
+                                                                ['Local da Obra', <?php echo $os_latitude ?>, <?php echo $os_longitude ?>],
+                                                                ['Ponto: Entrada', <?php echo $_latitude ?>, <?php echo $_longitude ?>],
+                                                                ['Ponto: Saída', <?php echo $s_latitude ?>, <?php echo $s_longitude ?>],
                                                             ];
 
-                                                            var map = new google.maps.Map(document.getElementById('map'), {
-                                                                zoom: 15,
+                                                            var map = new google.maps.Map(document.getElementById('map<?php echo $_ponto?>'), {
+                                                                zoom: 17,
                                                                 center: new google.maps.LatLng(<?php echo $os_latitude ?>, <?php echo $os_longitude ?>),
                                                                 mapTypeId: google.maps.MapTypeId.ROADMAP
                                                             });
