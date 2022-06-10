@@ -308,8 +308,20 @@ while ($array = mysqli_fetch_array($busca)) {
                     <input type="text" class="form-control" id="id_usuario" name="id_usuario" value="<?php echo $id_usuario ?>" readonly>
                     <label for="funcionarios" class="form-label mt-2">Nome:</label>
                     <input type="text" class="form-control" id="u_nome" name="u_nome" value="<?php echo $logado ?>" readonly>
-                    <label for="funcionarios" class="form-label mt-2">Funcionários:</label>
-                    <textarea class="form-control" id="funcionarios" name="funcionarios" rows="3" required></textarea>
+                    <label for="funcionarios" class="form-label mt-2">Funcionário:</label>
+                    <select class="form-select" id="funcionario" name="funcionario" required>
+                        <option value="">Funcionário...</option>
+                        <?php
+                        include './scripts/conexao.php';
+                        $sqlusuarios = "SELECT * FROM `usuarios` WHERE u_status=1 ORDER BY u_nome ASC";
+                        $listausuarios = mysqli_query($conexao, $sqlusuarios);
+                        while ($array = mysqli_fetch_array($listausuarios)) {
+                            $_id_usuario = $array['id_usuario'];
+                            $_u_nome = $array['u_nome'];
+                        ?>
+                            <option value="<?php echo $id_usuario ?>"><?php echo $u_nome; ?></option>
+                        <?php } ?>
+                    </select>
                     <input class="form-control" id="validacao" value="" readonly>
                     <input type="hidden" class="form-control" id="lat" name="lat" value="" required readonly>
                     <input type="hidden" class="form-control" id="lng" name="lng" value="" required readonly>
