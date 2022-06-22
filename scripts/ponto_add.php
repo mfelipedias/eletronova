@@ -5,11 +5,11 @@ $p_usuario = $_POST['id_usuario'];
 $p_ordem = $_POST['p_ordem'];
 $p_latitude = $_POST['lat'];
 $p_longitude = $_POST['lng'];
-$p_funcionarios = $_POST['funcionarios'];
+$p_funcionario = $_POST['p_funcionario'];
 
 
-$sql = "INSERT INTO pontos (p_usuario, p_ordem, p_latitude, p_longitude, p_funcionarios, p_chegada) values 
-('$p_usuario','$p_ordem', '$p_latitude','$p_longitude', '$p_funcionarios', now())";
+$sql = "INSERT INTO pontos (p_usuario, p_ordem, p_latitude, p_longitude, p_funcionario, p_chegada) values 
+('$p_usuario','$p_ordem', '$p_latitude','$p_longitude', '$p_funcionario', now())";
 echo $sql;
 $inserir = mysqli_query($conexao, $sql);
 $retorno = "Ponto marcado com sucesso!";

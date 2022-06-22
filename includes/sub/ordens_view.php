@@ -115,19 +115,53 @@ while ($array = mysqli_fetch_array($busca)) {
                         <thead>
                             <tr>
                                 <th scope="col">Data</th>
+                                <th scope="col">Alteração</th>
                                 <th scope="col">Responsável</th>
-                                <th scope="col ">Ação</th>
+                                <th scope="col ">Ver</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">01/01/2022</th>
-                                <td>Rafael</td>
-                                <td class="">
-                                    <button type="button" class="btn btn-sm btn-outline-warning"><i class="bi bi-pen"></i></button>
-                                    <button type="button" class="btn btn-sm btn-outline-primary"><i class="bi bi-eye"></i></button>
-                                </td>
-                            </tr>
+                            <?php
+                            include './scripts/conexao.php';
+                            $sqllista = "SELECT * FROM `listas` INNER JOIN `ordens` ON l_ordem=id_os INNER JOIN `usuarios` on id_usuario=l_usuario WHERE l_ordem=$id_os ORDER BY l_cadastro DESC";
+                            $listas = mysqli_query($conexao, $sqllista);
+                            while ($array = mysqli_fetch_array($listas)) {
+                                $id_lista = $array['id_lista'];
+                                $l_ordem = $array['l_ordem'];
+                                $l_usuario = $array['l_usuario'];
+                                $l_n_usuario = $array['u_nome'];
+                                $l_lista = $array['l_lista'];
+                                $l_cadastro = $array['l_cadastro'];
+                                $l_update = $array['l_update'];
+                            ?>
+                                <tr>
+                                    <th scope="row"><?php echo date('d/m/Y H:i', strtotime($l_cadastro)); ?></th>
+                                    <td scope="row"><?php echo date('d/m/Y H:i', strtotime($l_update)); ?></td>
+                                    <td><?php echo $l_n_usuario ?></td>
+                                    <td class="">
+                                        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalLista<?php echo $id_lista?>"><i class="bi bi-eye"></i></button>
+                                    </td>
+                                </tr>
+                                <div class="modal fade" id="modalLista<?php echo $id_lista?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Lista de Material</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                            Responsável: <strong><?php echo $l_n_usuario?></strong><br>
+                                            Data: <strong><?php echo date('d/m/Y H:i', strtotime($l_cadastro)); ?></strong><br>
+                                            Atualização: <strong><?php echo date('d/m/Y H:i', strtotime($l_update)); ?></strong><br>
+                                            Lista: <br><strong><?php echo $l_lista?></strong><br>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
@@ -146,17 +180,17 @@ while ($array = mysqli_fetch_array($busca)) {
                     <table class="table table-hover">
                         <thead>
                             <tr>
+                                <th scope="col">
+                                    <p class="td-hide">Funcionário</p>
+                                </th>
                                 <th scope="col">Chegada</th>
                                 <th scope="col">Saída</th>
-                                <th scope="col">
-                                    <p class="td-hide">Responsável</p>
-                                </th>
                                 <th scope="col ">Ação</th>
                             </tr>
                         </thead>
                         <tbody><?php
                                 include './scripts/conexao.php';
-                                $sql = "SELECT * FROM `pontos` INNER JOIN `usuarios` ON p_usuario=id_usuario INNER JOIN `ordens` on id_os=p_ordem WHERE p_ordem=$id_os ORDER BY p_chegada DESC";
+                                $sql = "SELECT * FROM `pontos` INNER JOIN `usuarios` ON p_funcionario=id_usuario INNER JOIN `ordens` on id_os=p_ordem WHERE p_ordem=$id_os ORDER BY p_chegada DESC";
                                 $pontos = mysqli_query($conexao, $sql);
                                 $contador = 0;
                                 while ($array = mysqli_fetch_array($pontos)) {
@@ -168,21 +202,21 @@ while ($array = mysqli_fetch_array($busca)) {
                                     $_longitude = $array['p_longitude'];
                                     $s_latitude = $array['p_latitude_s'];
                                     $s_longitude = $array['p_longitude_s'];
-                                    $_funcionarios = $array['p_funcionarios'];
+                                    $_funcionario = $array['u_nome'];
                                     $_chegada = $array['p_chegada'];
                                     $_saida = $array['p_saida'];
-                                    $_reponsavel = $array['u_nome'];
                                 ?>
                                 <tr>
-                                    <th scope="row"><?php echo date('d/m/Y H:i', strtotime($_chegada)); ?></th>
+                                    <th>
+                                        <p class="td-hide"><?php echo $_funcionario ?></p>
+                                    </th>
+                                    <td scope="row"><?php echo date('d/m/Y H:i', strtotime($_chegada)); ?></td>
                                     <td scope="row"><?php if ($_saida == '') {
                                                         echo 'Ponto em aberto';
                                                     } else {
                                                         echo date('d/m/Y H:i', strtotime($_saida));
                                                     }; ?></td>
-                                    <td>
-                                        <p class="td-hide"><?php echo $_reponsavel ?></p>
-                                    </td>
+
                                     <td class="">
                                         <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#verModal<?php echo $_ponto ?>"><i class="bi bi-eye"></i></button>
                                     </td>
@@ -196,7 +230,7 @@ while ($array = mysqli_fetch_array($busca)) {
                                             </div>
                                             <div class="modal-body">
                                                 <strong>OS: </strong><?php echo $_ordem ?><br>
-                                                <strong>Responsável: </strong><?php echo $_reponsavel ?><br>
+                                                <strong>Funcionário: </strong><?php echo $_funcionario ?><br>
                                                 <strong>Entrada: </strong><?php echo date('d/m/Y H:i:s', strtotime($_chegada)); ?><br>
                                                 <?php echo "Latitude: " . $_latitude;
                                                 echo " Longitude: " . $_longitude; ?><br>
@@ -207,12 +241,10 @@ while ($array = mysqli_fetch_array($busca)) {
                                                                         }; ?><br>
                                                 <?php echo "Latitude: " . $s_latitude;
                                                 echo " Longitude: " . $s_longitude; ?><br>
-                                                <strong>Funcioários: </strong><?php echo $_funcionarios ?><br>
-
                                                 <strong style="margin-top: 20px;">Localização no Mapa: </strong><br>
                                                 <div class="row">
                                                     <div class="col mx-auto">
-                                                        <div id="map<?php echo $_ponto?>" style="width: 100%; height: 350px;"></div>
+                                                        <div id="map<?php echo $_ponto ?>" style="width: 100%; height: 350px;"></div>
 
                                                         <script type="text/javascript">
                                                             var locations = [
@@ -221,7 +253,7 @@ while ($array = mysqli_fetch_array($busca)) {
                                                                 ['Ponto: Saída', <?php echo $s_latitude ?>, <?php echo $s_longitude ?>],
                                                             ];
 
-                                                            var map = new google.maps.Map(document.getElementById('map<?php echo $_ponto?>'), {
+                                                            var map = new google.maps.Map(document.getElementById('map<?php echo $_ponto ?>'), {
                                                                 zoom: 17,
                                                                 center: new google.maps.LatLng(<?php echo $os_latitude ?>, <?php echo $os_longitude ?>),
                                                                 mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -274,13 +306,13 @@ while ($array = mysqli_fetch_array($busca)) {
             <div class="modal-body">
                 <form action="./scripts/lista_add.php" method="post">
                     <label for="funcionarios" class="form-label mt-2">OS:</label>
-                    <input type="text" class="form-control" id="p_ordem" name="p_ordem" value="<?php echo $id_os ?>" readonly>
+                    <input type="text" class="form-control" id="l_ordem" name="l_ordem" value="<?php echo $id_os ?>" readonly>
                     <label for="funcionarios" class="form-label mt-2">ID Usuario:</label>
-                    <input type="text" class="form-control" id="id_usuario" name="id_usuario" value="<?php echo $id_usuario ?>" readonly>
+                    <input type="text" class="form-control" id="l_usuario" name="l_usuario" value="<?php echo $id_usuario ?>" readonly>
                     <label for="funcionarios" class="form-label mt-2">Nome:</label>
                     <input type="text" class="form-control" id="u_nome" name="u_nome" value="<?php echo $logado ?>" readonly>
                     <label for="funcionarios" class="form-label mt-2">Lista de material:</label>
-                    <textarea class="form-control" id="lista" name="lista" rows="12" required></textarea>
+                    <textarea class="form-control" id="l_lista" name="l_lista" rows="12" required></textarea>
             </div>
             <div class="modal-footer">
 
@@ -302,14 +334,14 @@ while ($array = mysqli_fetch_array($busca)) {
             </div>
             <div class="modal-body">
                 <form action="./scripts/ponto_add.php" method="post">
-                    <label for="funcionarios" class="form-label mt-2">OS:</label>
+                    <label for="p_ordem" class="form-label mt-2">OS:</label>
                     <input type="text" class="form-control" id="p_ordem" name="p_ordem" value="<?php echo $id_os ?>" readonly>
-                    <label for="funcionarios" class="form-label mt-2">ID Usuario:</label>
-                    <input type="text" class="form-control" id="id_usuario" name="id_usuario" value="<?php echo $id_usuario ?>" readonly>
-                    <label for="funcionarios" class="form-label mt-2">Nome:</label>
-                    <input type="text" class="form-control" id="u_nome" name="u_nome" value="<?php echo $logado ?>" readonly>
-                    <label for="funcionarios" class="form-label mt-2">Funcionário:</label>
-                    <select class="form-select" id="funcionario" name="funcionario" required>
+                    <label for="id_usuario" class="form-label mt-2">ID Usuario:</label>
+                    <input type="text" class="form-control" id="id_usuario" name="id_usuario" value="<?php echo $id_usuario ?>" hidden>
+                    <label for="u_nome" class="form-label mt-2">Nome:</label>
+                    <input type="text" class="form-control" id="u_nome" name="u_nome" value="<?php echo $logado ?>" hidden>
+                    <label for="p_funcionario" class="form-label mt-2">Funcionário:</label>
+                    <select class="form-select" id="p_funcionario" name="p_funcionario" required>
                         <option value="">Funcionário...</option>
                         <?php
                         include './scripts/conexao.php';
@@ -319,7 +351,7 @@ while ($array = mysqli_fetch_array($busca)) {
                             $_id_usuario = $array['id_usuario'];
                             $_u_nome = $array['u_nome'];
                         ?>
-                            <option value="<?php echo $id_usuario ?>"><?php echo $u_nome; ?></option>
+                            <option value="<?php echo $_id_usuario ?>"><?php echo $_u_nome; ?></option>
                         <?php } ?>
                     </select>
                     <input class="form-control" id="validacao" value="" readonly>
@@ -352,23 +384,23 @@ while ($array = mysqli_fetch_array($busca)) {
                     <input type="text" class="form-control" id="p_ordem" name="p_ordem" value="<?php echo $id_os ?>" readonly>
                     <label for="entrada" class="form-label mt-2">Entrada:</label>
                     <select class="form-select" id="entrada" name="entrada" required>
-                        <option value="">Selecione entrada...</option>
+                        <option value="">Selecione...</option>
                         <?php
                         include './scripts/conexao.php';
-                        $sqlordens = "SELECT * FROM `pontos` INNER JOIN `usuarios` ON p_usuario=id_usuario WHERE p_ordem=$id_os AND p_saida IS NULL ORDER BY p_chegada DESC";
+                        $sqlordens = "SELECT * FROM `pontos` INNER JOIN `usuarios` ON p_funcionario=id_usuario WHERE p_ordem=$id_os AND p_saida IS NULL ORDER BY p_chegada DESC";
                         $listaordens = mysqli_query($conexao, $sqlordens);
                         while ($array = mysqli_fetch_array($listaordens)) {
                             $_ponto = $array['id_ponto'];
                             $_ordem = $array['p_ordem'];
-                            $_usuario = $array['p_usuario'];
                             $_latitude = $array['p_latitude'];
                             $_longitude = $array['p_longitude'];
-                            $_funcionarios = $array['p_funcionarios'];
+                            $_funcionario = $array['u_nome'];
                             $_chegada = $array['p_chegada'];
                             $_saida = $array['p_saida'];
                             $_reponsavel = $array['u_nome'];
                         ?>
-                            <option value="<?php echo $_ponto ?>"><?php echo date('d/m/Y H:i:s', strtotime($_chegada)); ?></option>
+                            <option value="<?php echo $_ponto ?>"><?php echo $_funcionario . " ";
+                                                                    echo date('d/m/Y H:i:s', strtotime($_chegada)); ?></option>
                         <?php } ?>
                     </select>
                     <input class="form-control" id="validacao1" value="" readonly>

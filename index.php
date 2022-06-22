@@ -484,6 +484,16 @@
               include './includes/return/sucesso.php';
               ?>
             </div>
+          <?php
+            include './includes/sub/ordens_view.php';
+            break;
+          case 'lista-add-ok':
+          ?>
+            <div class="" style="max-width: 1020px; width: 100%">
+              <?php
+              include './includes/return/sucesso.php';
+              ?>
+            </div>
       <?php
             include './includes/sub/ordens_view.php';
             break;
